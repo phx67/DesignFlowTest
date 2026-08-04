@@ -4,6 +4,19 @@ Spec-Driven Development for product design. Clone the template, open it in Claud
 
 The repo is the design file — and the source of truth. Figma is not required, and not forbidden: if your team lives in Figma, the finished system can be exported there through the Figma MCP at handoff, from a design system that already exists as code.
 
+---
+
+**This run's project home page: https://phx67.github.io/DesignFlowTest/**
+
+Published from `index.html` on `main`, repo root. It is the state view of the pipeline — the
+phase this project is in, the artifacts produced so far, the criteria each phase is verified
+against, and the prompt to send next. Locally the same page is `index.html` at the repo root.
+
+The product is not named yet; `/dsf:brief` fills in the brief and rewrites the sections below
+as this project's index.
+
+---
+
 ## What it looks like
 
 The project home page (`index.html`) is the state view of the run — phases on the left, the step-by-step guide with copy-paste prompts in the middle, the phase's done-criteria on the right:

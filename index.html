@@ -3150,7 +3150,15 @@
     "primaryPersona": "",
     "mainJob": "",
     "chosenDirection": "",
-    "toolbox": []
+    "toolbox": [
+      { "tool": "Browser & screenshots", "status": "active" },
+      { "tool": "Visual references", "status": "fallback" },
+      { "tool": "Design quality laws", "status": "active" },
+      { "tool": "Structured brief", "status": "active" },
+      { "tool": "Imagery", "status": "fallback" },
+      { "tool": "Icons", "status": "active" },
+      { "tool": "Hosting", "status": "active" }
+    ]
   },
   "phases": [
     {
@@ -3162,10 +3170,10 @@
       "tag": "phase-0-init",
       "tagged": false,
       "criteria": { "total": 12, "passed": [], "failed": [], "checkedAt": "" },
-      "steps": { "total": 9, "done": [], "current": "" },
+      "steps": { "total": 9, "done": ["init.1", "init.2", "init.3", "init.4", "init.5", "init.6", "init.7", "init.8"], "current": "init.9" },
       "artifacts": [
-        { "path": ".design/memory/toolbox.md", "label": "Your tool choices and the fallback for each", "exists": false, "link": false },
-        { "path": "index.html", "label": "This dashboard", "exists": false, "link": true }
+        { "path": ".design/memory/toolbox.md", "label": "Your tool choices and the fallback for each", "exists": true, "link": false },
+        { "path": "index.html", "label": "This dashboard", "exists": true, "link": true }
       ]
     },
     {

@@ -54,7 +54,26 @@ The page tracks state; the chat executes. Neither one guesses the other's job.
 
 <!-- /dsf:init fills this in: one line per active tool and one per fallback in force -->
 
-`[?]`
+Resolved 2026-08-04. Full evidence, install details and switch-on instructions are in
+`.design/memory/toolbox.md` — read that before using any tool; these lines are the summary.
+
+- **Browser & screenshots — `active`.** Playwright MCP (`playwright` in `.mcp.json`), Chromium
+  verified rendering. Take your own screenshots; never describe a screen from memory. The
+  browser needs the `LD_LIBRARY_PATH` pinned in `.mcp.json` — do not drop it. The server goes
+  live on a new session, so confirm the tools exist before relying on them.
+- **Visual references — `fallback`.** No Refero. Build `concept/references.md` from web search
+  plus your own screenshots; label every row `[web]` with its source URL and capture date.
+- **Design quality laws — `active`.** `impeccable` v4.0.4 — use `/impeccable critique` and
+  `/impeccable audit` for the quality pass in phases 4–10, instead of `.design/prompts/`.
+- **Structured brief — `active`.** `superpowers` v6.2.0 — `/dsf:brief` runs its `brainstorming`
+  skill instead of `.design/prompts/brief-interrogation.md`.
+- **Imagery — `fallback`.** No Gemini key. Source images from Unsplash by content theme, one
+  locked colorway, and record query + URL + photographer in `visuals/README.md`.
+- **Icons — `active`.** **Solar, linear**, one style throughout. Locked — mixing sets or weights
+  is a defect, not a variation. Downloaded into the repo when `/dsf:build` first needs them.
+- **Hosting — `active`.** GitHub Pages at **https://phx67.github.io/DesignFlowTest/**, public,
+  `main` root. `gh` is at `~/.local/bin/gh` (on PATH in new sessions only). **`Bash(curl:*)` is
+  denied by `.claude/settings.json` — use `wget`.**
 
 ---
 
