@@ -1,0 +1,24 @@
+# Line endings — settled once, for the whole repo.
+#
+# This repo lives on a Windows drive but is read by Linux tooling and served by
+# GitHub Pages. Before this file existed, every checkout rewrote all 66 text
+# files to CRLF, so `git status` showed the entire repo as modified and every
+# real diff drowned in line-ending churn. `/dsf:check` reads diffs; noise there
+# is not cosmetic.
+#
+# LF in the repository AND in the working tree, on every platform.
+* text=auto eol=lf
+
+# Binary — never normalized, never diffed as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary

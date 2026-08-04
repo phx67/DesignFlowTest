@@ -134,3 +134,20 @@ via the browser device-code flow, token scopes `gist`, `read:org`, `repo`, `work
   `wget` instead, with the change flagged to the human rather than made silently. Any later
   command that needs to fetch a file should reach for `wget` and not spend a turn on `curl`.
 - Pages URL: `https://phx67.github.io/DesignFlowTest/` — recorded in `README.md` too.
+
+**Line endings — `.gitattributes`, added 2026-08-04 on the designer's approval.** The repo sits on
+a Windows drive (`/mnt/c`) but is read by Linux tooling and served by Pages. Before this, every
+text file showed as modified on CRLF alone: 66 phantom entries in `git status`, with real diffs
+buried in the churn. `* text=auto eol=lf` now pins LF in the repository and the working tree;
+images are marked `binary`. The 64 already-checked-out files were converted in place — content
+verified identical by checksum before and after, and by matching worktree/index/HEAD blob hashes.
+
+Two things follow for later phases, both worth knowing before someone debugs them from scratch:
+
+- **Write LF.** A tool that emits CRLF re-dirties the tree. Git normalizes on commit, so the
+  history stays clean either way, but the working tree stops being readable at a glance.
+- **A mass file rewrite leaves a stale stat cache on this filesystem.** `git status` will list
+  dozens of files as modified while `git diff` is empty and the blob hashes match. `git status`
+  is wrong there, not the files. `git update-index --refresh` did **not** clear it; `git add -u`
+  did, and it stages nothing when the content really is identical. Check `git diff --cached --stat`
+  is empty before believing a large diff — and never "fix" it by committing the churn.
