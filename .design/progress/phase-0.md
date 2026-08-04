@@ -8,3 +8,4 @@
 - init.6 · Reset the two state stores · 2026-08-04 17:08 · files: .design/progress/phase-0.md (index.html data block verified already at starting state, unchanged)
 - init.7 · Run the phase checklist · 2026-08-04 17:09 · files: —
 - init.8 · Living docs and commit · 2026-08-04 17:09 · files: CLAUDE.md, index.html, .design/progress/phase-0.md
+- init.9 · Hand over the project home page · 2026-08-04 17:13 · files: index.html, .design/progress/phase-0.md
