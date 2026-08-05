@@ -44,7 +44,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{PRODUCT_NAME}}: design pipeline</title>
+<title>Loupe: design pipeline</title>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/pipeline.css">
 </head>
@@ -75,7 +75,7 @@
   <div class="brand-row">
     <div class="brand">
       <span class="kicker" data-i18n="nav.1">design pipeline</span>
-      <span class="product" data-product>{{PRODUCT_NAME}}</span>
+      <span class="product" data-product>Loupe</span>
     </div>
     <!-- Outside every [data-i18n] node on purpose: applyLocale rewrites those
          wholesale, and this control has to survive a language switch. -->
@@ -3141,11 +3141,11 @@
 -->
 <script type="application/json" id="pipeline-data">
 {
-  "product": "{{PRODUCT_NAME}}",
+  "product": "Loupe",
   "templateVersion": "0.1.0",
   "context": {
-    "product": "",
-    "oneLiner": "",
+    "product": "Loupe",
+    "oneLiner": "A community site where designers publish their own work with their own breakdown — colour, typography, grid and intent — so others can rebuild it, not just admire it.",
     "benchmarkDimension": "",
     "primaryPersona": "",
     "mainJob": "",
@@ -3185,10 +3185,10 @@
       "tag": "phase-1-brief",
       "tagged": false,
       "criteria": { "total": 13, "passed": [], "failed": [], "checkedAt": "" },
-      "steps": { "total": 10, "done": [], "current": "" },
+      "steps": { "total": 10, "done": ["brief.1", "brief.2", "brief.3", "brief.4", "brief.5", "brief.6", "brief.7", "brief.8"], "current": "brief.9" },
       "artifacts": [
-        { "path": "CLAUDE.md", "label": "Your brief, and the context every phase reads", "exists": false, "link": false },
-        { "path": "README.md", "label": "The project's front page, in human words", "exists": false, "link": false }
+        { "path": "CLAUDE.md", "label": "Your brief, and the context every phase reads", "exists": true, "link": false },
+        { "path": "README.md", "label": "The project's front page, in human words", "exists": true, "link": false }
       ]
     },
     {

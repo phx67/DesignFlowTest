@@ -96,6 +96,16 @@ block of `.mcp.json`. Verified end to end: headless Chromium launched and wrote 
 installed them, so the first command that needs a screenshot should confirm the tools are there
 before relying on them. If Chromium ever stops launching, check that `LD_LIBRARY_PATH` entry first.
 
+**Repaired 2026-08-05 during `/dsf:brief`.** The row stayed `active`, but the server would not
+launch: `@playwright/mcp@latest` now defaults to the **chrome** channel and failed with
+`Chromium distribution 'chrome' is not found at /opt/google/chrome/chrome`. Nothing is installed
+there — phase 0 downloaded Chromium to `~/.cache/ms-playwright/chromium-1234`. Fixed by pinning
+`--browser chromium` in the `args` of `.mcp.json`, alongside the existing `LD_LIBRARY_PATH`. Two
+consequences: **do not drop that flag** — `@latest` means the default can move again; and the fix
+only takes effect **in a new session**, so the browser was still unavailable in the session that
+made it. Phase 1 needed no screenshots, so nothing was blocked, but the first command in phase 2
+that needs the browser should confirm it launches before relying on it.
+
 **Visual references — `fallback`.** Refero requires a paid account at refero.design and an MCP
 endpoint; neither exists here and no Refero tools were present in the session. Not offered as an
 install because the account is the blocker, not the software. See the rule above.

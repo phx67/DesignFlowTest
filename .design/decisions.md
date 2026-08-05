@@ -34,16 +34,23 @@ One heading plus four fields per entry, nothing else:
 
 ---
 
-<!-- Example entry — delete this block once the first real decision is logged.
+## 2026-08-05 · gate
 
-## 2025-03-14 · contradiction
+**Decided:** "артефакти англійською, обговорення українською; мова продукту — окреме рішення фази 5"
+**Contradicts:** `nothing`
+**Option:** n/a
+**Propagated:** all phase artifacts stay English; product UI language deferred to phase 5 `/dsf:voice`, recorded as a constraint in `CLAUDE.md` — Brief.
 
-**Decided:** "Put the price straight on the card, top right. People are filtering by price and
-they shouldn't have to open anything to see it."
-**Contradicts:** `wireframes/_conventions.md:31` — "Cards carry the object and one trust signal
-only; commercial detail lives on the detail screen."
-**Option:** spec-update
-**Propagated:** `wireframes/_conventions.md` (rule rewritten, source noted), `voice/microcopy.md`
-(new key `list.card.price`), 6 list screens + their `-empty` states, `ui/kit.html`, `DESIGN.md`.
+## 2026-08-05 · gate
 
--->
+**Decided:** "демотуй проблему 3 до [?], як і фічу" — then "затверджую" on the brief carrying that edit.
+**Contradicts:** `nothing` — the brief was unwritten; the edit was made before it reached disk.
+**Option:** n/a
+**Propagated:** `CLAUDE.md` (Brief), `README.md`, `index.html`. Comparison demoted from confirmed problem and from the spine to an open `[?]`; the structured-fields decision now rests on the index alone.
+
+## 2026-08-05 · gate
+
+**Decided:** "розбір є індексом (шукаєш за властивостями), але колір/тип/сітку заповнює дизайнер вручну при заливанні рефа. Ніякого авто-витягування. Саме заповнення розбору = акт деконструкції." — later re-scoped by the human to a community pool: "Спільнотний сайт відкриттів для дизайнерів, а не приватний архів. […] Головний момент — відкриття зі спільного пулу, а не повторне знаходження власного мотлоху."
+**Contradicts:** `nothing` on disk — the first, private-archive brief was played back in chat and rejected at the gate before any file was written.
+**Option:** n/a
+**Propagated:** `CLAUDE.md` (Brief), `README.md`, `index.html`. Manual deconstruction survived the re-scope; the private archive did not.

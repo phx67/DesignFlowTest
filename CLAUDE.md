@@ -7,6 +7,81 @@ Read this file first, then the artifacts it points to. Never re-ask what is alre
 
 ---
 
+## Brief
+
+**Loupe** — a community discovery site for designers where every published work arrives with its
+author's own breakdown: colour, typography, grid, and the intent behind them. You see the
+solution *and* can rebuild it.
+
+**Who it is for.** Primary: a designer with **a task on the desk** — a specific component to
+design (empty state, pricing, onboarding form) — who needs to see how others solved it and how it
+is built. Sessions are short and targeted, so the main screen is **search and filters, not a
+feed**. Secondary: the author, who publishes their **own work** and writes its breakdown — rights
+are clean, the analysis is authentic, and the pool grows only as fast as people make things. Not
+for private-archive hoarders, teams assembling a house style, or undirected browsing.
+
+**Problem.** Inspiration sites show the result and say nothing about the construction. Three
+confirmed failures: **can't reproduce it** — the system is invisible, so scale and grid get
+guessed by eye; **can't see the why** — without the author's intent the form gets copied into a
+context where it does not work; **don't believe it's real** — no signal whether it shipped or is
+a concept. Source: the designer's own testimony at the phase-1 gate; phase 2 tests it against
+other people.
+
+**Spine.** The unit of content is *work + author's breakdown*: structured fields (colour,
+typography, grid) + a free-text "why" + a reality status linking to the live product. The author
+fills it in **by hand — no auto-extraction anywhere.** Because the breakdown travels with the
+work, **property search is free** and tagging is not required; tags are optional personal context
+inside your own collections. **Progressive completeness** — publish with a minimum, the breakdown
+grows, completeness is visible on the card and is an axis of filtering and ranking, and `[?]` is a
+first-class UI state. Social layer: save to a collection, like, follow an author.
+
+**Platform.** Roles split, not scaled. **Desktop primary** (~1440px): search, breakdown, upload.
+**Mobile**: browsing and saving to a collection, nothing else. This inverts the pipeline's
+mobile-first default deliberately — phase 8 is a decision about refusals, not about squeezing.
+
+**Constraints.** A **pipeline exercise**: the deliverable is a full phase 0–10 run and a credible
+static front-end. No backend, auth, real upload or persistence — every flow runs on fixtures.
+Toolbox fallbacks bind. Artifacts are English, the working conversation Ukrainian, and **the
+product's own UI language is undecided — phase 5 `/dsf:voice` owns it**, so phase 4 uses grey
+placeholder text and fixes no tone.
+
+**Out of scope.** Not a private archive. Not AI or auto-extraction in place of the author. Not a
+token collector or house-style exporter. Not an infinite feed as the main screen. Not curation —
+authors publish only their own work.
+
+**Success criteria** — observable:
+
+1. **Reproducibility.** From the breakdown screen alone, a designer states the exact palette, type
+   scale and grid values and rebuilds the component without an eyedropper. Checked per screen.
+2. **Trust without a click.** Any card in the results shows reality status and breakdown
+   completeness without being opened.
+3. **Upload does not deter.** The "publish + deconstruct" flow completes end to end on the
+   prototype without abandonment, and every required field has a justification.
+
+**Open questions `[?]`**
+
+- `[?]` **Supplier motivation — the main risk.** Why a designer deconstructs their own work for
+  free. *Hypothesis:* reputation — a breakdown is stronger proof of craft than a shot. There is
+  **no interview evidence**; phase 2 looks for designers writing process breakdowns for free
+  elsewhere. If it does not hold, the spine needs rebuilding.
+- `[?]` **The retrieval mechanism.** Candidates: filters over the breakdown, optional tags, AI
+  search. Decided in phase 3.
+- `[?]` **Comparison — pain and feature, both unproven.** "Can't compare ten examples of one
+  component" was demoted from the confirmed problems, and the side-by-side view from the spine.
+  *Hypothesis:* shared fields deliver comparison as a side effect and no dedicated screen is
+  needed. Phase 2 confirms or restores it. Consequence: the structured-fields decision now rests
+  on the index alone.
+- `[?]` **Is "grid" the right third axis?** *Hypothesis:* weaker than colour and typography;
+  density or composition may be what designers actually reach for. Phase 2.
+- `[?]` **Where the fixture imagery comes from.** Unsplash is photography and this product's
+  content is interfaces. *Hypothesis:* the project's own Playwright screenshots of real products,
+  each carrying source URL and capture date the way `concept/references.md` does, with Unsplash
+  reserved for non-reference imagery. Phase 6.
+- `[?]` **Whether breakdown quality needs moderation.** Not asked. *Hypothesis:* no at this stage
+  — completeness is the only visible quality signal. Phase 3.
+
+---
+
 ## First contact
 
 If this looks like a fresh clone (toolbox rows still `[?]`, no `phase-0` ledger), your FIRST
@@ -116,7 +191,15 @@ phases need, plus paths. Not a retelling of the artifact.
 
 ### Brief
 <!-- phase 1 · what the product is, who it is for, platform, constraints, success criteria -->
-`[?]`
+Loupe — a community discovery site for designers; every published work carries its author's own
+breakdown (colour, typography, grid, intent). Primary user: a designer with a specific component
+to design; the main screen is search + filters, not a feed. Authors publish **their own work
+only**. The breakdown is manual, structured, and **is** the search index — no auto-extraction, no
+mandatory tagging; tags are optional personal context. Progressive completeness, `[?]` is a real
+UI state. Desktop primary (search, breakdown, upload); mobile is browse + save only. Static
+front-end on fixtures, artifacts in English, product UI language deferred to phase 5.
+Main risk carried forward: supplier motivation is a `[?]` with no evidence.
+Full text: **Brief** section at the top of this file.
 
 ### Research
 <!-- phase 2 · chosen interaction pattern · the three MVP mechanics · benchmark dimension · top three open questions · paths to research/ -->

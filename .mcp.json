@@ -5,7 +5,9 @@
       "command": "npx",
       "args": [
         "-y",
-        "@playwright/mcp@latest"
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium"
       ],
       "env": {
         "LD_LIBRARY_PATH": "/home/mdesh/.local/lib/playwright-deps"
