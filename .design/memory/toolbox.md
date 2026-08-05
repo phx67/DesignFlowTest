@@ -106,6 +106,21 @@ only takes effect **in a new session**, so the browser was still unavailable in 
 made it. Phase 1 needed no screenshots, so nothing was blocked, but the first command in phase 2
 that needs the browser should confirm it launches before relying on it.
 
+**Finished 2026-08-05, browser verified end to end.** With `--browser chromium` live, the server
+asked for a browser named `chrome-for-testing`, which the phase-0 install had not produced — that
+install left `chromium-1234` and `chromium_headless_shell-1234`. Installed with
+`npx -y @playwright/mcp@latest install-browser chrome-for-testing`, which downloaded Chrome for
+Testing 151.0.7922.10 to `~/.cache/ms-playwright/chromium-1232` plus its headless shell at
+`chromium_headless_shell-1232`. Both 1232 and 1234 now coexist; the MCP uses 1232. Two things a
+later phase will hit:
+
+- **`file:` is blocked by the MCP server**, whatever the browser. To look at a local page, serve
+  it — `python3 -m http.server 8731 --bind 127.0.0.1` from the repo root — and navigate to
+  `http://127.0.0.1:8731/…`. This is how `index.html` was verified for phase 1 criterion 8.
+- Serving locally makes the browser request `/favicon.ico`, which the repo does not have, so a
+  single 404 appears in the console on every local page. It is the server, not the page. Do not
+  chase it, and do not count it as a console error when auditing a screen.
+
 **Visual references — `fallback`.** Refero requires a paid account at refero.design and an MCP
 endpoint; neither exists here and no Refero tools were present in the session. Not offered as an
 install because the account is the blocker, not the software. See the rule above.

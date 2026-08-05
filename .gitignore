@@ -29,3 +29,11 @@ yarn-error.log*
 # Local environment
 .env
 .env.local
+
+# Playwright MCP scratch — snapshots, console logs and screenshots the browser
+# writes beside the page it visited. Deliberate captures belong in the phase's own
+# folder (research/screens/, concept/, visuals/), never here.
+.playwright-mcp/
+/phase1-dashboard.png
+/phase1-panel.png
+/phase1-result.png
