@@ -54,3 +54,11 @@ One heading plus four fields per entry, nothing else:
 **Contradicts:** `nothing` on disk — the first, private-archive brief was played back in chat and rejected at the gate before any file was written.
 **Option:** n/a
 **Propagated:** `CLAUDE.md` (Brief), `README.md`, `index.html`. Manual deconstruction survived the re-scope; the private archive did not.
+
+## 2026-08-05 · gate
+
+**Decided:** "b" — the rule-13 phase-order guard fired on `/dsf:research` and the designer parked it, choosing to restart the session rather than run phase 2 out of order and without a browser.
+**Contradicts:** `.design/checklists/results/phase-1.md` — "Result: **fail** — 12 pass · 0 fail · 1 human"; phase 1 is unsigned and untagged, so phase 2 is a later phase.
+**Option:** withdrawn — no phase-2 work was done, no exception granted.
+**Propagated:** none. Phase 2 starts fresh next session, after `/dsf:check 1` closes phase 1 with the browser working.
+

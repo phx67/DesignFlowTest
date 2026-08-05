@@ -9,3 +9,4 @@
 - brief.7 · Run the phase checklist · 2026-08-05 13:14 · files: CLAUDE.md (Brief block trimmed to fit one screen), .mcp.json, .design/memory/toolbox.md (browser channel repaired, row stays active)
 - brief.8 · Update index.html · 2026-08-05 13:16 · files: index.html
 - brief.9 · Commit · 2026-08-05 13:18 · files: .design/progress/phase-1.md
+- brief.10 · Sign-off · 2026-08-05 13:20 · files: .design/progress/phase-1.md
