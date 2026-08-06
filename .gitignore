@@ -37,3 +37,6 @@ yarn-error.log*
 /phase1-dashboard.png
 /phase1-panel.png
 /phase1-result.png
+
+# Git worktrees created by EnterWorktree — never part of the design file
+.claude/worktrees/

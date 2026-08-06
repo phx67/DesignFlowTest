@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loupe · Research — competitors, benchmark, patterns</title>
+<style>
+  :root{
+    --bg:#0e0f12; --panel:#15171c; --line:#24272f; --line-soft:#1c1f26;
+    --ink:#e6e8ee; --ink-dim:#9aa1b0; --ink-faint:#6b7280;
+    --accent:#7dd3a0; --warn:#e0b050; --gap:#8b93ff;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+  header.top{border-bottom:1px solid var(--line);padding:56px 0 28px;margin-bottom:8px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  .sub{color:var(--ink-dim);max-width:70ch;margin:0 0 18px}
+  .meta{font:12px/1.7 var(--mono);color:var(--ink-faint)}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+  nav.toc a{font:12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);
+    border-radius:999px;padding:8px 14px}
+  nav.toc a:hover{color:var(--ink);border-color:var(--ink-faint)}
+  section{padding-top:56px}
+  h2{font:12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+     color:var(--accent);margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  h3{font-size:19px;margin:38px 0 12px;letter-spacing:-.01em}
+  h4{font-size:15px;margin:26px 0 10px;color:var(--ink-dim)}
+  p{max-width:76ch}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:16px 0 8px;
+    background:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+  th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+  th{font:11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+     color:var(--ink-faint);background:#12141a;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td strong{color:#fff}
+  .num{text-align:center;font:13px/1 var(--mono);width:44px}
+  .tot{text-align:center;font:14px/1 var(--mono);color:var(--accent);font-weight:700}
+  code,.q{font-family:var(--mono);font-size:.9em}
+  .q{color:var(--gap);border:1px solid #2f3260;border-radius:4px;padding:1px 5px;white-space:nowrap}
+  .unv{color:var(--warn);font-family:var(--mono);font-size:.85em}
+  a{color:#8ab4f8}
+  figure{margin:22px 0;padding:0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;
+    background:#000}
+  figcaption{font-size:12.5px;color:var(--ink-dim);margin-top:9px;max-width:80ch}
+  figcaption .fn{font-family:var(--mono);font-size:11px;color:var(--ink-faint);display:block;margin-top:4px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+  .tag{display:inline-block;font:10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 8px;border-radius:4px;vertical-align:middle}
+  .tag-restricted{background:#3a2416;color:#e0a060;border:1px solid #5a3a20}
+  .tag-ref{background:#16243a;color:#7ab0e0;border:1px solid #24405a}
+  ol,ul{max-width:76ch}
+  li{margin-bottom:10px}
+  .callout{border-left:3px solid var(--accent);background:var(--panel);padding:16px 20px;
+    border-radius:0 8px 8px 0;margin:20px 0}
+  .callout.warn{border-left-color:var(--warn)}
+  .callout p{margin:0}
+  .callout p + p{margin-top:10px}
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);
+    font:12px/1.8 var(--mono);color:var(--ink-faint)}
+  @media (max-width:640px){ h1{font-size:26px} .wrap{padding:0 16px 64px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Research — competitors, benchmark, patterns</h1>
+  <p class="sub"><strong>Loupe</strong> — a community discovery site for designers where every
+  published work arrives with its author's own breakdown. This page is the market evidence the
+  product is argued from. Every factual claim carries a link or a screenshot taken for this phase;
+  what could not be sourced is marked <span class="q">[?]</span> or <span class="unv">unverified</span>
+  rather than rounded into a number.</p>
+  <p class="meta">Phase 2a · <code>/dsf:research</code> · captured 2026-08-06 · Chromium 1440×900 ·
+  27 screenshots in <code>research/screens/</code> · source of record: <code>research/research.md</code></p>
+  <nav class="toc">
+    <a href="#competitors">Competitors</a>
+    <a href="#benchmark">Benchmark</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#conclusions">Conclusions</a>
+  </nav>
+</header>
+
+<!-- ============================ COMPETITORS ============================ -->
+<section id="competitors">
+<h2>Competitors</h2>
+
+<p>Three groups, max five per group. Set signed off by the designer at the step-1 gate: Fonts In Use
+was raised from aspirational to hard as the phase's main object of study; Land-book was dropped to
+keep hard at five; the market is international with no local-market row; Polaris and Material left
+the competitor set and became a <em>language reference</em>.</p>
+
+<h3>Hard — same product, same audience, same market</h3>
+<div class="scroll"><table>
+<thead><tr><th>Product</th><th>Why it belongs here</th><th>What specifically to learn from it</th></tr></thead>
+<tbody>
+<tr><td><strong>Fonts In Use</strong><br><a href="https://fontsinuse.com">fontsinuse.com</a></td>
+    <td>The only shipping product with Loupe's exact mechanic: a work, an author-written structured
+        breakdown, and every field of that breakdown doubling as the search index. Narrower domain,
+        running since 2010.</td>
+    <td>Whether a hand-written breakdown survives at scale without moderation, and what makes
+        contributors write one.</td></tr>
+<tr><td><strong>Dribbble</strong></td>
+    <td>The canonical shot gallery: designers publish their own work, likes, follows, collections —
+        the social layer Loupe inherits.</td>
+    <td>That its whole filter set is Tags + Color + Timeframe, and that Color is machine-extracted
+        and already a live facet at <code>/shots?color=050504</code>.</td></tr>
+<tr><td><strong>Behance</strong></td>
+    <td>Long-form project case studies by the maker — the closest existing thing to "the author
+        explains their own work".</td>
+    <td>How much structure authors invent when the platform gives them none: the credits table on
+        the studied project is hand-drawn out of <code>⎯</code> characters inside free text.</td></tr>
+<tr><td><strong>Mobbin</strong></td>
+    <td>A searchable library of real product screens, browsed by pattern and element — the closest
+        match to Loupe's "task on the desk" behaviour.</td>
+    <td>That retrieval itself is the paywall: "Filter &amp; search results — Limited" on Free.</td></tr>
+<tr><td><strong>Savee</strong></td>
+    <td>Saving and discovery for designers; the collection layer Loupe copies.</td>
+    <td>Its retrieval stack — advanced filters, AI recommendations and <strong>search by image</strong>,
+        a fourth candidate the brief did not list.</td></tr>
+</tbody></table></div>
+
+<figure>
+  <img src="screens/fontsinuse-home.png" alt="Fonts In Use home: a grid of works, each thumbnail captioned with the typefaces used">
+  <figcaption>Fonts In Use, the collection view. Three facet menus — Topics, Formats, Typefaces — and
+  a count on everything: <strong>All (34239)</strong>, Staff Picks (6322). Every card prints the
+  typefaces under the image, so the breakdown is legible before the item is opened. Header states the
+  business model outright: "Made possible by sponsors like Typotheque."
+  <span class="fn">screens/fontsinuse-home.png</span></figcaption>
+</figure>
+
+<figure>
+  <img src="screens/fontsinuse-use-detail.png" alt="A Fonts In Use entry page with a structured sidebar and the author's written explanation">
+  <figcaption>The entry page — Loupe's spine, already shipping. Right rail carries the structured
+  breakdown (Typefaces, Formats, Topics, Designers/Agencies, Tagged with, Artwork location), every
+  value a link with its own count. Below the image, the author's intent in their own words: "I used
+  Intranet by João Serafim for the main heading because it's blocky, unusual shapes felt right for
+  the subject… Funnel Sans is used for the body text, captions, and navigation. It is simple,
+  readable, and quiet enough not to compete with the photographs." Each image carries a source URL
+  and a licence line. Closing sentence: "I researched, photographed, designed, and built the project
+  myself."
+  <span class="fn">screens/fontsinuse-use-detail.png</span></figcaption>
+</figure>
+
+<div class="grid2">
+<figure>
+  <img src="screens/dribbble-filters.png" alt="Dribbble filter panel showing only three controls">
+  <figcaption>Dribbble's entire filter set: <strong>Tags, Color, Timeframe</strong>. One property —
+  and it is the one a machine can extract without asking the author.
+  <span class="fn">screens/dribbble-filters.png</span></figcaption>
+</figure>
+<figure>
+  <img src="screens/dribbble-auto-palette.png" alt="Dribbble results filtered by the hex colour 050504">
+  <figcaption>The extracted palette is not decoration — each swatch links to
+  <code>/shots?color=050504</code> and filters the corpus. Colour-as-index already exists on the
+  market's largest gallery, generated with no author effort.
+  <span class="fn">screens/dribbble-auto-palette.png</span></figcaption>
+</figure>
+</div>
+
+<figure>
+  <img src="screens/behance-project-detail.png" alt="A Behance project page whose credits table is drawn with dash characters">
+  <figcaption>Behance. The platform offers Tools, Creative Fields and free tags — provenance and
+  category, never construction — so the author drew a credits table out of <code>⎯</code> characters
+  inside a free-text block, with a hand-typed "View live:" link. Authors want structure more than
+  they are given.
+  <span class="fn">screens/behance-project-detail.png</span></figcaption>
+</figure>
+
+<div class="grid2">
+<figure>
+  <img src="screens/mobbin-landing-gated.png" alt="Mobbin landing page; the catalogue redirects to sign-up">
+  <figcaption><span class="tag tag-restricted">access restricted</span> Mobbin's catalogue redirects
+  to this landing without an account. "Discover real-world design inspiration. Featuring over 1,000
+  iOS &amp; Web apps, and 200 sites."
+  <span class="fn">screens/mobbin-landing-gated.png</span></figcaption>
+</figure>
+<figure>
+  <img src="screens/mobbin-pricing.png" alt="Mobbin pricing page and plan comparison">
+  <figcaption>Free €0 / Pro €10 per month / Team €16 per member per month, billed yearly. The
+  comparison table sells the mechanic Loupe is built on: <strong>"Filter &amp; search results —
+  Limited"</strong> on the free tier.
+  <span class="fn">screens/mobbin-pricing.png</span></figcaption>
+</figure>
+</div>
+
+<h3>Soft — different product, same underlying job</h3>
+<div class="scroll"><table>
+<thead><tr><th>Product</th><th>Why it belongs here</th><th>What specifically to learn from it</th></tr></thead>
+<tbody>
+<tr><td><strong>Figma Community</strong></td>
+    <td>Construction is fully available: open the file, read the layers, styles and variables. The
+        limit case of transparency.</td>
+    <td>That even with total transparency Figma still shipped <strong>Inspo (Beta)</strong> as a
+        trending feed — the feed is the default surface even for the tool vendor.</td></tr>
+<tr><td><strong>CodePen</strong></td>
+    <td>Result and source on one screen by default — "a social development environment for front-end
+        designers and developers".</td>
+    <td>Why it needs no structured fields: the artifact is executable, so a breakdown is redundant.
+        Loupe's images cannot be executed, which is the whole reason a breakdown must exist.</td></tr>
+<tr><td><strong>Are.na</strong></td>
+    <td>Reference collecting where meaning comes from which channels a block sits in, not from tags.</td>
+    <td>The alternative to properties: connection as the index.</td></tr>
+<tr><td><strong>Awwwards</strong></td>
+    <td>Every entry carries a structured jury evaluation, and the directory filters by
+        <strong>Font</strong> and <strong>Color</strong> — two of Loupe's three axes, shipping.</td>
+    <td>The scoring model and the single-select typeface filter.</td></tr>
+</tbody></table></div>
+
+<div class="grid2">
+<figure>
+  <img src="screens/awwwards-font-filter.png" alt="Awwwards filter bar with a searchable list of typeface names">
+  <figcaption>Awwwards filters by Awards, Category, Tag, Technology, Country, <strong>Font</strong>
+  and <strong>Color</strong> across 10,336 sites. The Font control is a searchable single-select list
+  of typeface names. Cards carry <strong>SOTD</strong> and <strong>DEV</strong> badges — trust
+  readable without opening the item. Jury model: Design 40% / Usability 30% / Creativity 20% /
+  Content 10%, minimum 18 jurors, the three most distant scores dropped.
+  <span class="fn">screens/awwwards-font-filter.png</span></figcaption>
+</figure>
+<figure>
+  <img src="screens/figma-inspo-feed.png" alt="Figma Community Inspo beta, a trending masonry feed">
+  <figcaption>Figma Community's <strong>Inspo (Beta)</strong>: "Riffs by the Figma Community — the
+  latest ideas and experiments, ready for you to riff on." Sorted by Trending. The company that gives
+  away full file transparency still built a feed.
+  <span class="fn">screens/figma-inspo-feed.png</span></figcaption>
+</figure>
+</div>
+
+<h3>Aspirational — international benchmarks in the category</h3>
+<div class="scroll"><table>
+<thead><tr><th>Product</th><th>Why it belongs here</th><th>What specifically to learn from it</th></tr></thead>
+<tbody>
+<tr><td><strong>Cosmos</strong></td>
+    <td>Best-in-class discovery, and the only product treating provenance as a filter.</td>
+    <td>Two mechanics: <strong>AI content → Show / Blur / Hide</strong>, and "Cosmos researches
+        images — surfacing the artist, source, and story", i.e. the platform supplies attribution
+        rather than the uploader.</td></tr>
+<tr><td><strong>Refero</strong></td>
+    <td>The deepest structured taxonomy on the market, plus a shipping AI research mode and an MCP
+        server.</td>
+    <td><strong>Refero Styles (Beta)</strong> — "2,000+ AI-readable design systems … colors,
+        typography, spacing, components, and a DESIGN.md". Loupe's spine, generated automatically.</td></tr>
+<tr><td><strong>Layers</strong></td>
+    <td>Listed at the gate as a community built around writing about craft.
+        <strong>That rationale did not survive verification.</strong></td>
+    <td>Kept as a data point, not a benchmark: the live site is a tag rail over a "Hot" shot feed
+        with inline ads — a Dribbble-shaped entrant.</td></tr>
+</tbody></table></div>
+
+<figure>
+  <img src="screens/cosmos-search-and-ai-filter.png" alt="Cosmos: search by colour, by visual similarity, and an AI-content Show/Blur/Hide control">
+  <figcaption>Cosmos, "Search the way you think": by colour, by visual similarity, and
+  <strong>and without AI</strong> — an AI-content control with Show / Blur / Hide. Provenance as a
+  first-class filter, not a disclaimer.
+  <span class="fn">screens/cosmos-search-and-ai-filter.png</span></figcaption>
+</figure>
+
+<figure>
+  <img src="screens/refero-styles-beta.png" alt="Refero Styles beta: browse DESIGN.md examples for AI agents">
+  <figcaption>The finding that reframes the project. "High-quality DESIGN.md examples for AI agents.
+  Browse 2,000+ AI-readable design systems from leading product websites. Open any style for colors,
+  typography, spacing, components, and a DESIGN.md you can use in Cursor, Claude Code, Codex, v0, or
+  Lovable." Style facets: Minimal Design, Clean SaaS, Editorial Type, Soft Gradients, Geometric
+  Modern, Playful Design, High Contrast, Premium Design.
+  <span class="fn">screens/refero-styles-beta.png</span></figcaption>
+</figure>
+
+<div class="callout">
+<p><strong>Loupe's success criterion 1 is already met by a shipping product.</strong> A Refero Styles
+entry publishes named colour roles with a usage note each ("Hairline <code>#e5e5e5</code> — borders,
+input outlines, card edges, badge outlines"), a type scale with its ratio named outright ("Major
+Second (1.125) from 16px base") and every step given as <code>48px · 600 · 1.1</code>, spacing as
+density / 4px base unit / 1280px max width / section gap / card padding / element gap, border radius
+per element, elevation, and DO guidelines — all generated from a live site, free to browse, with a
+source URL back to the product.</p>
+<p>This does not kill Loupe. It moves the argument: the values are table stakes to match, and the
+defensible field is the one a machine cannot extract — <em>why</em> a choice was made.</p>
+</div>
+
+<h3>Comparison matrix</h3>
+<div class="scroll"><table>
+<thead><tr><th>Product</th><th>Audience</th><th>Product core</th><th>Key mechanic</th><th>Trust</th><th>Monetization</th></tr></thead>
+<tbody>
+<tr><td><strong>Fonts In Use</strong></td>
+  <td>Typographers, designers, foundries</td>
+  <td>"A public archive of typography indexed by typeface, format, industry, and period"</td>
+  <td>Author fills structured fields; every value is a link with a live count, so the breakdown
+      <em>is</em> the index</td>
+  <td>Per-image source URL and licence; contributor name and date; Staff Picks (6,322 of 34,239) as
+      the only quality signal; open comments</td>
+  <td>Foundry sponsorships (Typotheque, Frere-Jones Type, DJR, Kilotype observed) plus a Mobbin house
+      ad. Other revenue <span class="unv">[?] unverified</span></td></tr>
+<tr><td><strong>Dribbble</strong></td>
+  <td>Designers publishing; clients hiring</td>
+  <td>Shot gallery plus hiring marketplace</td>
+  <td>Post an image, collect likes and views; discovery by category chips and three filters</td>
+  <td>Likes, views, PRO badges, "Available for work". <strong>No reality status</strong> — the studied
+      shot calls itself a "concept" only in its fourth paragraph</td>
+  <td>Pro Lite $4 / Standard $8 / Plus $99 per month billed annually; services marketplace; ads; jobs</td></tr>
+<tr><td><strong>Behance</strong></td>
+  <td>Designers building a portfolio; recruiters</td>
+  <td>Adobe's portfolio network — long-form project pages</td>
+  <td>Image sequence plus free text; structured metadata is Tools, Creative Fields, free tags, date</td>
+  <td>Owner profiles, appreciations, views, comments, publication date, "© All Rights Reserved"</td>
+  <td>Behance Pro and Recruiter Pro <span class="unv">[?] unverified</span>; jobs; asset and service sales</td></tr>
+<tr><td><strong>Mobbin</strong></td>
+  <td>Product designers with a component to design</td>
+  <td>Curated library of real app and site screens <span class="tag tag-restricted">access restricted</span></td>
+  <td>Browse by app, flow, screen and pattern; copy and download</td>
+  <td>Captured from shipped products, so reality is guaranteed by sourcing rather than declared</td>
+  <td>Free (latest 4, limited search); Pro €10/mo; Team €16/member/mo; Enterprise; Finance+ €399/mo</td></tr>
+<tr><td><strong>Savee</strong></td>
+  <td>Designers collecting references</td>
+  <td>Personal library over a shared pool</td>
+  <td>Save from anywhere via extension, mobile and Figma plugin; retrieval by filters, AI
+      recommendations and <strong>search by image</strong></td>
+  <td>Community curation; "without ads, without an algorithm"; "over 1M users" is their own figure</td>
+  <td>Subscription, template marketplace (80+), paid course. Price <span class="unv">[?] unverified</span></td></tr>
+<tr><td><strong>Figma Community</strong></td>
+  <td>Anyone using Figma</td>
+  <td>Openable design files, plugins and kits, plus Inspo (Beta)</td>
+  <td>Duplicate a file and inspect the real layers, styles and variables</td>
+  <td>The file itself is the proof — nothing is described, everything is inspectable</td>
+  <td>Free; funnels into Figma seats</td></tr>
+<tr><td><strong>CodePen</strong></td>
+  <td>Front-end designers and developers</td>
+  <td>"A social development environment"</td>
+  <td>Every Pen ships HTML / CSS / JS beside the rendered result; fork to take it apart</td>
+  <td>The running code is the trust signal</td>
+  <td>Free (3 files); PRO Starter $8 / Developer $12 / Super $26 per month; sponsors and Carbon ads</td></tr>
+<tr><td><strong>Are.na</strong></td>
+  <td>"Students, hobbyists and connected knowledge collectors"</td>
+  <td>"Playlists, but for ideas"</td>
+  <td>Blocks connected into channels; no tags, no property filters</td>
+  <td>No ads and no algorithm as stated policy; "the people who use it are our only customers"</td>
+  <td>Premium $7/mo or $70/yr; free up to 200 blocks</td></tr>
+<tr><td><strong>Awwwards</strong></td>
+  <td>Web designers and studios competing for recognition</td>
+  <td>Juried awards plus a filterable directory (10,336 sites)</td>
+  <td>Submit, get scored by jury and pro users; browse by seven facets including Font and Color</td>
+  <td>Award badges on the card; public scores — Design 40 / Usability 30 / Creativity 20 / Content 10,
+      minimum 18 jurors, three outliers dropped, ≥6.5 Honorable Mention</td>
+  <td>Paid submissions, Pro membership, Creative Pass €11.50/month, Academy, jobs, market</td></tr>
+<tr><td><strong>Cosmos</strong></td>
+  <td>Designers, art directors, creative teams</td>
+  <td>"Your space for inspiration"</td>
+  <td>Search by colour, by visual similarity, and an AI-content Show / Blur / Hide control</td>
+  <td>"Cosmos researches images — surfacing the artist, source, and story"; AI content labelled and
+      filterable</td>
+  <td><span class="unv">[?] unverified</span> — no pricing page reached</td></tr>
+<tr><td><strong>Refero</strong></td>
+  <td>Designers, builders "and AI"</td>
+  <td>Library of real product screens and flows under the deepest taxonomy in the set</td>
+  <td>Five parallel axes — Page Types, Flows, UX Patterns, UI Elements, industry — plus
+      natural-language research mode and an MCP server</td>
+  <td>Screens captured from shipped products; each Styles entry links to its live source URL</td>
+  <td>Paid plans <span class="unv">[?] unverified</span>; MCP and Figma plugin as distribution</td></tr>
+<tr><td><strong>Layers</strong></td>
+  <td>Designers publishing shots</td>
+  <td>Shot feed with a long free-tag rail</td>
+  <td>"Hot" feed filtered by ~30 open tags; card is author plus title</td>
+  <td>Author name only; no source, no status, no construction</td>
+  <td>Inline sponsored cards; rest <span class="unv">[?] unverified</span></td></tr>
+</tbody></table></div>
+
+<h4>Not a competitor — the language reference <span class="tag tag-ref">reference</span></h4>
+<p>Kept per the step-1 gate: studied for <em>how construction is described</em>, never scored for
+attention.</p>
+<div class="scroll"><table>
+<thead><tr><th>Reference</th><th>What it contributes</th></tr></thead>
+<tbody>
+<tr><td><strong>Material 3</strong> — colour roles</td>
+    <td>"There are 26 standard color roles organized into six groups: primary, secondary, tertiary,
+        error, surface, and outline." Colour is named by <strong>role</strong>, not by hex; roles
+        carry an accessibility contract ("accessible minimum 3:1 contrast") and ship as tokens.</td></tr>
+<tr><td><strong>Shopify Polaris</strong> — type tokens</td>
+    <td>The opposite convention: a numeric scale decoupled from the value —
+        <code>--p-font-size-350: 14px</code>, <code>--p-font-size-400: 16px</code>, weights
+        <code>regular 450 / medium 550 / semibold 650 / bold 700</code>. The value can change without
+        renaming the token.</td></tr>
+</tbody></table></div>
+<figure>
+  <img src="screens/material3-color-roles.png" alt="Material 3 colour roles documentation">
+  <figcaption>"Color roles are like the 'numbers' in a paint-by-number canvas. They're the connective
+  tissue between elements of the UI and what color goes where."
+  <span class="fn">screens/material3-color-roles.png</span></figcaption>
+</figure>
+<p><strong>Consequence for Loupe.</strong> A breakdown that lists seven hexes is not reproducible.
+The colour field must carry role + value + usage, and the typography field must carry a named scale
+with its ratio, or success criterion 1 cannot be met.</p>
+
+<h3>Three shared market patterns</h3>
+<ol>
+<li><strong>The feed is the default surface; search is a secondary control.</strong> Evidence:
+<code>dribbble-browse.png</code> (opens on Popular, filters collapsed behind a button) and
+<code>figma-inspo-feed.png</code> (Figma's Inspo is a Trending feed), with <code>layers-explore.png</code>
+as a third.</li>
+<li><strong>Construction metadata exists, and it is machine-extracted rather than authored.</strong>
+Evidence: <code>dribbble-auto-palette.png</code> and <code>refero-style-breakdown.png</code>, with
+Cosmos's colour and visual-similarity search as a third.</li>
+<li><strong>Retrieval is the paywall.</strong> Evidence: <code>mobbin-pricing.png</code> ("Filter &amp;
+search results — Limited") and <code>arena-home.png</code> (200-block free cap), with Dribbble selling
+search ranking inside Pro.</li>
+</ol>
+
+<h3>Three real differences</h3>
+<ol>
+<li><strong>Who supplies the metadata.</strong> The author (Fonts In Use), the platform (Cosmos,
+Refero), or nobody (Layers).</li>
+<li><strong>Whether the work has to be the publisher's own.</strong> Fonts In Use explicitly invites
+both — "contribute <strong>your own work or other typography you admire</strong>"; Savee saves from
+anywhere; Mobbin catalogues third-party products without the maker; Awwwards requires a paid
+submission by the maker.</li>
+<li><strong>What the at-a-glance trust signal is.</strong> Award badges (Awwwards), the breakdown
+printed on the card (Fonts In Use), or popularity alone (Dribbble).</li>
+</ol>
+
+<h3>Three open questions only the product owner can answer</h3>
+<ol>
+<li><strong>Refero Styles already delivers success criterion 1</strong>, automatically, for 2,000+
+sites, free, with a <code>DESIGN.md</code> to paste into an agent. What does a hand-written breakdown
+buy that the generated one does not, and is that worth twenty minutes of the author's time?</li>
+<li><strong>The brief forbids publishing other people's work; the closest working analogue
+deliberately allows it.</strong> Is "own work only" a rights decision, a quality decision, or an
+accepted growth ceiling?</li>
+<li><strong>Is the unit a component or a whole work?</strong> The brief's user names a component; the
+breakdown fields describe a whole product. Loupe currently claims both.</li>
+</ol>
+</section>
+
+<!-- ============================ BENCHMARK ============================ -->
+<section id="benchmark">
+<h2>Benchmark</h2>
+
+<p><strong>Dimension:</strong> how a product obtains <strong>unpaid structured work</strong> from its
+participants, and holds its quality <strong>without a paid moderation team</strong>.</p>
+
+<p><strong>Why this one.</strong> The matrix killed the obvious answer. Showing construction is no
+longer an empty niche. What no competitor has solved is the supply side: of twelve products, exactly
+<strong>one</strong> runs on breakdowns written by hand. Meanwhile authors visibly want structure they
+are not given. So the question is not "can the breakdown be shown" but "why would a person write one
+by hand when a machine writes it free" — <span class="q">[?]</span> 1 of the brief, the one that
+rebuilds the spine if it fails.</p>
+
+<p class="meta">Confirmed at the human gate 2026-08-06. Reference set named by the designer; five of
+six scored, OpenStreetMap cut to stay inside the checklist's "4–5 reference products". All five come
+from outside this product's category.</p>
+
+<h3>Criteria — seven, each scored 1–5</h3>
+<div class="scroll"><table>
+<thead><tr><th class="num">#</th><th>Criterion</th><th>What a 1 looks like</th><th>What a 5 looks like</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><strong>The contribution is structured</strong></td>
+    <td>Prose into one box; nothing written becomes a field</td>
+    <td>Named fields with controlled values, and every value becomes a browsable index entry</td></tr>
+<tr><td class="num">2</td><td><strong>Cost of the first contribution</strong></td>
+    <td>More than ten required fields, or an approval, before anything can be saved</td>
+    <td>One required input; everything else optional and addable later</td></tr>
+<tr><td class="num">3</td><td><strong>Partial contributions are legitimate</strong></td>
+    <td>Incomplete submissions rejected or held in an invisible queue</td>
+    <td>Published anyway, incompleteness shown to readers, anyone can fill a gap later</td></tr>
+<tr><td class="num">4</td><td><strong>Contributor identity accrues</strong></td>
+    <td>Anonymous, or the name appears nowhere a reader looks</td>
+    <td>Every item names its contributor; their profile aggregates it as a visible count or rank</td></tr>
+<tr><td class="num">5</td><td><strong>The contribution pays back into the contributor's own work</strong></td>
+    <td>Contributing produces nothing the contributor can use</td>
+    <td>It produces something they needed anyway — a listing they wanted to sell, a page they would
+        have built</td></tr>
+<tr><td class="num">6</td><td><strong>Quality is regulated by readers, not staff</strong></td>
+    <td>A paid or appointed team reviews everything before it appears</td>
+    <td>Published at once; quality governed by reader-visible signals, with the right to judge earned
+        by participation</td></tr>
+<tr><td class="num">7</td><td><strong>Thin entries are marked, not deleted</strong></td>
+    <td>Weak entries vanish silently, or sit unmarked and indistinguishable from complete ones</td>
+    <td>A standing reader-visible marker that also functions as a task: it names what is missing and
+        points at how to supply it</td></tr>
+</tbody></table></div>
+
+<h3>Scoring — five products, all from outside the category</h3>
+<div class="scroll"><table>
+<thead><tr><th>Product</th><th>Category</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th><th class="num">6</th><th class="num">7</th><th class="num">Total</th></tr></thead>
+<tbody>
+<tr><td><strong>Discogs</strong></td><td>Music database + marketplace</td>
+  <td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">3</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="tot">29</td></tr>
+<tr><td><strong>Genius</strong></td><td>Lyrics annotation</td>
+  <td class="num">3</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num">3</td><td class="tot">28</td></tr>
+<tr><td><strong>Stack Overflow</strong></td><td>Q&amp;A for programmers</td>
+  <td class="num">3</td><td class="num">4</td><td class="num">2</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">4</td><td class="tot">27</td></tr>
+<tr><td><strong>Wikipedia</strong></td><td>Encyclopedia</td>
+  <td class="num">3</td><td class="num">5</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="num">5</td><td class="num">5</td><td class="tot">26</td></tr>
+<tr><td><strong>Letterboxd</strong></td><td>Film diary + social</td>
+  <td class="num">2</td><td class="num">5</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="tot">24</td></tr>
+</tbody></table></div>
+
+<div class="grid2">
+<figure>
+  <img src="screens/discogs-release.png" alt="A Discogs release page with structured fields and a Data Correct marker">
+  <figcaption>Discogs. Label, Format, Country, Released, Genre, Style — every value a link. Right rail
+  carries <strong>Edit Release</strong> and the data-quality state, here <strong>Data Correct</strong>;
+  the other values are <em>Needs Vote</em> and <em>Needs Major Changes</em>. A seller cannot list this
+  record without filling the fields — which is how unpaid structured labour gets bought.
+  <span class="fn">screens/discogs-release.png</span></figcaption>
+</figure>
+<figure>
+  <img src="screens/wikipedia-maintenance-banner.png" alt="A Wikipedia article with a dated maintenance banner asking for citations">
+  <figcaption>The best gap marker in the set: reader-visible, dated ("December 2024"), and carrying the
+  means to close it — "Find sources: <em>-logy</em> — news · newspapers · books · scholar · JSTOR".
+  A gap rendered as a task, not as an empty cell.
+  <span class="fn">screens/wikipedia-maintenance-banner.png</span></figcaption>
+</figure>
+</div>
+
+<h4>Scores that carry the most weight</h4>
+<ul>
+<li><strong>Discogs 5 on criterion 5.</strong> The structured fields are not a favour to the database
+— a seller cannot list a record without them.</li>
+<li><strong>Discogs 5 on criterion 7.</strong> Discogs describes a vote as "a quality marker that
+shows other users 'there is an error in that submission, have a look, maybe you can help'".</li>
+<li><strong>Wikipedia 5 on criterion 7, 1 on criterion 5.</strong> The banner is the best gap marker
+in the set; and Wikipedia proves a gap marker can work without a selfish payoff — but it also has a
+25-year-old mission Loupe does not.</li>
+<li><strong>Stack Overflow 5 on criterion 4.</strong> The only fully numeric identity, with published
+rates: answer upvoted +10, answer accepted +15 (+2 to the acceptor), suggested edit accepted +2,
+downvote −2, capped at 200 per day.</li>
+<li><strong>Genius 5 on criteria 3 and 4.</strong> Unannotated lines are the normal state, so a partial
+artifact is not a failed one; the studied song shows <strong>1063 Contributors</strong> and 12.3M
+views, and artists can "Get Verified" so their own annotations are marked as the author's.</li>
+<li><strong>Letterboxd 2 on criterion 1.</strong> Members supply a rating, a review and lists; the
+structured film metadata comes from TMDb. It anchors the low end and earns its place by proving that
+identity-driven contribution can be enormous while producing almost no structured data.</li>
+</ul>
+
+<h3>Three mechanics worth carrying into the MVP</h3>
+<ol>
+<li><strong>Make the breakdown the price of something the author wants anyway</strong> — from Discogs.
+Filling it is what produces the author's own presentable case-study page, the thing they would
+otherwise have built by hand for a portfolio.</li>
+<li><strong>Make <span class="q">[?]</span> a dated, actionable marker, not an empty cell</strong> —
+from Wikipedia. Name the field, carry a date, and put the control that fills it inside the marker.</li>
+<li><strong>Earn the right to judge by participating</strong> — from Discogs and Stack Overflow. This
+answers the brief's open question on moderation: not staff review, not nothing, but a reader-visible
+quality state only earned readers can set.</li>
+</ol>
+
+<div class="callout warn">
+<p><strong>One that will not work here: a numeric reputation score as the primary motivator.</strong>
+Stack Overflow's points are earned by answering <em>someone else's</em> public question, so the score
+measures service against a queue that already exists. Loupe has no queue — the author publishes their
+own work, so the same score would measure self-promotion, and a leaderboard over self-published work
+rewards volume over craft. It also contradicts the brief's own hypothesis, which is a
+<em>portfolio</em> motive: "a breakdown is stronger proof of craft than a shot". A portfolio motive
+and a points motive pull in opposite directions.</p>
+</div>
+</section>
+
+<!-- ============================ PATTERNS ============================ -->
+<section id="patterns">
+<h2>Patterns</h2>
+
+<p><strong>The key interaction problem, in one sentence:</strong> how a designer who arrives with a
+named component to build — an empty state, a pricing table, an onboarding form — gets from that task
+to a small set of solved examples whose construction they can read, <strong>without knowing any tag,
+author or product name in advance</strong>.</p>
+
+<div class="scroll"><table>
+<thead><tr><th class="num">#</th><th>Pattern</th><th>How it works</th><th>In the wild</th><th>When it fits</th><th>When it breaks</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><strong>Faceted filtering over declared fields</strong></td>
+  <td>Each breakdown field is a facet with a controlled vocabulary and a live count; the user narrows
+      by combining facets</td>
+  <td>Fonts In Use; Awwwards</td>
+  <td>The user knows which property matters, the vocabulary is small and shared, the corpus is large
+      enough that narrowing pays</td>
+  <td>The wanted axis is not a facet; six facets return zero with no way back; the facet is only as
+      reliable as the least careful contributor</td></tr>
+<tr><td class="num">2</td><td><strong>Query by example</strong></td>
+  <td>Point at an item or paste an image; the system returns neighbours by visual similarity. No
+      vocabulary at all</td>
+  <td>Cosmos; Savee</td>
+  <td>The user can recognise what they want but cannot name it</td>
+  <td>The need is functional, not visual — two empty states solving first-run and filtered-to-zero
+      look nothing alike. It cannot read the breakdown, so the author's work is dead weight</td></tr>
+<tr><td class="num">3</td><td><strong>Natural-language task query over a model</strong></td>
+  <td>Describe the task in a sentence; a model retrieves examples and returns reasoning</td>
+  <td>Refero research mode; Refero MCP</td>
+  <td>The need is a sentence, and the user wants an argument back rather than a grid</td>
+  <td>A small corpus manufactures confidence it has not earned; and it hides the index, so filling a
+      field no longer makes the author findable</td></tr>
+<tr><td class="num">4</td><td><strong>Structured browse by a task taxonomy</strong></td>
+  <td>Navigation, not search: the entry point is a named list of design tasks</td>
+  <td>Refero (Page Types, Flows, UX Patterns, UI Elements); Mobbin</td>
+  <td>The user arrives with the task already named — exactly the brief's primary user</td>
+  <td>A task outside the taxonomy is invisible; past ~200 entries the taxonomy is itself a search
+      problem</td></tr>
+<tr><td class="num">5</td><td><strong>Follow-and-collect</strong></td>
+  <td>Do not query the corpus; subscribe to authors and collections and retrieve from a small,
+      human-filtered pool</td>
+  <td>Are.na channels; Fonts In Use Sets; Savee boards</td>
+  <td>Recurring taste needs and serendipity; cheap to build, strong for retention</td>
+  <td>Fails the primary user outright — someone with a component due today cannot wait. It answers
+      "what is good", not "what solves this"</td></tr>
+</tbody></table></div>
+
+<div class="callout">
+<p><strong>Chosen: 1 — faceted filtering over declared fields.</strong> Confirmed at the human gate,
+2026-08-06.</p>
+<p><strong>1. It is the only pattern in which the author's manual breakdown is what makes their work
+findable.</strong> The brief's spine — "because the breakdown travels with the work, property search
+is free" — is only true here. Pattern 2 ignores the fields, 3 hides them, 4 uses one and drops the
+rest, 5 skips the corpus. And the benchmark's first mechanic has nothing to pay the author with if
+the fields do not drive retrieval.</p>
+<p><strong>2. It matches the platform split already fixed in the brief.</strong> Desktop primary at
+~1440px affords a persistent facet rail beside results; mobile is "browsing and saving to a
+collection, nothing else", which is what facets degrade into — a single chip row — with no feature
+lost.</p>
+<p><strong>3. It makes progressive completeness consequential instead of decorative.</strong> An item
+with an empty typography field is absent from typography-filtered results, so incompleteness has a
+visible cost to its author.</p>
+</div>
+
+<p><strong>Second choice — and the condition is already partly met: 4, task taxonomy browse as the
+entry, facets as the refinement inside it.</strong> The condition was written as "if phase 2b finds
+the primary persona opens with a component name rather than a property". At the pattern gate the
+designer reported that it already does: a respondent named <strong>Даня</strong> filters Mobbin by
+«екран реєстрації» and «кошик».
+<span class="unv">Source: designer's report of an interview, given at the phase-2 pattern gate; no
+interview artifact exists yet.</span> <code>/dsf:users</code> must record that interview as a citable
+artifact or carry the claim as <span class="q">[?]</span>. If it holds, the taxonomy becomes the entry
+surface and facets the refinement, on the Mobbin model — a reordering of the same two mechanisms, not
+a replacement.</p>
+
+<p><strong>Disqualified: 3, natural-language AI query.</strong> The brief fixes the deliverable as a
+static front-end on fixtures, so the corpus is a few dozen items and a model over it would perform a
+confidence the data cannot support. More seriously, it severs the link between filling in a breakdown
+and being found — the one incentive the benchmark identified as load-bearing. Disqualified
+<em>for this product at this size</em>, not in principle.</p>
+</section>
+
+<!-- ============================ CONCLUSIONS ============================ -->
+<section id="conclusions">
+<h2>Conclusions</h2>
+
+<div class="scroll"><table>
+<thead><tr><th>Gap</th><th>Hypothesis</th><th>Follows from</th></tr></thead>
+<tbody>
+<tr><td><strong>A machine already writes the breakdown, free.</strong></td>
+    <td>What a machine cannot extract is <em>why</em>. Loupe's defensible field is the author's
+        intent; the values are table stakes it must match, not the differentiator it was assumed to
+        be.</td>
+    <td>Competitors — Refero row</td></tr>
+<tr><td><strong>Nobody has solved supply.</strong> One product of twelve runs on hand-written
+        breakdowns.</td>
+    <td>The breakdown must be the price of something the author wanted anyway — filling it produces
+        their own case-study page.</td>
+    <td>Benchmark — Discogs, criterion 5</td></tr>
+<tr><td><strong>Whether breakdown quality needs moderation</strong> <span class="q">[?]</span></td>
+    <td>Neither staff review nor a free-for-all: a reader-visible quality state that only readers who
+        earned the privilege by contributing can set.</td>
+    <td>Benchmark — mechanic 3</td></tr>
+<tr><td><strong>How <span class="q">[?]</span> should look in the UI</strong></td>
+    <td>A gap is a task: named field, a date, and the control that fills it, inside the marker.</td>
+    <td>Benchmark — Wikipedia, criterion 7</td></tr>
+<tr><td><strong>The retrieval mechanism</strong> <span class="q">[?]</span></td>
+    <td>Faceted filtering over declared fields; task-taxonomy browse tested as the entry in phase 2b.</td>
+    <td>Patterns — chosen pattern 1</td></tr>
+<tr><td><strong>Is "grid" the right third axis?</strong> <span class="q">[?]</span></td>
+    <td><strong>Evidence says no.</strong> The most complete construction spec on the market publishes
+        density, 4px base unit, 1280px max width, section gap, card padding, element gap, radius per
+        element and elevation — and never a column grid. The third axis should be spacing and shape.</td>
+    <td>Competitors — language reference</td></tr>
+<tr><td><strong>Trust without a click</strong></td>
+    <td>The card must carry a reality status and a completeness state; popularity alone demonstrably
+        fails.</td>
+    <td>Competitors — real differences, item 3</td></tr>
+<tr><td><strong>Comparison</strong> <span class="q">[?]</span>, demoted at phase 1</td>
+    <td>Keep it demoted. No competitor in the set ships a dedicated side-by-side view, including the
+        two with the deepest structured data.</td>
+    <td>Competitors — matrix, all twelve rows</td></tr>
+<tr><td><strong>"Own work only"</strong></td>
+    <td>The closest analogue deliberately rejects the restriction. It is a rights-and-authenticity
+        trade-off that costs pool growth and should be stated as chosen, not assumed free.</td>
+    <td>Competitors — real differences, item 2</td></tr>
+<tr><td><strong>Component or whole work?</strong></td>
+    <td>Unresolved and load-bearing. Phase 3 must pick one as the unit and let the other be a facet.</td>
+    <td>Competitors — open questions, item 3</td></tr>
+</tbody></table></div>
+
+<h3>Numbered hypotheses for later phases to test</h3>
+<ol>
+<li><strong>H1 — Intent is the differentiator, not the values.</strong> <em>Phase 4:</em> the
+breakdown screen puts intent above the value tables, and a reader can state <em>why</em> a choice was
+made, not only what it was.</li>
+<li><strong>H2 — The breakdown pays the author back.</strong> <em>Phase 3:</em> the IA contains the
+author's own case-study page as a named object, or supply has no engine.</li>
+<li><strong>H3 — The third axis is spacing and shape, not grid.</strong> <em>Phase 3:</em> the third
+field is density / base unit / max width / radius; "grid" survives only if a designer asks for columns
+by name.</li>
+<li><strong>H4 — Completeness must cost something.</strong> <em>Phase 4:</em> filtered results
+demonstrably exclude incomplete items, and the author's own view says so.</li>
+<li><strong>H5 — Quality holds without staff if the right to mark is earned.</strong> <em>Phase 3:</em>
+the quality state and who may set it exist as objects in the IA.</li>
+<li><strong>H6 — A gap is a task.</strong> <em>Phase 4:</em> every <span class="q">[?]</span> carries
+field name, date and the control that fills it.</li>
+<li><strong>H7 — The entry surface is a task taxonomy, facets refine inside it.</strong>
+<em>Phase 2b:</em> <code>/dsf:users</code> records the Даня interview as a citable artifact, or the
+claim stays <span class="q">[?]</span> and pattern 1 stands alone.</li>
+<li><strong>H8 — Reality status and completeness both fit on the card.</strong> <em>Phase 4:</em> both
+are legible in the results grid without opening an item, at ~1440px and in mobile browse.</li>
+</ol>
+
+<h3>Sourcing pass</h3>
+<p>Every factual claim above was walked and attached to a link or a screenshot path. What remains
+unsourced is listed here so it is not mistaken for collected data:</p>
+<ul>
+<li><span class="unv">[?] unverified</span> Cosmos monetization — no pricing page reached.</li>
+<li><span class="unv">[?] unverified</span> Refero pricing — link exists in the nav; page not collected.</li>
+<li><span class="unv">[?] unverified</span> Savee subscription price; Behance Pro and Recruiter Pro prices.</li>
+<li><span class="unv">[?] unverified</span> Fonts In Use revenue beyond foundry sponsorships — four
+sponsors observed plus a Mobbin house ad.</li>
+<li><span class="unv">[?] unverified</span> Layers monetization beyond inline sponsored cards.</li>
+<li>Savee's "over 1M users" and Refero's "2,000+" are the companies' own published figures, recorded
+as claims, not independently checked.</li>
+<li>The <strong>Даня</strong> interview is the designer's report at a gate; no interview artifact
+exists yet.</li>
+</ul>
+
+<div class="callout warn">
+<p><strong>One correction, kept visible rather than tidied away.</strong> At the step-1 gate
+<strong>Layers</strong> was placed in the aspirational group on the rationale that it is a community
+built around writing about craft. The live site is a tag rail over a "Hot" shot feed with inline ads.
+The rationale did not survive verification; the row was kept as a data point and relabelled rather
+than quietly rewritten.</p>
+</div>
+</section>
+
+<footer>
+Loupe · phase 2a · <code>/dsf:research</code><br>
+Source of record: <code>research/research.md</code> · screenshots: <code>research/screens/</code><br>
+Decisions: <code>.design/decisions.md</code> · ledger: <code>.design/progress/phase-2.md</code><br>
+Next: <code>/dsf:users</code> — phase 2 is half done.
+</footer>
+
+</div>
+</body>
+</html>

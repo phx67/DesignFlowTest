@@ -121,6 +121,14 @@ later phase will hit:
   single 404 appears in the console on every local page. It is the server, not the page. Do not
   chase it, and do not count it as a console error when auditing a screen.
 
+**Repaired again 2026-08-06 during `/dsf:research`.** The row stays `active`. `@playwright/mcp@latest`
+had moved to browser build **1237** and refused to start: *"Browser 'chrome-for-testing' is not
+installed; expected executable at `~/.cache/ms-playwright/chromium-1237/chrome-linux64/chrome`"*.
+Fixed the same way as on 2026-08-05 — `npx -y @playwright/mcp@latest install-browser chrome-for-testing`,
+which downloaded Chrome for Testing 152.0.7977.8 as `chromium-1237` plus its headless shell. Builds
+1232, 1234 and 1237 now coexist in the cache. **Expect this every time the pinned `@latest` package
+rolls forward**; it costs one ~300 MB download and about a minute, and the phase is not blocked.
+
 **Visual references — `fallback`.** Refero requires a paid account at refero.design and an MCP
 endpoint; neither exists here and no Refero tools were present in the session. Not offered as an
 install because the account is the blocker, not the software. See the rule above.

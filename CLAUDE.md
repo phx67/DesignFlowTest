@@ -203,7 +203,35 @@ Full text: **Brief** section at the top of this file.
 
 ### Research
 <!-- phase 2 · chosen interaction pattern · the three MVP mechanics · benchmark dimension · top three open questions · paths to research/ -->
-`[?]`
+**Chosen interaction pattern: faceted filtering over declared breakdown fields** — the only pattern
+in which the author's manual breakdown is what makes their work findable. Second choice, already
+half-confirmed: task-taxonomy browse as the entry with facets refining inside it, on the Mobbin
+model. AI free-text query is **disqualified at this size** (fixtures, few dozen items) because it
+severs "fill a field → be found".
+
+**Benchmark dimension:** how a product obtains unpaid structured work and holds quality without a
+paid moderation team. Scored across categories: Discogs 29 · Genius 28 · Stack Overflow 27 ·
+Wikipedia 26 · Letterboxd 24.
+
+**Three mechanics for the MVP.** (1) The breakdown is the price of something the author wanted
+anyway — filling it produces their own case-study page (Discogs: you cannot list a record without
+the fields). (2) `[?]` is a dated, actionable marker carrying the control that fills it, not an
+empty cell (Wikipedia's banner). (3) The right to mark quality is earned by contributing — the
+answer to the moderation `[?]`: not staff, not nothing.
+
+**Top three open questions.** (a) **Refero Styles already ships success criterion 1** — exact colour
+roles, named type scale with ratio, spacing, radii — auto-generated for 2,000+ sites with a
+`DESIGN.md`; Loupe's defensible field is therefore *intent*, not values. (b) Is the unit a
+**component or a whole work**? The brief claims both. (c) "Own work only" — the closest analogue
+(Fonts In Use) deliberately allows others' work; the restriction costs pool growth.
+
+Also settled here: **"grid" is probably the wrong third axis** — the market's most complete spec
+publishes density, base unit, max width and radii, never a column grid (H3).
+
+Evidence: `research/research.md`, `research/research.html`, 27 captures in `research/screens/`.
+Hypotheses H1–H8 are numbered in CONCLUSIONS. Note for phase 2b: the **Даня** interview
+(component-name entry on Mobbin) is designer testimony with no artifact yet — record it or keep it
+`[?]`.
 
 ### People
 <!-- phase 2 · primary persona and why · main job in "when / I want / so that" form · top-3 MVP jobs · paths to people/ -->

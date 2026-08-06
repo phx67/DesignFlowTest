@@ -46,7 +46,20 @@ Full brief, success criteria and the open `[?]` questions: [`CLAUDE.md`](./CLAUD
 ## Research
 
 <!-- phase 2 · competitors, benchmark, patterns -->
-`[?]` → `research/research.html`
+
+Twelve competitors in three groups, a comparison matrix built from screenshots taken for this
+phase, a cross-category benchmark on **how a product gets unpaid structured work and holds its
+quality without moderators**, and five retrieval patterns with one chosen: **faceted filtering over
+the declared breakdown fields**.
+
+The finding that reframed the project: a competitor already generates Loupe's construction spec
+automatically for 2,000+ sites, so the defensible field is the author's *intent*, not the values.
+
+- [`research/research.md`](./research/research.md) — the source of record, four sections, every
+  claim sourced or marked `unverified`
+- [`research/research.html`](./research/research.html) — the same, as a page you can hand to
+  someone
+- `research/screens/` — 27 screenshots, referenced by filename from the matrix
 
 ## People
 
