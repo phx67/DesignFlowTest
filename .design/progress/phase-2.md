@@ -10,3 +10,4 @@ Shared by `/dsf:research` (steps `research.*`) and `/dsf:users` (steps `users.*`
 - research.6 · Build research.html · 2026-08-06 18:04 · files: research/research.html — verified in Chromium at http://127.0.0.1:8731, 14 images, 0 broken, no horizontal page scroll; only console entry is the local server's /favicon.ico 404
 - research.7 · Run the phase checklist · 2026-08-06 18:10 · files: — · Research section 8 of 8 pass; People and Honesty-pass items belong to /dsf:users
 - research.8 · Living docs, dashboard, commit · 2026-08-06 18:14 · files: CLAUDE.md (Research block), README.md (Research section), index.html (artifacts, steps, benchmarkDimension)
+- research.9 · Sign-off · 2026-08-06 18:22 · files: .design/progress/phase-2.md, index.html · commit 8a00b3f pushed; no tag — phase 2 closes after /dsf:users
