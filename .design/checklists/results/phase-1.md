@@ -96,3 +96,40 @@ this file harder to read as a history, which is the only reason it exists.
 **Note on why item 13 is still open:** `/dsf:brief` ran and stopped at its own approval gate — the
 compressed brief was presented in chat and **not approved, so nothing was written**. The fix is one
 approval away, not one command away.
+
+---
+
+# Phase 1 — Brief · re-check after the compression
+
+Checked: 2026-08-07 · Checklist: `.design/checklists/phase-1-brief.md`
+Result: **pass** — 13 pass · 0 fail · 0 human · 13 of 13 items
+
+Third verdict of the day, against `a02d1ca`. The 2026-08-07 re-check above failed item 13 — the
+brief had grown to 121 lines / 1376 words carrying its own change history. `/dsf:brief` compressed
+it back to decisions. Every item re-verified from the repo; nothing carried over green.
+
+| # | Item | Verdict | Evidence |
+|---|---|---|---|
+| 1 | Brief produced by a structured brainstorm | pass | `.design/progress/phase-1.md` — `brief.2 · Interrogate` with the gate answer in the designer's words; the compression changed no decision, only their narration |
+| 2 | Brief block states product, problem, who, platform, constraints | pass | All six headings present in the rewritten block: **Loupe**, **Who it is for**, **Problem**, **Spine**, **Platform**, **Constraints** |
+| 3 | Success criteria written and observable | pass | Three numbered criteria: reproducibility checked per screen; a card showing reality status, confirmed/unconfirmed and intent progress without being opened; the publish flow completing without abandonment |
+| 4 | Unanswered things marked `[?]` with a hypothesis | pass | 4 open `[?]`, **4 `*Hypothesis:*` clauses** — one per question. Three others were closed with their phase-2 answers cited, not dropped |
+| 5 | The brief names what it is not doing | pass | **Out of scope** present; the AI exclusion kept meaningful — extraction drafts, the author confirms, intent is never generated |
+| 6 | Twelve pipeline folders, none missing, none invented | pass | 12 of 12 present |
+| 7 | `README.md` Brief section filled and matches `CLAUDE.md` | pass | `README.md` carries both current rules — "the machine extracts the measurable parts; the author confirms" and "a single screen or a whole case" |
+| 8 | `index.html` renders standalone, phase 1 `in progress`, artifacts present, `context.product` + `context.oneLiner` filled | pass | Chromium at `http://127.0.0.1:8736`: renders, no horizontal scroll, no `{{PRODUCT_NAME}}` anywhere, only console entry is the local `/favicon.ico` 404. `phases[1].status: "in-progress"`, both artifacts `exists: true`, `product: "Loupe"`, `oneLiner` reworded to "a breakdown they confirm" |
+| 9 | `.design/memory/toolbox.md` has no `[?]` in the Status column | pass | Status column reads 5 × `active`, 2 × `fallback`, 0 × `[?]` |
+| 10 | Repo under git with the brief committed | pass | `a02d1ca`; `git status --short` returns 0 lines |
+| 11 | Pushed, hosting `active` | pass | `## main...origin/main`, no divergence |
+| 12 | No audience or market claim without a source or `[?]` | pass | Audience claims cite the designer's testimony or `people/personas.md`; the market claims that justified the extraction rule were moved out to `research/research.md` with the compression |
+| 13 | **The brief fits on one screen; it does not pre-empt later phases** | **pass** | **85 lines / 891 words**, against 121 / 1376 at the failing check and 81 / 847 when it last passed — **+5% over that baseline, and the delta is three new decisions** (polymorphic unit, extraction + confirmation, completeness on intent alone) plus one new `[?]`, not narration. Second half verified separately: `grep -nE 'phase [0-9]+ must\|must not design'` over the block → **no matches**; phases are named only as owners of an open `[?]`, which is how the block read when it passed. Change-history residue → **0 matches** |
+
+## Open
+
+Nothing. The item-13 failure from earlier today is closed at its source: the change history now
+lives only in `.design/decisions.md` and in the superseded notes inside `research/research.md`.
+
+One note carried forward, not a checklist item: the brief's own claims still rest largely on the
+designer's testimony, though phase 2 added a second named respondent. The `context.oneLiner` drift
+flagged by the previous two verdicts is **closed** — `/dsf:brief` reworded it, and the dashboard
+`steps` drift flagged on 2026-08-05 is closed too, `steps.done` now running `brief.1`–`brief.10`.
