@@ -37,3 +37,50 @@ Nothing blocking. Two notes carried forward, neither a checklist item:
 - **The evidence under item 12 is one person.** The audience and all three confirmed problems rest
   on the designer's own testimony. That clears this checklist, which asks only for a named source,
   but phase 2 must widen it or the brief stays a hypothesis with a citation.
+
+---
+
+# Phase 1 — Brief · re-check after reopening
+
+Checked: 2026-08-07 · Checklist: `.design/checklists/phase-1-brief.md`
+Result: **fail** — 12 pass · 1 fail · 0 human · 13 of 13 items
+
+Re-check after `/dsf:change` (commit `9a37af7`) replaced the brief's manual-breakdown rule with
+machine extraction plus author confirmation, and fixed the content unit as one screen **or** a
+whole case. Every item was re-verified from the repo; nothing was carried over green from the
+2026-08-05 verdict above.
+
+| # | Item | Verdict | Evidence |
+|---|---|---|---|
+| 1 | Brief produced by a structured brainstorm, human's answers recorded | pass | Historical and unchanged by this reopening: `.design/progress/phase-1.md` steps `brief.1`–`brief.10`; `.design/decisions.md` carries the gate answers in the designer's own words |
+| 2 | Brief block states product, problem, who, platform, constraints | pass | `CLAUDE.md` — **Loupe** (`:12`), **Problem** , **Who it is for**, **Spine**, **Platform**, **Constraints**; all present after the rewrite |
+| 3 | Success criteria written and observable | pass | `CLAUDE.md:82–92` — 3 numbered criteria; 2 and 3 restated on 2026-08-07 so they test the confirmed/unconfirmed signal and the confirmation step rather than transcription |
+| 4 | Unanswered things marked `[?]` with a hypothesis, not a default | pass | 10 `[?]` marks in the Brief block, each followed by an explicit hypothesis; one **added** by this change ("what 'confirmed' is worth") and one **closed** with its reason stated (the content unit) |
+| 5 | The brief names what it is not doing | pass | `CLAUDE.md:76–80` **Out of scope** — rewritten to keep the exclusion meaningful: extraction is in scope, speaking *in place of* the author is not, and intent is never generated |
+| 6 | Twelve pipeline folders, none missing, none invented | pass | All twelve present: `research/ people/ ia/ wireframes/ voice/ concept/ ui/ design-system/ visuals/ responsive/ animations/ handoff/` |
+| 7 | `README.md` Brief section filled and matches `CLAUDE.md` | pass | `README.md:27–36` — carries the same two changes: "the machine extracts the measurable parts; the author confirms them and supplies… the intent" and "a single screen or a whole case" |
+| 8 | `index.html` renders standalone, phase 1 `in progress`, artifacts present, `context.product` + `context.oneLiner` filled | pass | Opened in Chromium at `http://127.0.0.1:8735` — renders, no horizontal scroll, only console entry is the local `/favicon.ico` 404. `phases[1].status: "in-progress"`; both artifacts `exists: true`; `context.product: "Loupe"`, `context.oneLiner` non-empty |
+| 9 | `.design/memory/toolbox.md` has no `[?]` in the Status column | pass | The tools table reads `active / fallback / active / active / fallback / active / active`. The 4 `[?]` occurrences in the file are all in the legend and the fallback rules, not in a Status cell |
+| 10 | Repo under git with the brief committed | pass | `9a37af7` — `CLAUDE.md` and `README.md` both in the commit; working tree clean |
+| 11 | Pushed, hosting `active` | pass | `git status -sb` → `## main...origin/main`, no divergence; `toolbox.md` records hosting `active` |
+| 12 | No audience or market claim without a source or `[?]` | pass | Unchanged by this reopening. Every audience claim still carries the designer's testimony or a `[?]`; the market claims added on 2026-08-07 cite `[RES]` H1 and the Refero split |
+| 13 | **The brief fits on one screen; it does not pre-empt later phases** | **fail** | The Brief block is now **121 lines / 1376 words**, against **81 lines / 847 words** when this item last passed on 2026-08-05 — **+62% by word count in one change**. The growth is not product substance but inline change-history: dated "this replaces…", "changed 2026-08-07", "weakened", "narrowed" annotations. Several of them also instruct later phases directly, which is what the second half of the item forbids |
+
+## Open
+
+- **Item 13 — the brief outgrew itself.** The change was correct and none of it should be lost, but
+  its *history* does not belong in the brief: the full record already lives in
+  `.design/decisions.md` (2026-08-07 entry) and in the superseded notes inside
+  `research/research.md`. What closes this: `/dsf:brief` — compress the Brief block back to the
+  **decisions**, keeping the `[?]` marks and dropping the narration of what each line used to say,
+  leaving a single pointer to the decision log. Not a job for `/dsf:check`, which fixes nothing.
+
+Two notes carried forward from the 2026-08-05 verdict, neither a checklist item and neither
+affected by the reopening:
+
+- **`context.oneLiner` is now slightly behind the brief.** It reads "designers publish their own
+  work with their own breakdown"; the breakdown is now machine-drafted and author-confirmed. It is
+  not false — the author still owns it — but it is worth a rewording. `/dsf:check` may not write
+  `context`; `/dsf:status` or `/dsf:brief` owns it.
+- **The evidence under item 12 is one person.** Phase 2 added a second named respondent, so this is
+  less true than it was, but the brief's own claims still rest largely on the designer's testimony.
