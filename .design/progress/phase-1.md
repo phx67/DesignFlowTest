@@ -11,3 +11,7 @@
 - brief.9 · Commit · 2026-08-05 13:18 · files: .design/progress/phase-1.md
 - brief.10 · Sign-off · 2026-08-05 13:20 · files: .design/progress/phase-1.md
 - reopened · phase-1 · 2026-08-07 · reason: the brief's "author fills it in by hand — no auto-extraction anywhere" rule was replaced by machine extraction + author confirmation, and the content unit was fixed as one screen OR a whole case · see .design/decisions.md
+- brief.3 · Play back the brief — HUMAN GATE (revision) · 2026-08-07 · files: .design/decisions.md · gate: "записуй" — approved the compressed Brief block; no decision changed, only the inline change-history removed; three [?] already answered by phase 2 closed (retrieval mechanism, comparison, third axis), none restored
+- brief.4 · Write the living docs (revision) · 2026-08-07 · files: CLAUDE.md (Brief block 121 lines/1376 words -> 85/891; README.md needed no change, its Brief section already matched)
+- brief.7 · Run the phase checklist (revision) · 2026-08-07 · files: — · 13 of 13 verified against the files; item 13 now 85 lines/891 words against the 81/847 that last passed (+5%, and the delta is three new decisions, not narration)
+- brief.8 · Update index.html (revision) · 2026-08-07 · files: index.html — context.oneLiner reworded (the breakdown is machine-drafted and author-confirmed), steps.done completed to brief.1-brief.10, closing the drift the 2026-08-05 verdict had flagged

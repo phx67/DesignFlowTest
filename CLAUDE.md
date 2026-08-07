@@ -27,104 +27,68 @@ context where it does not work; **don't believe it's real** — no signal whethe
 a concept. Source: the designer's own testimony at the phase-1 gate; phase 2 tests it against
 other people.
 
-**Spine.** The unit of content is *work + author's breakdown*: structured fields (colour,
-typography, grid) + intent + a reality status linking to the live product.
+**Spine.** The unit of content is *work + breakdown*: structured fields (colour, typography,
+grid) + intent + a reality status linking to the live product. **The unit is polymorphic — one
+screen or a whole case, both first-class.** **The machine extracts the objective fields; the
+author confirms or corrects them** — the author's work is verification plus intent, never
+transcription, and **intent is never generated**. The breakdown travels with the work, so
+**property search is free**; tags are optional personal context inside your own collections.
+**Completeness is measured on intent alone** — *absent → present → case* — and that is the axis of
+filtering and ranking; the extracted fields carry a **confirmed / unconfirmed** trust state
+instead. `[?]` is a first-class UI state. Social layer: save to a collection, like, follow an
+author.
 
-**The unit of work is polymorphic — one screen OR a whole case.** An author may publish a single
-screen or a full case, and both are first-class. *(Changed 2026-08-07. This closes open question
-(b) below, which had asked whether the unit was a component or a whole work and which
-`research/research.md` had recommended phase 3 resolve by picking **one**. The designer chose
-both; the research recommendation is deliberately overridden.)*
-
-**How the breakdown gets filled — changed 2026-08-07.** **The machine extracts the objective
-fields — colour, typography, grid — and the author confirms or corrects them.** The author's work
-is therefore **verification plus intent**, not transcription. *(This replaces the phase-1 rule
-"the author fills it in by hand — no auto-extraction anywhere". That rule was written before phase
-2, whose evidence contradicted it from two directions: `[RES]` **H1** — the values are table
-stakes because Refero Styles already generates them for 2,000+ sites, and intent is the only part
-a machine cannot supply; and the Refero split of 2026-08-07 — "matching the values is table
-stakes, not the contest; the contest is comprehension". The brief was behind its own research.)*
-Auto-extraction never speaks **in place of** the author: nothing is published as the author's
-claim until the author has confirmed it, and intent is never generated.
-
-Because the breakdown travels with the work, **property search is free** and tagging is not
-required; tags are optional personal context inside your own collections.
-
-**Completeness — redefined 2026-08-07 as a consequence of the above.** Objective fields are
-pre-filled, so they can no longer measure completeness. They move to a **confirmed / unconfirmed**
-state, which is a **trust signal**, not a progress bar. **Intent becomes the single progressive
-axis** — *absent → present → case* — and is what completeness filtering and ranking act on. `[?]`
-remains a first-class UI state. **Known and accepted:** this concentrates the supply risk onto
-intent — the one thing no machine can produce and no evidence yet says an author will write.
-Social layer: save to a collection, like, follow an author.
-
-**Platform.** Roles split, not scaled. **Desktop primary** (~1440px): authoring — writing the
-breakdown, upload — and heavy side-by-side comparison of facets. **Mobile**: **search, open a
-work and read its breakdown, save to a collection.** Search is on the phone deliberately: the
-primary persona rejected a tool for lacking exactly that — "Eagle крутий, але він десктопний, а я
-часто шукаю з телефону в дорозі" `[INT · Даня · B3 Q4]`, `people/personas.md`. Whether the phone
-also needs the **full facet filter** is `[?]` — one respondent, one sentence, decided in phase 8.
-This still inverts the pipeline's mobile-first default deliberately — phase 8 is a decision about
-refusals, not about squeezing.
+**Platform.** Roles split, not scaled. **Desktop primary** (~1440px): authoring — the breakdown,
+upload — and heavy side-by-side facet comparison. **Mobile**: search, open a work, read its
+breakdown, save to a collection — search is on the phone deliberately, because the primary persona
+rejected a tool for lacking exactly that (`people/personas.md`). Whether the phone also needs the
+**full facet filter** is `[?]` for phase 8. This inverts the pipeline's mobile-first default
+deliberately: phase 8 decides refusals, not squeezing.
 
 **Constraints.** A **pipeline exercise**: the deliverable is a full phase 0–10 run and a credible
-static front-end. No backend, auth, real upload or persistence — every flow runs on fixtures.
-Toolbox fallbacks bind. Artifacts are English, the working conversation Ukrainian, and **the
-product's own UI language is undecided — phase 5 `/dsf:voice` owns it**, so phase 4 uses grey
-placeholder text and fixes no tone.
+static front-end. No backend, auth, real upload or persistence — every flow runs on fixtures, which
+makes extraction a simulated step. Toolbox fallbacks bind. Artifacts are English, the working
+conversation Ukrainian, and **the product's own UI language is undecided — phase 5 `/dsf:voice`
+owns it**.
 
-**Out of scope.** Not a private archive. **Not AI or auto-extraction speaking *in place of* the
-author** — extraction of the objective fields is in scope as of 2026-08-07, but it is always a
-draft the author confirms, it never publishes unreviewed, and **intent is never generated**. Not a
-token collector or house-style exporter. Not an infinite feed as the main screen. Not curation —
-authors publish only their own work.
+**Out of scope.** Not a private archive. **Not AI speaking in place of the author** — extraction
+drafts the objective fields, the author confirms, intent is never generated. Not a token collector
+or house-style exporter. Not an infinite feed as the main screen. Not curation — authors publish
+only their own work.
 
 **Success criteria** — observable:
 
 1. **Reproducibility.** From the breakdown screen alone, a designer states the exact palette, type
    scale and grid values and rebuilds the component without an eyedropper. Checked per screen.
 2. **Trust without a click.** Any card in the results shows reality status, the **confirmed /
-   unconfirmed** state of the extracted fields, and how far intent has got, without being opened.
-   *(Restated 2026-08-07: "breakdown completeness" split into those two signals.)*
+   unconfirmed** state of the extracted fields, and how far intent has got — without being opened.
 3. **Upload does not deter.** The "publish + deconstruct" flow completes end to end on the
-   prototype without abandonment, and every required field has a justification. *(2026-08-07: the
-   objective fields arrive pre-filled, so what this criterion now tests is the **confirmation**
-   step and the invitation to intent — not transcription.)*
+   prototype without abandonment, and every required field has a justification.
 
 **Open questions `[?]`**
 
-- `[?]` **Supplier motivation — the main risk, and narrower since 2026-08-07.** Why a designer
-  writes **intent** about their own work for free. Extraction now covers the objective fields, so
-  the risk no longer spreads across the whole breakdown — **it is concentrated entirely on
-  intent**, the one part a machine cannot produce. *Hypothesis:* reputation — a stated reason is
-  stronger proof of craft than a shot. Phase 2 found the first adjacent evidence (a practitioner
-  calling a published entry "a lasting record… a way to bring a few extra eyeballs to your work")
-  but **no designer testimony about writing a breakdown**. If it does not hold, the spine needs
-  rebuilding — and it now needs rebuilding on a narrower base than before.
-- `[?]` **The retrieval mechanism.** Candidates: filters over the breakdown, optional tags, AI
-  search. Decided in phase 3.
-- `[?]` **Comparison — pain and feature, both unproven.** "Can't compare ten examples of one
-  component" was demoted from the confirmed problems, and the side-by-side view from the spine.
-  *Hypothesis:* shared fields deliver comparison as a side effect and no dedicated screen is
-  needed. Phase 2 confirms or restores it. Consequence: the structured-fields decision now rests
-  on the index alone.
-- `[?]` **Is "grid" the right third axis?** *Hypothesis:* weaker than colour and typography;
-  density or composition may be what designers actually reach for. Phase 2.
+- `[?]` **Supplier motivation — the main risk.** Why a designer writes **intent** for free.
+  Extraction covers everything else, so the risk sits **entirely on intent**. *Hypothesis:*
+  reputation — a stated reason is stronger proof of craft than a shot. Phase 2 found adjacent
+  evidence but **no designer testimony about writing a breakdown**. If it fails, the spine needs
+  rebuilding.
+- `[?]` **What "confirmed" is worth.** Nothing says a reader believes a confirmation, or that an
+  author corrects a wrong extraction rather than waving it through. *Hypothesis:* confirmation is
+  cheap and therefore weak unless a wrong value is visibly costly. Phase 3 owns the state.
+- `[?]` **Whether breakdown quality needs moderation.** Not asked. *Hypothesis:* no at this stage
+  — but Fonts In Use, the closest analogue, **does** moderate before publication. Phase 3.
 - `[?]` **Where the fixture imagery comes from.** Unsplash is photography and this product's
   content is interfaces. *Hypothesis:* the project's own Playwright screenshots of real products,
   each carrying source URL and capture date the way `concept/references.md` does, with Unsplash
   reserved for non-reference imagery. Phase 6.
-- `[?]` **Whether breakdown quality needs moderation.** Not asked. *Hypothesis:* no at this stage
-  — completeness is the only visible quality signal. Phase 3. **Sharper since 2026-08-07:** with
-  the objective fields extracted, what is left to moderate is **intent** and the correctness of the
-  author's **confirmation**. Phase 2 also found that the closest analogue, Fonts In Use, *does*
-  moderate before publication ("Submit for approval").
-- `[?]` **What "confirmed" is worth — new, 2026-08-07.** The extracted fields carry a confirmed /
-  unconfirmed state as a trust signal, but nothing yet says a reader believes a confirmation, or
-  that an author bothers to correct a wrong extraction rather than waving it through. *Hypothesis:*
-  confirmation is cheap to give and therefore weak as a signal unless a wrong value is visibly
-  costly. Phase 3 owns the state; phase 4 owns whether it is legible on the card.
 
+**Closed by phase 2** — full reasoning in `research/research.md` and `.design/decisions.md`: the
+**retrieval mechanism** is faceted filtering over the declared fields; **comparison** stays demoted
+and the dedicated screen is cut; the **third axis** is not a column grid and is renamed to base
+unit / density / spacing in phase 3; the **content unit** is both a screen and a case.
+
+**Change history is not kept here.** Every superseded line, its date and its reason live in
+`.design/decisions.md`.
 ---
 
 ## First contact
