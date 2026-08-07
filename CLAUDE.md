@@ -225,9 +225,19 @@ the fields). (2) `[?]` is a dated, actionable marker carrying the control that f
 empty cell (Wikipedia's banner). (3) The right to mark quality is earned by contributing — the
 answer to the moderation `[?]`: not staff, not nothing.
 
+**Refero is two products, split 2026-08-07.** **Refero (browse)** — taxonomy, Figma plugin, "design
+inspiration", "What are you designing next?" — is a **direct competitor** for the primary persona's
+attention. **Refero Styles + MCP** is **adjacent**: it exists so an *agent* can build from the spec
+("connects your agent… **it studies before it builds** — the output looks designed, not generated"),
+overlapping with Loupe only on the auto-extraction of values. **Consequence phase 3 must honour:
+matching the values is table stakes, not the contest — the contest is comprehension, so the
+breakdown screen must not be designed as a spec dump.** Evidence:
+`research/screens/refero-positioning-2026-08.png`; `.design/critique-log.md`.
+
 **Top three open questions.** (a) **Refero Styles already ships success criterion 1** — exact colour
 roles, named type scale with ratio, spacing, radii — auto-generated for 2,000+ sites with a
-`DESIGN.md`; Loupe's defensible field is therefore *intent*, not values. (b) Is the unit a
+`DESIGN.md`; Loupe's defensible field is therefore *intent*, not values. **Refined by the split
+above: it ships that criterion for a machine, Loupe ships it for a person.** (b) Is the unit a
 **component or a whole work**? The brief claims both. (c) "Own work only" — the closest analogue
 (Fonts In Use) deliberately allows others' work; the restriction costs pool growth.
 

@@ -7,7 +7,9 @@ Every factual claim carries a link or a screenshot path from `research/screens/`
 Where no source exists: `[?] unverified` plus the explicit hypothesis. Never round a guess
 into a number.
 
-All screenshots were captured by the agent in Chromium at 1440×900 on **2026-08-06**. Where a
+Screenshots were captured by the agent in Chromium at 1440×900: the market study on
+**2026-08-06**, plus three later captures — two from the phase-2b re-research and one from the
+Refero critique — on **2026-08-07**, each dated where it is cited. Where a
 product hides its catalogue behind a login, the reachable surface is captured and the row is
 labelled `access restricted`.
 
@@ -45,7 +47,7 @@ out of the competitor set and kept as a **language reference** (below the matrix
 | Product | Why it belongs here | What specifically to learn from it |
 |---|---|---|
 | **Cosmos** — `cosmos.so` | The only product in the set that turns provenance into a filter rather than a disclaimer, and the one whose search controls are built on properties a person can point at — colour and visual likeness — instead of words. | Two mechanics: **AI content → Show / Blur / Hide** as a first-class control, and "Cosmos researches images — surfacing the artist, source, and story", i.e. the platform supplies attribution rather than the uploader. `research/screens/cosmos-search-and-ai-filter.png` |
-| **Refero** — `refero.design` | The deepest structured taxonomy on the market — Page Types, Flows, UX Patterns, UI Elements, industry — plus a shipping AI "research mode" and an MCP server. | **Refero Styles (Beta)**: "2,000+ AI-readable design systems … colors, typography, spacing, components, and a DESIGN.md". This is Loupe's spine, generated automatically. `research/screens/refero-styles-beta.png`, `research/screens/refero-style-breakdown.png` |
+| **Refero (browse)** — `refero.design` | **Split from Refero Styles + MCP on 2026-08-07 — see the note below the matrix.** The browse product is a direct competitor for the primary persona's attention: the deepest structured taxonomy on the market — Page Types, Flows, UX Patterns, UI Elements, Sites — a Figma plugin, and a self-description that sits squarely in Loupe's category: "The largest collection of UI/UX references and **design inspiration** for web and iOS". Its entry question, "**What are you designing next?**", is the brief's primary user restated. | That a task-named taxonomy is the entry surface and facets refine inside it — the pattern-4 mechanism. `research/screens/refero-home.png`, `research/screens/refero-positioning-2026-08.png` |
 | **Layers** — `layers.to` | Listed at the gate as a community built around writing about craft. **That rationale did not survive verification.** | Kept as a data point, not a benchmark: the live site is a tag rail over a "Hot" shot feed with inline ads, i.e. a Dribbble-shaped entrant. `research/screens/layers-explore.png` |
 
 ### Comparison matrix
@@ -62,8 +64,40 @@ out of the competitor set and kept as a **language reference** (below the matrix
 | **Are.na** | "Students, hobbyists and connected knowledge collectors" | "Online software for saving and organizing the content that is important to you"; "playlists, but for ideas" | Blocks connected into channels; a block in several channels is how meaning accrues. No tags, no property filters | No ads and no algorithm, stated as policy; "sustained entirely by our members. The people who use it are our only customers"; independent team of four full-time | Premium $7/mo or $70/yr; Guest free up to 200 total blocks | `arena-home.png` |
 | **Awwwards** | Web designers and studios competing for recognition | Juried awards + a filterable directory of winning sites (10,336 listed) | Submit a site, get scored by jury and pro users; browse by Awards, Category, Tag, Technology, Country, **Font**, **Color** | Award badges on the card (SOTD, DEV, Honorable Mention) readable without opening; scores are public: Design 40% / Usability 30% / Creativity 20% / Content 10%, minimum 18 jurors, the three most distant scores dropped, ≥6.5 → Honorable Mention | Paid site submissions, Pro membership, The Creative Pass at €11.50/month, Academy courses, job board, marketplace | `awwwards-websites.png`, `awwwards-font-filter.png`, [about-evaluation](https://www.awwwards.com/about-evaluation/) |
 | **Cosmos** | Designers, art directors, creative teams | "Your space for inspiration" — visual discovery and collections | "Search the way you think": by colour (hex), by visual similarity, and with an **AI content** control set to Show / Blur / Hide | "Know what you're looking at. Cosmos researches images — surfacing the artist, source, and story" — the platform supplies attribution; AI-generated content is labelled and filterable | `[?] unverified` — no pricing page reached; app and web sign-up, "Inspiration for the world's top creative teams" | `cosmos-home.png`, `cosmos-search-and-ai-filter.png` |
-| **Refero** | Designers, builders "and AI" | Library of real product screens and flows, organised by the deepest taxonomy in the set | Five parallel axes — Page Types, Flows, UX Patterns, UI Elements, industry — plus a natural-language "research mode" and an MCP server for coding agents | Screens are captured from shipped products; each Styles entry links to the live source URL (e.g. `ui.shadcn.com`) | Paid plans (page not collected — `[?] unverified`); MCP and Figma plugin as distribution | `refero-home.png`, `refero-styles-beta.png`, `refero-style-breakdown.png` |
+| **Refero (browse)** | **Designers**, named first of "designers, builders and AI" | Human-browsed library of real product screens and flows, organised by the deepest taxonomy in the set — and it calls itself "design inspiration" | Five parallel axes — Page Types, Flows, UX Patterns, UI Elements, Sites — walked by name; Figma plugin as the working surface | Screens are captured from shipped products, so reality is guaranteed by sourcing rather than declared | Paid plans (page not collected — `[?] unverified`) | `refero-home.png`, `refero-positioning-2026-08.png` |
+| **Refero Styles + MCP** — *adjacent, not a competitor for attention* | **Coding agents**, and the builder driving one | Machine-readable construction specs plus a server that feeds them to an agent | "2,000+ AI-readable design systems … colors, typography, spacing, components, and a **DESIGN.md**"; natural-language "research mode"; MCP: "connects **your agent** to a curated library… **It studies before it builds** — and the output looks designed, not generated" | Each Styles entry links to the live source URL (e.g. `ui.shadcn.com`) | MCP as distribution | `refero-styles-beta.png`, `refero-style-breakdown.png`, `refero-positioning-2026-08.png` |
 | **Layers** | Designers publishing shots | Shot feed with a long free-tag rail | "Hot" feed filtered by ~30 open tags; card is author + title | Author name only; no source, no status, no construction | Inline sponsored cards ("Streamline · Ad"); rest `[?] unverified` | `layers-explore.png` |
+
+#### Why Refero is two rows — split 2026-08-07
+
+Refero was recorded on 2026-08-06 as one aspirational competitor. A critique of that record
+(`.design/critique-log.md`) found the class was flattening two products with **different purposes
+and different audiences**, using facts the file had already collected and drawn no consequence from
+("Designers, builders **and AI**"; "an MCP server **for coding agents**"). Positioning re-verified
+against the live site on 2026-08-07 in Chromium at 1440×900:
+`research/screens/refero-positioning-2026-08.png`.
+
+**The evidence splits, and so does the row.**
+
+- **Refero (browse) is a direct competitor for the primary persona's attention.** Its
+  `meta description` is literally "UI/UX references and **design inspiration**"; its taxonomy is
+  built to be walked by a human; it ships a **Figma plugin**; and its entry question — "**What are
+  you designing next?**" — is the brief's primary user restated. Designers are named **first** in
+  "designers, builders and AI".
+- **Refero Styles + MCP is adjacent, and the overlap with Loupe is only the auto-extraction of
+  values.** Its proposition is machine consumption, in its own words: "Refero MCP connects **your
+  agent** to a curated library of real product interfaces and user flows. **It studies before it
+  builds** — and the output looks designed, not generated." The site's `h1` is "**Design Research
+  for the AI Era**". That is a build-time supply line for an agent, not a place a designer goes to
+  understand somebody's decision.
+
+**What this changes for Loupe, and what it does not.** It does **not** weaken the values finding:
+Styles really does publish exact colour roles, a named type scale with its ratio, spacing and radii,
+and Loupe must match them — H1 and H3 below stand unchanged, because they rest on the *values*, not
+on who the values are for. What it changes is the **claim of equivalence**: Loupe and Refero Styles
+produce a similar artifact for **opposite consumers** — one is fed to an agent so it can generate,
+the other is read by a person so they can learn and rebuild. Loupe's competition with Refero is real
+but it is with the **browse** half, over the same designer's attention and the same task-named entry.
 
 #### Not a competitor — the language reference
 
@@ -111,11 +145,16 @@ role + value + usage, and its typography field must carry a named scale with its
 
 **Three open questions** only the product owner can answer:
 
-1. **Refero Styles already delivers Loupe's success criterion 1.** Exact palette with roles and
-   usage notes, a named type scale with its ratio, 4px base unit, 1280px max width, radii per
-   element — generated automatically for 2,000+ sites, free to browse, with a DESIGN.md to paste
-   into an agent. What does a *hand-written* breakdown buy that the generated one does not, and is
-   that worth twenty minutes of the author's time?
+1. **Refero Styles already delivers Loupe's success criterion 1 — but for a different consumer.**
+   Exact palette with roles and usage notes, a named type scale with its ratio, 4px base unit,
+   1280px max width, radii per element — generated automatically for 2,000+ sites, free to browse,
+   with a DESIGN.md to paste into an agent. **Refined 2026-08-07 (see "Why Refero is two rows"):**
+   that spec is built to be **fed to an agent so it can generate** — "it studies before it builds"
+   — whereas Loupe's is read by a **person so they can understand and rebuild**. The artifacts look
+   alike; the consumers are opposite. So the question is not only "what does a hand-written
+   breakdown buy that the generated one does not", but **"is a spec written for a machine even the
+   same product as a spec written for a person, and does Loupe have to beat it or merely not lose
+   to it?"** Still owner-answerable; still open.
 2. **The brief forbids publishing other people's work. The closest working analogue deliberately
    allows it.** Is "own work only" a rights decision, a quality decision, or a growth ceiling being
    accepted on purpose — and what happens to the pool's size if it holds?
@@ -286,6 +325,7 @@ author or product name in advance**.
 | **Trust without a click** — success criterion 2 | The card must carry a *reality status* and a *completeness state*, because the market's at-a-glance signals are award badges (Awwwards SOTD/DEV) or the breakdown itself printed on the card (Fonts In Use), and popularity alone (Dribbble) demonstrably fails: the studied shot admits it is a "concept" only in its fourth paragraph | COMPETITORS — three real differences, item 3 |
 | **Comparison** — `[?]` 3 of the brief, demoted at phase 1 | Keep it demoted. **No competitor in the set ships a dedicated side-by-side view**, including the two with the deepest structured data. Shared fields deliver comparison as a side effect, which is what the phase-1 hypothesis predicted | COMPETITORS — matrix, all twelve rows |
 | **"Own work only"** — a constraint the closest analogue rejects | Fonts In Use deliberately invites "your own work **or other typography you admire**". Loupe's restriction is a rights-and-authenticity decision that costs pool growth; it should be stated as a chosen trade-off in the IA, not assumed to be free | COMPETITORS — three real differences, item 2 |
+| **Who the construction spec is written for** — added 2026-08-07 by the Refero critique | **The market's auto-generated spec and Loupe's hand-written one have opposite consumers.** Refero Styles + MCP exists so an **agent** can build from it — "it studies before it builds… the output looks designed, not generated" — while Loupe's exists so a **person** can understand a decision and rebuild it themselves. Loupe therefore competes with Refero's **browse** half for the designer's attention, and only *overlaps* with its Styles half on the auto-extraction of values. **Consequence:** matching the values is table stakes, not the contest; the contest is comprehension. Phase 3 must not design the breakdown screen as a spec dump — that is the machine-facing form, and it is already solved better by a machine | COMPETITORS — "Why Refero is two rows"; `refero-positioning-2026-08.png` |
 | **Component or whole work?** | Unresolved and load-bearing. The brief's user names a component; the breakdown fields describe a whole product. Refero indexes components, Fonts In Use and Refero Styles index whole works. Phase 3 must pick one as the unit and let the other be a facet | COMPETITORS — three open questions, item 3 |
 
 **Numbered hypotheses for later phases to test:**
@@ -329,7 +369,15 @@ here so it is not mistaken for collected data:
 - **Layers monetization beyond inline sponsored cards** — unverified.
 - **Savee's "over 1M users"** and **Refero's "2,000+"** are the companies' own published figures,
   recorded as claims, not independently checked.
-- **The Даня interview** is the designer's report at a gate; no interview artifact exists yet.
+- **The Даня interview** is the designer's report at a gate; **closed 2026-08-07** — the interview
+  is now a citable artifact at `sources/Interview Script 30e58b052da9800b8138cae64003069a.html` and
+  is cited throughout `people/personas.md`.
+- **Refero's live positioning** was re-verified on 2026-08-07 and captured at
+  `research/screens/refero-positioning-2026-08.png` (`h1` "Design Research for the AI Era"; the
+  "designers, builders and AI" line; the MCP banner; the "design inspiration" meta description).
+  The `/styles` path returned a 404 on that date — the Styles surface is reachable from the nav,
+  and the phase-2a captures `refero-styles-beta.png` and `refero-style-breakdown.png` remain the
+  evidence for its contents.
 
 ---
 
