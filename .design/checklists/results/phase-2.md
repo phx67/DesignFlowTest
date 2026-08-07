@@ -52,3 +52,66 @@ none of them is a checklist failure:
   of the third breakdown axis, and whether client alignment (R4) falls out of existing collections.
   Plus one from the re-research: **Fonts In Use moderates before publication**, which H5 must
   answer.
+
+---
+
+# Phase 2 — Discover · re-check after reopening
+
+Checked: 2026-08-07 · Checklist: `.design/checklists/phase-2-discover.md`
+Result: **pass** — 25 pass · 0 fail · 0 human · 25 of 25 items
+
+Re-check after `/dsf:change` (`9a37af7`) rewrote the BENCHMARK premise, mechanic 1, H2, H4, the
+"Component or whole work?" conclusion, Persona 3's pains, the Main job's FEATURE cell and both HTML
+pages. Verified against `ebcaeb9`. Every item re-verified from the repo; nothing carried over green
+from the verdict above.
+
+**The question this re-check had to answer:** whether the superseded notes left by the change read
+as honest record or as stale fact. They read as record — each names what it replaced, when, and
+why, and the scored data underneath them is untouched. Items 5 and 7 are the ones that would have
+caught the alternative.
+
+| # | Item | Verdict | Evidence |
+|---|---|---|---|
+| 1 | Competitors in three groups, ≥5 products named | pass | Hard · Soft · Aspirational all present; the Refero split added a row rather than removing one |
+| 2 | Comparison matrix, cells from collected data | pass | **13 product rows** (was 12 — `Refero (browse)` and `Refero Styles + MCP` now separate), every cell carrying a screenshot path, a link or `[?] unverified` |
+| 3 | Benchmark: 6–8 criteria, 4–5 products, each scored | pass | 7 criteria rows, 5 products scored. **The scores were not touched by the change** — only the framing paragraph above them, which now carries a dated "superseded in part" note |
+| 4 | Five different UX patterns, one chosen and argued | pass | 5 pattern rows; pattern 1 chosen, pattern 3 disqualified, both with reasons |
+| 5 | Hypotheses listed and numbered | pass | **H1–H8**, all eight still numbered and present. H2 and H4 were narrowed in place with the reason stated, not deleted and not silently rewritten |
+| 6 | `research/screens/` holds screenshots referenced by filename | pass | **39 captures, 34 referenced** — one added by the Refero critique (`refero-positioning-2026-08.png`), cited from both the split note and the sourcing pass |
+| 7 | Every fact carries a link, a screenshot path, or "unverified" | pass | 11 `unverified` markers, each naming what was not collected. The claims added by the change cite `[RES]` H1, the Refero split and `refero-positioning-2026-08.png`; the superseded notes cite `.design/decisions.md` |
+| 8 | `research/research.html` opens standalone and links its screenshots | pass | Chromium at `http://127.0.0.1:8737` — 15 images, **0 broken**, no horizontal scroll, 24 rendered `[?]`/`unverified` marks; only console entry is the local `/favicon.ico` 404 |
+| 9 | `people/personas.md` holds 2–4 behavior-based personas | pass | 3 personas, split by jobs and pains; the merge test and its result still recorded |
+| 10 | Exactly one primary, with a stated reason | pass | 1 `PRIMARY` marker in the file; the HTML renders exactly 1 `.persona.primary` of 3 `.persona` cards |
+| 11 | Every persona block points at the evidence or carries `[?]` | pass | 15 block headings (3 × context/jobs/pains/trust/quote), each with an `[INT]` or `[RES]` citation or an explicit `[?]` plus hypothesis. Persona 3's pains were narrowed by the change and kept their `[?]` |
+| 12 | One main job + 3–5 related, "when / I want / so that", none named after a feature | pass | 1 main + 5 related. All six "I want" clauses in the main and related tables scanned for feature nouns (`filter\|collection\|search bar\|button\|feed\|tag\|upload\|card`) → **no match**. The one hit elsewhere in the file is inside HJ2, which is quarantined in **Hypotheses**, not the job list |
+| 13 | Emotional and social jobs listed separately | pass | Both tables present and separate from the functional ones; the withdrawn S2 is struck through in place rather than deleted, so the withdrawal stays readable |
+| 14 | Each job records where it came from | pass | All 5 related and all 3 emotional rows carry `[INT]` citations; the Hypotheses table carries "what would confirm it" and "where to look" instead |
+| 15 | Jobs × personas × features matrix with a competitors column | pass | Header `P1 · P2 · P3 · FEATURE · COMPETITORS — already closed?`. The Main row's FEATURE cell now reads "extracted values the author confirms plus the author's intent" |
+| 16 | Matrix ends in three MVP-core jobs and named cut candidates | pass | **MVP core — three jobs** (Main, R2, R3) and **Cut candidates** (5 rows) both present; core job 1 carries the sharpening the change added |
+| 17 | A confirmed / hypothesis / invented audit is recorded | pass | `people/personas.md` **Self-critique** — 23 statements, 2 found invented, both corrected in step 6 |
+| 18 | Claims that drive design but rest on `[?]` are called out | pass | **The dangerous subset** — 5 items, ordered by cost of being wrong |
+| 19 | At least one gap closed by targeted follow-up, visible in `research.md` | pass | **Re-research after personas** intact: Q1 and Q3 produced findings, Q3 closed dangerous item 5 (Eagle), Q2 recorded as an explicit null result. Untouched by the change |
+| 20 | `[?]` marks survive into `people/personas.html` | pass | Chromium: `.q` → **45**, unchanged by the change, including a whole persona card styled as unevidenced |
+| 21 | `people/personas.html` opens standalone in a browser | pass | Chromium: 3 persona cards, 1 primary, 8 tables, 0 broken images, no horizontal scroll, **0 console messages of any level** |
+| 22 | `CLAUDE.md` → People block names the primary persona and the main job | pass | Both present in the **People** context block |
+| 23 | `README.md` Research and People sections link to the HTML pages | pass | Both links present |
+| 24 | `index.html` data block — artifacts present, context filled | pass | Read from the rendered page: all 6 phase-2 artifacts `exists: true`; `context.benchmarkDimension`, `context.primaryPersona`, `context.mainJob` all non-empty |
+| 25 | Phase committed; pushed if hosting is `active` | pass | `9a37af7` (the change), `ebcaeb9` (phase-1 re-close); `git status --short` → 0 lines; `## main...origin/main` |
+
+## Open
+
+Nothing blocking. Two drifts, neither a checklist item, both recorded so they are not rediscovered:
+
+- **`README.md` understates the capture count by one.** It says "38 captures, 33 referenced"; the
+  real figure is now **39 / 34** — the Refero critique added `refero-positioning-2026-08.png` after
+  that line was written. Noted with some irony: that line was itself written to correct a stale
+  count. `/dsf:status` or the next `/dsf:research` closes it.
+- **Phase 2's `steps` object is one line behind its ledger.** It reads 17 of 19 with `current: ""`;
+  `.design/progress/phase-2.md` also carries `users.9`. The ledger is the truth and the dashboard is
+  the cache (constitution rule 8). `/dsf:check` may not write that key — its edits are limited to
+  `criteria`, `status`, `tagged` and `exists` — so `/dsf:status` repairs it.
+
+The four `[?]` phase 3 inherits are unchanged by this re-check and now number five with the change:
+the form and weight of intent, the third-axis rename, client alignment (R4), Fonts In Use's
+pre-publication moderation against H5, and what the author still pays now that extraction pre-fills
+the breakdown.
