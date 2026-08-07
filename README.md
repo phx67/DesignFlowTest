@@ -89,7 +89,20 @@ cut list — including the features the brief assumed and the matrix could not j
 ## Structure
 
 <!-- phase 3 · sitemap, navigation, flows -->
-`[?]` → `ia/ia.html`
+
+Six screens, three global navigation items, and the main job reachable in **two taps of a
+three-tap budget**. Every screen is annotated with the job it serves, and the three that are not —
+two screens reached only by hypotheses, one job left deliberately unserved — are listed as orphans
+rather than quietly tidied away.
+
+The structural decisions phase 3 made: intent is an **annotation on the work's own material**, not
+a form; the client-facing view is a **mode** of a collection rather than a new screen; the author is
+a byline, not a destination.
+
+- [`ia/sitemap.md`](./ia/sitemap.md) — entities, the screen tree, navigation and the tap budget,
+  and the jobs × screens coverage matrix
+- [`ia/flows.md`](./ia/flows.md) — four Mermaid flows with their decisions, states and both endings
+- [`ia/ia.html`](./ia/ia.html) — the same, as a page you can hand to someone
 
 ## Wireframes
 

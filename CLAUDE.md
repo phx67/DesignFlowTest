@@ -301,7 +301,40 @@ Evidence: `people/personas.md`, `people/jtbd.md`, `people/personas.html`; primar
 
 ### Structure
 <!-- phase 3 · main flow · navigation model and tap depth to the main job · paths to ia/ -->
-`[?]`
+**Six screens:** `Search` → `Results` → `Work` · `Collections` → `Collection` · `Publish` →
+`Confirm the extraction`. **`Work` carries the breakdown itself** — one screen, not two, because the
+breakdown travels with the work.
+
+**Global navigation — three items:** **Search** (Main, R1, E1, E3), **Collections** (R3, E2, R4),
+**Publish** (HJ1, HJ2). Rejected on purpose: author profile, a following feed, a separate Tasks
+entrance, notifications.
+
+**Tap depth: 2 of a 3-tap budget** to the main job — `Search` → `Results` → `Work`. The spare tap is
+reserved for whatever `Work` cannot hold at once, most likely the case narrative. **Later phases are
+held to this number.**
+
+**Main flow:** arrive with a component due → name the task (or query the declared fields) → `Results`
+→ `Work` → read the values, confirmed or not → read intent → rebuild → optionally save. Four flows
+in total (Main, R3, R4, HJ1), all rendered by Mermaid without error.
+
+**Decisions this phase made that later phases inherit:**
+
+- **Intent is an annotation anchored to the work's material** — point at a region, say why.
+  Progression *absent → present → case*. **Never a form.** This closes the `[?]` phase 2 handed over.
+- **R4 is served by a shared *mode* of `Collection`**, not a new screen — the best-evidenced job in
+  the set costs no new scope.
+- **`Author` is a byline on `Work`, not a screen.** Follow stays cut to v2.
+- **No curation object. `[RES]` H5 is UNCONFIRMED in this version** — quality is carried by
+  completeness on intent plus the confirmed / unconfirmed state of the extracted values.
+- **`Task` and `Facet value` render inside `Search` and `Results`** and are never addressed as
+  screens.
+
+**Three orphans left standing, each with a reason:** `Publish` and `Confirm the extraction` are
+reached by **hypothesis jobs only** (HJ1, HJ2) and exist on the brief's criterion 3 — the weakest
+joint in the structure, and the first thing to change if HJ1 fails. **S3** (collect alongside peers)
+is deliberately unserved: P2-only.
+
+Evidence: `ia/sitemap.md`, `ia/flows.md`, `ia/ia.html`.
 
 ### Wireframes
 <!-- phase 4 · where the screens live, naming convention, state pages, the navigator panel -->
