@@ -13,3 +13,4 @@ Written by `/dsf:ia` (steps `ia.*`).
 - ia.8 · Run the phase checklist · 2026-08-07 · files: — · 21 of 22 verified against the files; item 18 ("live-rendered Mermaid diagrams") is the one I cannot call a clean pass, because the diagrams are pre-rendered
 - ia.9 · Living docs, dashboard, commit · 2026-08-07 · files: CLAUDE.md (Structure block), README.md (Structure section), index.html (phase-3 artifacts present, steps)
 - ia.10 · Sign-off · 2026-08-07 · files: .design/progress/phase-3.md · commit 7634c59 pushed; no tag — /dsf:check 3 closes the phase
+- ia.7 · HUMAN GATE — diagram rendering · 2026-08-07 · files: .design/decisions.md · gate: "лишаємо svg" — checklist item 18's "live-rendered" is waived as a one-off exception; 686K self-contained page over a 3.5MB vendored renderer
