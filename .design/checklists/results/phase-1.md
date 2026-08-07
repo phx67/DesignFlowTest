@@ -84,3 +84,15 @@ affected by the reopening:
   `context`; `/dsf:status` or `/dsf:brief` owns it.
 - **The evidence under item 12 is one person.** Phase 2 added a second named respondent, so this is
   less true than it was, but the brief's own claims still rest largely on the designer's testimony.
+
+**Re-run 2026-08-07, same day, verdict unchanged.** `/dsf:check 1` was invoked again before any fix
+landed. Evidence that all thirteen verdicts above still stand: `HEAD` is still `12fd5c2` — the very
+commit this verdict was written against — the working tree is clean, and
+`git diff 12fd5c2 -- CLAUDE.md README.md index.html` is empty. The Brief block is still 121 lines /
+1376 words. No new section is written and the dashboard `criteria` object is already current
+(`passed 1–12`, `failed [13]`, `checkedAt 2026-08-07`); duplicating an identical table would make
+this file harder to read as a history, which is the only reason it exists.
+
+**Note on why item 13 is still open:** `/dsf:brief` ran and stopped at its own approval gate — the
+compressed brief was presented in chat and **not approved, so nothing was written**. The fix is one
+approval away, not one command away.
