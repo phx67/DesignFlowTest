@@ -35,9 +35,14 @@ inside your own collections. **Progressive completeness** — publish with a min
 grows, completeness is visible on the card and is an axis of filtering and ranking, and `[?]` is a
 first-class UI state. Social layer: save to a collection, like, follow an author.
 
-**Platform.** Roles split, not scaled. **Desktop primary** (~1440px): search, breakdown, upload.
-**Mobile**: browsing and saving to a collection, nothing else. This inverts the pipeline's
-mobile-first default deliberately — phase 8 is a decision about refusals, not about squeezing.
+**Platform.** Roles split, not scaled. **Desktop primary** (~1440px): authoring — writing the
+breakdown, upload — and heavy side-by-side comparison of facets. **Mobile**: **search, open a
+work and read its breakdown, save to a collection.** Search is on the phone deliberately: the
+primary persona rejected a tool for lacking exactly that — "Eagle крутий, але він десктопний, а я
+часто шукаю з телефону в дорозі" `[INT · Даня · B3 Q4]`, `people/personas.md`. Whether the phone
+also needs the **full facet filter** is `[?]` — one respondent, one sentence, decided in phase 8.
+This still inverts the pipeline's mobile-first default deliberately — phase 8 is a decision about
+refusals, not about squeezing.
 
 **Constraints.** A **pipeline exercise**: the deliverable is a full phase 0–10 run and a credible
 static front-end. No backend, auth, real upload or persistence — every flow runs on fixtures.
@@ -196,7 +201,8 @@ breakdown (colour, typography, grid, intent). Primary user: a designer with a sp
 to design; the main screen is search + filters, not a feed. Authors publish **their own work
 only**. The breakdown is manual, structured, and **is** the search index — no auto-extraction, no
 mandatory tagging; tags are optional personal context. Progressive completeness, `[?]` is a real
-UI state. Desktop primary (search, breakdown, upload); mobile is browse + save only. Static
+UI state. Desktop primary (authoring, upload, heavy facet comparison); mobile does search, read a
+breakdown and save — full facet filtering on the phone is `[?]` for phase 8. Static
 front-end on fixtures, artifacts in English, product UI language deferred to phase 5.
 Main risk carried forward: supplier motivation is a `[?]` with no evidence.
 Full text: **Brief** section at the top of this file.
@@ -235,7 +241,42 @@ Hypotheses H1–H8 are numbered in CONCLUSIONS. Note for phase 2b: the **Дан�
 
 ### People
 <!-- phase 2 · primary persona and why · main job in "when / I want / so that" form · top-3 MVP jobs · paths to people/ -->
-`[?]`
+**Primary persona — «Той, хто перевіряє, чи це взагалі можна побудувати»** (Даня, `[INT]`). Mid
+UI/UX designer in a small outsourcing studio. Enters by the **name of a component**, not by a
+property («екран реєстрації», «кошик») — this confirms `[RES]` **H7**. Trusts only screenshots of
+shipped products and rejects «dribbble-дизайн… гарне, але пусте всередині». Loses his own saves
+constantly: «90% моїх збережень це мертвий груз». Secondary: **Валя**, who has **none** of the
+brief's problems and is kept as the user this product would fail to attract; **the author**, who is
+**entirely `[?]`** — the interview never asks about publishing, so the supply side has no evidenced
+job at all. That is the project's main risk, unchanged.
+
+**Main job.** *When I have a specific component to design and no confidence that my own guess at how
+to build it is right, I want to see how people who already solved that same thing made their
+decisions and why, so that I can build my own version from reasons instead of from eyeballing a
+picture.*
+
+**MVP core — three jobs** (signed off 2026-08-07): **(1) Main** — build from reasons, not by eye;
+the market already generates the *values*, so what enters the core is the **intent**. **(2) R2** —
+know a work is real before opening it. **(3) R3** — return to what you already found without a hunt.
+
+**Binding constraints from the gate.** Intent is a **value and a job, never a mandatory field** —
+carried through the work's own case material, easy/optional/progressive, **no compulsory "justify
+it" form anywhere**; its form and weight are `[?]` for **phase 3**. **Cut from the MVP:** likes and
+follow-an-author (deliberately, to v2), the column grid as the third axis, a dedicated side-by-side
+comparison screen, tags as a retrieval mechanism.
+
+**Three `[?]` phase 3 inherits.** (a) The **form and weight of intent**. (b) The **third breakdown
+axis must be re-named** — base unit / density / spacing, not a column grid (also phase 6, tokens).
+(c) **Client alignment (R4)** — the best-evidenced job in the whole set and **absent from the
+brief**; the IA checks whether "a collection you can show a non-designer" falls out of existing
+collections almost for free.
+
+**Also found in re-research:** **Fonts In Use moderates before publication** ("Submit for approval",
+"Status: private draft (awaiting moderation)") — the closest analogue does **not** hold quality
+without a moderator, which phase 3 must answer against `[RES]` **H5**.
+
+Evidence: `people/personas.md`, `people/jtbd.md`, `people/personas.html`; primary source
+`sources/Interview Script 30e58b052da9800b8138cae64003069a.html`, **n = 2**.
 
 ### Structure
 <!-- phase 3 · main flow · navigation model and tap depth to the main job · paths to ia/ -->

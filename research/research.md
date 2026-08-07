@@ -331,6 +331,77 @@ here so it is not mistaken for collected data:
   recorded as claims, not independently checked.
 - **The Даня interview** is the designer's report at a gate; no interview artifact exists yet.
 
+---
+
+## Re-research after personas
+
+Added 2026-08-07 by `/dsf:users` step 6. **Surgical, not a second study**: three questions from the
+step-5 critique (`people/personas.md` → Self-critique), nothing else. Two new captures, taken in
+Chromium at 1440×900 on 2026-08-07.
+
+**Q1 — do designers write structured breakdowns of their own work for free, and what for?**
+
+- **Exposure is the stated payoff, in a practitioner's own words.** Type designer **David Jonathan
+  Ross**, asking people to submit uses of his fonts: "Posts on social media can be great, but they
+  tend to fade away after a few days. A post on FIU can be a **lasting record** of an exemplary
+  use, which is not only a helpful reference for me and users of my fonts, but also a way to bring
+  a few **extra eyeballs to your work**!" `research/screens/djr-fontsinuse-submissions.png`,
+  [djr.com](https://djr.com/fonts-in-use-submissions). This is the first evidence of any kind
+  behind the brief's reputation hypothesis. **It is not full confirmation:** he is asking people to
+  submit *a use*, not to write a *breakdown*, and he is a foundry owner with an interest in the
+  submission happening.
+- **A third party pays for the metadata.** The same page: "To thank you for taking the time to
+  submit a use of my fonts, I am happy to offer a complimentary **Font of the Month Club back issue
+  of your choice**… And if the use covers a font of mine that has no previous uses on FIU, I'll
+  make it *two* free back issues." A motivation mechanic absent from the BENCHMARK: the party who
+  *benefits* from the metadata subsidises the contributor. **For Loupe this is `[?]`** — no
+  equivalent beneficiary has been identified.
+- **The minimum submission is an image and a title; the "why" is explicitly optional.** "No written
+  description is required, though it can be nice to explain a little bit about the project, how the
+  fonts are used, and why you chose them." The capture shows the real form: free text reading
+  "Write something about this use …" beside a right-hand rail of **Typefaces · Formats · Topics ·
+  Designers/Agencies · Tagged with · Artwork location**.
+  `research/screens/djr-fontsinuse-submissions.png`.
+
+**Q2 — is a self-authored account of one's own work believed, or discounted as flattering?**
+**Nothing conclusive found, and this is recorded as a null result rather than filled in.** The
+`interactions.acm.org` design-case article returned 403 and `assets.fontsinuse.com/faq` returned
+403. Web search surfaces the *editorial norm* — that a design case should explain the reasoning
+held at the time rather than invent a rationale afterwards — but produced **no designer testimony
+about whether readers trust one**. `[?]` HJ3 stands, unchanged, with no new evidence.
+
+**Q3 — what does Eagle actually do?** It is the tool the primary persona named and rejected, and
+it was **missing from the COMPETITORS set entirely**.
+
+- Eagle is a **desktop asset manager for Windows and macOS, with no mobile and no web version** —
+  which is exactly the rejection Даня gave `[INT · Даня · B3 Q4]`, now verified rather than taken
+  on trust. `research/screens/eagle-search-filters.png`,
+  [en.eagle.cool](https://en.eagle.cool/).
+- Its retrieval is **not** thin: keyword search, colour ("Swiftly find assets within the same
+  colour palette"), tags, hierarchical folders, ratings, format, Smart Folders that self-organise
+  by name / tag / colour / format, and an AI visual-and-semantic "search by image, by meaning"
+  layer. Same source.
+
+**What this changes.** Three corrections, all propagated:
+
+1. **`people/jtbd.md`, R3 · COMPETITORS — narrowed.** "No product makes a saved item's construction
+   searchable" was too broad: Eagle searches a saved library by colour and by image. What no
+   product does is make **a public pool searchable by properties the author declared**, on a phone.
+   The uncovered ground is smaller and better defined than claimed.
+2. **The moderation `[?]` of the brief — the closest analogue does moderate.** The submission
+   capture shows a **"Submit for approval"** button and **"Status: private draft (awaiting
+   moderation)"**. Fonts In Use is not an unmoderated archive; entries are held before publication.
+   This corrects the framing in COMPETITORS ("whether a hand-written breakdown survives at scale
+   *without moderation*") — at the one product that runs on hand-written breakdowns, it does not
+   have to, because a moderator stands in front of it. `[RES]` **H5** — quality holds if the right
+   to mark is earned — now has a counter-example to answer in phase 3.
+3. **Optional, progressive intent is confirmed by the market.** The designer's MVP gate refined
+   intent to "not a mandatory field, easy / optional / progressive" on 2026-08-07; the one shipping
+   product with this exact mechanic requires an image and a title and makes the "why" optional. The
+   decision and the evidence were reached independently and agree.
+
+---
+
 One correction, kept visible rather than tidied away: at the step-1 gate **Layers** was placed in
 the aspirational group on the rationale that it is a community built around writing about craft.
 The live site is a tag rail over a "Hot" shot feed with inline ads. The rationale did not survive

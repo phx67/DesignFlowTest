@@ -35,8 +35,9 @@ needs to see how ten other people solved it *and* how those solutions are constr
 screen is search and filters, not a feed. On the other side, authors publish their own work and
 deconstruct it themselves.
 
-**Platform.** Desktop is primary: search, breakdown and upload all live there. Mobile is for
-browsing and saving to a collection.
+**Platform.** Desktop is primary: writing a breakdown, uploading, and comparing works side by
+side all live there. The phone searches, opens a work, reads its breakdown and saves it — because
+the primary persona rejected a tool for not letting him search on the move.
 
 **Scope.** This repo is an exercise of the full design pipeline. The product is a credible
 static front-end built on fixtures — no backend, no accounts, no real uploads.
@@ -59,12 +60,30 @@ automatically for 2,000+ sites, so the defensible field is the author's *intent*
   claim sourced or marked `unverified`
 - [`research/research.html`](./research/research.html) — the same, as a page you can hand to
   someone
-- `research/screens/` — 27 screenshots, referenced by filename from the matrix
+- `research/screens/` — 38 captures, **33 of them referenced by filename** from `research.md`
+  (2 added by the targeted re-research in phase 2b); the rest are working captures left from
+  earlier verification passes
 
 ## People
 
 <!-- phase 2 · personas and jobs -->
-`[?]` → `people/personas.html`
+
+Three personas built from a two-respondent interview, one marked primary: **a mid UI/UX designer
+who arrives with a named component to build**, trusts only work that shipped, and cannot re-find his
+own saves. The second persona has none of those problems and is kept on purpose — she is the user
+this product would fail to attract. **The third, the author who deconstructs their own work, is
+entirely `[?]`**: the interview never asked about publishing, so the supply side of the product has
+no evidence behind it at all. That is the project's main risk, and the file says so rather than
+covering it.
+
+The jobs, the coverage matrix and the three MVP jobs follow from the same evidence, and so does the
+cut list — including the features the brief assumed and the matrix could not justify.
+
+- [`people/personas.md`](./people/personas.md) — personas, the honesty audit, and what we still do
+  not know about people
+- [`people/jtbd.md`](./people/jtbd.md) — jobs in "when / I want / so that" form, the jobs × personas
+  × features matrix, the MVP core and the cuts
+- [`people/personas.html`](./people/personas.html) — the same, as a page you can hand to someone
 
 ## Structure
 

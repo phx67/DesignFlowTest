@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loupe · People — personas, jobs, the coverage matrix</title>
+<style>
+  :root{
+    --bg:#0e0f12; --panel:#15171c; --line:#24272f; --line-soft:#1c1f26;
+    --ink:#e6e8ee; --ink-dim:#9aa1b0; --ink-faint:#6b7280;
+    --accent:#7dd3a0; --warn:#e0b050; --gap:#8b93ff;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+  header.top{border-bottom:1px solid var(--line);padding:56px 0 28px;margin-bottom:8px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  .sub{color:var(--ink-dim);max-width:70ch;margin:0 0 18px}
+  .meta{font:12px/1.7 var(--mono);color:var(--ink-faint)}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+  nav.toc a{font:12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);
+    border-radius:999px;padding:8px 14px}
+  nav.toc a:hover{color:var(--ink);border-color:var(--ink-faint)}
+  section{padding-top:56px}
+  h2{font:12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+     color:var(--accent);margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  h3{font-size:19px;margin:38px 0 12px;letter-spacing:-.01em}
+  h4{font-size:15px;margin:26px 0 10px;color:var(--ink-dim)}
+  p{max-width:76ch}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:16px 0 8px;
+    background:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+  th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+  th{font:11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+     color:var(--ink-faint);background:#12141a;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td strong{color:#fff}
+  .num{text-align:center;font:13px/1 var(--mono);width:44px}
+  .s3{text-align:center;font:14px/1 var(--mono);color:var(--accent);font-weight:700}
+  .s1{text-align:center;font:13px/1 var(--mono);color:var(--ink-faint)}
+  code,.q{font-family:var(--mono);font-size:.9em}
+  .q{color:var(--gap);border:1px solid #2f3260;border-radius:4px;padding:1px 5px;white-space:nowrap}
+  .unv{color:var(--warn);font-family:var(--mono);font-size:.85em}
+  a{color:#8ab4f8}
+  ol,ul{max-width:76ch}
+  li{margin-bottom:10px}
+  .callout{border:1px solid #2c4a3a;background:#131a16;padding:18px 22px;
+    border-radius:10px;margin:22px 0}
+  .callout.warn{border-color:#4a3d20;background:#1a1710}
+  .callout.gap{border-color:#2f3260;background:#141525}
+  .callout p{margin:0;max-width:74ch}
+  .callout p + p{margin-top:10px}
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);
+    font:12px/1.8 var(--mono);color:var(--ink-faint)}
+
+  /* people-specific */
+  .persona{border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    padding:26px 28px;margin:22px 0}
+  .persona.primary{border-color:#2c4a3a;box-shadow:inset 3px 0 0 var(--accent)}
+  .persona.void{border-color:#2f3260;box-shadow:inset 3px 0 0 var(--gap)}
+  .persona h3{margin-top:0}
+  .badge{display:inline-block;font:10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 9px;border-radius:4px;vertical-align:middle;margin-left:10px}
+  .b-primary{background:#14261c;color:var(--accent);border:1px solid #2c4a3a}
+  .b-secondary{background:#1a1c22;color:var(--ink-faint);border:1px solid var(--line)}
+  .b-void{background:#141525;color:var(--gap);border:1px solid #2f3260}
+  .persona dl{margin:18px 0 0;display:grid;grid-template-columns:130px 1fr;gap:2px 18px}
+  .persona dt{font:11px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);padding-top:10px}
+  .persona dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+  .persona dd:last-of-type{border-bottom:none}
+  .persona ul{margin:0;padding-left:18px}
+  blockquote{margin:18px 0 0;padding:14px 18px;border-left:2px solid var(--accent);
+    background:#12141a;border-radius:0 8px 8px 0;font-size:17px}
+  blockquote cite{display:block;font:11px/1.6 var(--mono);color:var(--ink-faint);
+    font-style:normal;margin-top:8px}
+  .uk{font-style:normal}
+  .src{font:11px/1.5 var(--mono);color:var(--ink-faint)}
+  .job{border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    padding:24px 26px;margin:18px 0}
+  .job .when{font-size:19px;line-height:1.45;margin:0;max-width:70ch}
+  .job .when b{color:var(--accent);font-weight:600}
+  .strike{color:var(--ink-faint);text-decoration:line-through}
+  @media (max-width:640px){
+    h1{font-size:26px} .wrap{padding:0 16px 64px}
+    .persona dl{grid-template-columns:1fr;gap:0}
+    .persona dt{padding-top:16px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>People — personas, jobs, the coverage matrix</h1>
+  <p class="sub"><strong>Loupe</strong> — a community discovery site for designers where every
+  published work arrives with its author's own breakdown. This page is who the product is for and
+  what they are trying to get done. Personas here are a <em>synthesis of research, not an act of
+  authorship</em>: every block links back to a place in the evidence, and where there is no data it
+  says <span class="q">[?]</span> instead of something plausible.</p>
+  <p class="meta">Phase 2b · <code>/dsf:users</code> · 2026-08-07 · evidence: a 2-respondent
+  interview + <code>research/research.md</code> · source of record:
+  <code>people/personas.md</code>, <code>people/jtbd.md</code></p>
+  <nav class="toc">
+    <a href="#evidence">Evidence base</a>
+    <a href="#personas">Personas</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#matrix">Matrix</a>
+    <a href="#core">MVP core</a>
+    <a href="#critique">Self-critique</a>
+    <a href="#rerun">After re-research</a>
+    <a href="../research/research.html">← Research</a>
+  </nav>
+</header>
+
+<!-- ============================ EVIDENCE ============================ -->
+<section id="evidence">
+<h2>Evidence base and its limits</h2>
+
+<p>Two origins, cited separately throughout. <strong>[INT]</strong> — a scripted interview with
+<strong>two</strong> respondents, <strong>Валя</strong> (graphic designer, 6 years) and
+<strong>Даня</strong> (mid UI/UX designer, small outsourcing studio); every quote is verbatim, in
+the original Ukrainian. <strong>[RES]</strong> — the phase-2a market study.</p>
+
+<div class="callout warn">
+<p><strong>Three limits, stated before anything is built on them.</strong></p>
+<p><strong>1 · n = 2.</strong> Two respondents, both in the Ukrainian market, one graphic and one
+UI/UX. No in-house product designer, no lead, nobody outside this market.</p>
+<p><strong>2 · The interview never asks about supply.</strong> Its stated goal is to understand how
+people <em>search, save and use</em> references. Nobody was asked whether they would publish their
+own work with a breakdown. <strong>The project's main risk is therefore still carried entirely by
+<span class="q">[?]</span></strong>, and Persona 3 is a hypothesis with no interview behind it.</p>
+<p><strong>3 · A deliberate deviation.</strong> The template asks for a quote from a review or forum
+post found during research. These quotes come from a primary interview instead — stronger evidence,
+not weaker.</p>
+</div>
+</section>
+
+<!-- ============================ PERSONAS ============================ -->
+<section id="personas">
+<h2>Personas — split by behavior, not demographics</h2>
+
+<p>Three personas. Exactly one is primary. <strong>21 <span class="q">[?]</span> marks stand across
+this set</strong> — they are the honest output, not an unfinished one.</p>
+
+<article class="persona primary">
+  <h3>1 · «Той, хто перевіряє, чи це взагалі можна побудувати»<span class="badge b-primary">primary</span></h3>
+  <p><strong>Why primary:</strong> he is the brief's user, matched item for item — "a designer with
+  a task on the desk". He describes exactly that behaviour unprompted, and confirms all three of the
+  brief's problems, while Persona 2 denies two of them. If the product is built for one of these two
+  people, the evidence says it is this one. <span class="q">[?]</span> The choice is made over
+  n&nbsp;=&nbsp;2 — see the self-critique.</p>
+
+  <dl>
+    <dt>Context</dt>
+    <dd>Mid UI/UX designer in a small outsourcing studio, switching between tasks constantly.
+      Structure first, style second: <span class="uk">«На початку проєкту - більше рішення. Мені
+      важливо зрозуміти як інші вирішують цю ж задачу, які патерни працюють. А стиль - це вже потім,
+      коли структура зрозуміла.»</span> <span class="src">[INT · Даня · B4 Q3]</span></dd>
+
+    <dt>Jobs</dt>
+    <dd><ul>
+      <li>Find how a <strong>named component</strong> is solved in shipped products — enters by
+        component name, not by property: <span class="uk">«Mobbin зручний тим, що там є патерни:
+        можна відфільтрувати суто “екран реєстрації” або “кошик”»</span>
+        <span class="src">[INT · Даня · B1 Q6]</span></li>
+      <li>Take a solution apart well enough to rebuild it: <span class="uk">«тут вони використали
+        такий інтерліньяж і таку тінь, щоб створити об'єм <strong>з певною ціллю</strong>»</span>
+        <span class="src">[INT · Даня · B4 Q1]</span></li>
+      <li>Reach agreement with a client — <span class="uk">«це фундамент для співпорозуміння з
+        клієнтом»</span> <span class="src">[INT · Даня · B1 Q2]</span></li>
+      <li>Defend a decision to his design lead <strong>fast</strong>: organises saves
+        <span class="uk">«так, щоб за 10 секунд можна було знайти приклад для аргументації своєї
+        думки перед дизайн лідом»</span> <span class="src">[INT · Даня · B2 Q5]</span></li>
+    </ul></dd>
+
+    <dt>Pains</dt>
+    <dd><ul>
+      <li><strong>Cannot re-find his own saves.</strong> <span class="uk">«Постійно! Пам'ятаю, що
+        бачив круту анімацію меню, а де вона… фіг знає. Злюся, витрачаю час на повторний
+        пошук»</span> · <span class="uk">«90% моїх збережень це мертвий груз.»</span>
+        <span class="src">[INT · Даня · B2 Q9, B3 Q3]</span></li>
+      <li><strong>Beautiful work that is not real work.</strong> <span class="uk">«славнозвісний
+        dribbble-дизайн… Ти витрачаєш час на сміття, яке гарне, але пусте всередині.»</span>
+        <span class="src">[INT · Даня · B3 Q1]</span> — the brief's third problem, unprompted.</li>
+      <li>Folders stop working past a certain size <span class="src">[INT · Даня · B2 Q8]</span>;
+        the Pinterest rabbit hole <span class="src">[INT · Даня · B3 Q2]</span>.</li>
+      <li><strong>No tool fits.</strong> <span class="uk">«Eagle крутий, але він десктопний,
+        <strong>а я часто шукаю з телефону в дорозі</strong>.»</span>
+        <span class="src">[INT · Даня · B3 Q4]</span> — this line changed the brief; see below.</li>
+    </ul></dd>
+
+    <dt>Trust</dt>
+    <dd><strong>Convinces:</strong> proof the thing shipped — <span class="uk">«там реальні
+      скріншоти працюючих аппок, а не просто картинки для лайків»</span>, <span class="uk">«Не
+      концепти, а живі додатки»</span> <span class="src">[INT · Даня · B1 Q5, B2 Q1]</span>.
+      <strong>Scares off:</strong> the unbuildable pretty picture.
+      Whether a breakdown <em>written by another designer</em> is trusted or suspected of flattering
+      its author is <span class="q">[?]</span> — <strong>hypothesis:</strong> the source link to the
+      live product does the trusting.</dd>
+  </dl>
+
+  <blockquote>«Корисний той реф, який можна вкрасти як митець.»
+    <cite>[INT · Даня · B4 Q1]</cite></blockquote>
+</article>
+
+<article class="persona">
+  <h3>2 · «Та, хто збирає концепт із фрагментів»<span class="badge b-secondary">secondary</span></h3>
+  <p><strong>Why not primary — and why she stays in the set:</strong> she does not have the brief's
+  problems. Designing for her means designing against a non-problem. She is kept because she shares
+  one strong job with Persona 1 — client alignment — and because <strong>she is the closest thing we
+  have to the user this product would fail to attract</strong>.</p>
+
+  <dl>
+    <dt>Context</dt>
+    <dd>Graphic designer, six years, across studios and companies. Works fast and by reuse:
+      <span class="uk">«Мій девіз “крадійка-художниця”. Ти постійно працюєш в швидкому темпі тому не
+      маєш багато часу.»</span> <span class="src">[INT · Валя · B1 Q2]</span></dd>
+
+    <dt>Jobs</dt>
+    <dd><ul>
+      <li>Assemble a concept out of fragments <span class="src">[INT · Валя · B1 Q2]</span></li>
+      <li>Reach a shared picture with the client <span class="src">[INT · Валя · B1 Q2]</span></li>
+      <li>Build up her eye — saving is memory, not storage: <span class="uk">«треба зберегти щоб
+        воно закріпилось в пам'яті»</span> <span class="src">[INT · Валя · B3 Q3]</span></li>
+      <li>Work a board <strong>together with a colleague</strong> <span class="src">[INT · Валя ·
+        B2 Q5]</span> — the only mention of collaboration in the whole transcript.</li>
+    </ul></dd>
+
+    <dt>Pains</dt>
+    <dd><ul>
+      <li>Losing her direction after a long search <span class="src">[INT · Валя · B4 Q4]</span>;
+        time lost to wrong references rather than missing ones <span class="src">[INT · Валя ·
+        B3 Q2]</span>.</li>
+      <li><strong>She reports no search pain and no retrieval pain at all.</strong>
+        <span class="uk">«Напевно ні… Зараз ні, бо я настільки звикла до цього інструменту»</span> ·
+        <span class="uk">«мені вистачає пінтерест»</span> <span class="src">[INT · Валя · B3 Q1,
+        B2 Q9, B3 Q4]</span>. <em>This is the finding, not an omission.</em></li>
+    </ul></dd>
+
+    <dt>Trust</dt>
+    <dd><strong>Convinces:</strong> a reference showing how beauty and function hold together; and
+      other people — <span class="uk">«Я показую близьким, і я показую своїм колегам»</span>
+      <span class="src">[INT · Валя · B4 Q1, B4 Q2]</span>.
+      <strong>Scares off:</strong> <span class="q">[?]</span> — never asked.
+      <strong>Hypothesis:</strong> friction at entry; a product asking her to fill fields before she
+      can look would lose her at the first screen.</dd>
+  </dl>
+
+  <blockquote>«Мій девіз “крадійка-художниця”.»<cite>[INT · Валя · B1 Q2]</cite></blockquote>
+</article>
+
+<article class="persona void">
+  <h3>3 · «Автор, який розбирає власну роботу»<span class="badge b-void">entirely [?]</span></h3>
+  <p><strong>Why this persona exists with no evidence:</strong> the brief names the author as the
+  secondary user and <strong>the product cannot exist without them</strong>. The interview contains
+  nothing about this person, because its script never asks about publishing. Every block below is a
+  hypothesis. It is written out rather than omitted so the gap is impossible to miss.</p>
+
+  <dl>
+    <dt>Context</dt>
+    <dd><span class="q">[?]</span> <strong>Hypothesis:</strong> the same designer as Persona 1, on
+      the other side of the transaction, at the moment a project ships and is about to become
+      portfolio material.</dd>
+
+    <dt>Jobs</dt>
+    <dd><span class="q">[?]</span> — <strong>but no longer evidence-free, updated 2026-08-07.</strong>
+      <ul>
+        <li>A practitioner states the payoff in the brief's own terms: a post is
+          <strong>"a lasting record… also a way to bring a few extra eyeballs to your work"</strong>
+          — type designer David Jonathan Ross, soliciting submissions.
+          <span class="src">[RES · Re-research · Q1] · djr-fontsinuse-submissions.png</span>
+          <br><strong>Why the <span class="q">[?]</span> survives:</strong> he asks for <em>a use</em>,
+          not a breakdown, and as a foundry owner he benefits from the submission. The right motive
+          from the wrong mouth.</li>
+        <li>A mechanic absent from the benchmark: <strong>the beneficiary of the metadata subsidises
+          the contributor</strong> — a free font issue per submitted use, two if the font had no
+          prior uses. <strong>Loupe has no identified equivalent beneficiary —
+          <span class="q">[?]</span></strong>.</li>
+      </ul></dd>
+
+    <dt>Pains</dt>
+    <dd><span class="q">[?]</span> <strong>Hypothesis:</strong> writing a breakdown competes with the
+      next paid project.</dd>
+
+    <dt>Trust</dt>
+    <dd><span class="q">[?]</span> — both halves unknown.</dd>
+
+    <dt>Quote</dt>
+    <dd><span class="q">[?]</span> — <strong>no verbatim line exists for this person. Nothing is
+      composed to fill the slot.</strong></dd>
+  </dl>
+</article>
+
+<h3>Merged personas</h3>
+<p><strong>None.</strong> Валя and Даня were tested for merging and are <strong>not</strong> one
+persona: different jobs — she assembles a concept out of fragments, he retrieves a solution to a
+named component; different pains — he cannot re-find his saves and says so with feeling, she reports
+that the same pain does not exist for her. They share exactly one job, client alignment, which is
+why that job is the most strongly evidenced in the whole set.</p>
+
+<h3>Contradiction with the brief — resolved 2026-08-07</h3>
+<div class="callout">
+<p><strong>What it was.</strong> The brief read "Mobile: browsing and saving to a collection, nothing
+else." The interview said the opposite: <span class="uk">«Eagle крутий, але він десктопний, а я
+часто шукаю з телефону в дорозі»</span> — the primary persona <strong>rejected a tool for not
+letting him search on a phone</strong>. Searching, not browsing.</p>
+<p><strong>Resolution.</strong> Routed to the designer under constitution rule 12; they chose to
+<strong>update the spec, narrowly</strong>. The phone now gets <strong>search, opening a work,
+reading its breakdown, and saving</strong>. Authoring and heavy side-by-side facet comparison stay
+desktop.</p>
+<p><strong>Still open:</strong> whether the phone needs the <strong>full facet filter</strong> is
+<span class="q">[?]</span>, carried to <strong>phase 8</strong> — one respondent, one sentence, and
+it does not distinguish <em>finding</em> from <em>filtering</em>.</p>
+</div>
+
+<h3>What we do not know about people</h3>
+<ol>
+  <li><strong>Would either respondent publish their own work with a breakdown, and for what?</strong>
+    Never asked. <em>The project's main risk and the largest gap in the file.</em></li>
+  <li>How much time is an author willing to spend on one breakdown before abandoning it?</li>
+  <li>Does a designer <strong>trust a breakdown written by another designer</strong>, or discount it
+    as flattering? Bears directly on whether the "why" is read or skipped.</li>
+  <li>Does Persona 1 need the <strong>full facet filter</strong> on mobile, or only finding and
+    reading? <em>The narrower half is now settled; filtering belongs to phase 8.</em></li>
+  <li>Would a visible completeness state attract or deter an author?</li>
+  <li>Does Persona 2 care about construction values at all? She never mentions colour, type or
+    spacing — but she was never asked.</li>
+  <li>Does the "argue to the lead in 10 seconds" job generalise beyond one respondent?</li>
+  <li><strong>Is client alignment a job this product should serve at all?</strong> It is the
+    best-evidenced job in the interview and it is absent from the brief entirely.</li>
+</ol>
+</section>
+
+<!-- ============================ JOBS ============================ -->
+<section id="jobs">
+<h2>Jobs — when / I want / so that</h2>
+
+<p>Every job names its persona and the data it grew out of. <strong>If a feature name appears inside
+"I want", it is not a job</strong> — it is a feature. A job backed by nothing lives in
+<a href="#hypo">Hypotheses</a>, not in the tables.</p>
+
+<h3>Main job — exactly one</h3>
+<div class="job">
+  <p class="when"><b>When</b> I have a specific component to design and no confidence that my own
+  guess at how to build it is right, <b>I want</b> to see how people who already solved that same
+  thing made their decisions and why they made them, <b>so that</b> I can build my own version from
+  reasons instead of from eyeballing a picture.</p>
+  <p class="src" style="margin-top:14px">Persona 1 · [INT · Даня · B1 Q3, B4 Q1, B4 Q3]</p>
+</div>
+
+<div class="callout gap">
+<p><strong>Gate refinement, 2026-08-07 — read this before designing anything for intent.</strong>
+Intent is a <strong>value and a job</strong> — the reader comes away understanding <em>why</em> —
+and <strong>not a mandatory field</strong>. It is carried <strong>through the material of the work
+itself</strong>, and it is <strong>easy, optional and progressive</strong>. <strong>No compulsory
+"justify your choice" form exists anywhere in this product.</strong> What form intent takes and how
+much weight it carries is <span class="q">[?]</span>, owned by <strong>phase 3</strong>.</p>
+</div>
+
+<h3>Related jobs — on the way to the main one</h3>
+<div class="scroll"><table>
+<thead><tr><th style="width:44px">#</th><th>When… I want… so that…</th><th style="width:120px">Persona</th><th style="width:34%">Source</th></tr></thead>
+<tbody>
+<tr><td class="num">R1</td>
+  <td><strong>When</strong> the thing I have to build already has a name — a sign-up screen, a cart —
+    <strong>I want</strong> to get straight to other people's versions of that same named thing,
+    <strong>so that</strong> I don't spend the first ten minutes describing something I can already
+    name.</td>
+  <td>P1</td>
+  <td><span class="uk">«можна відфільтрувати суто “екран реєстрації” або “кошик”»</span>
+    <span class="src">[INT · Даня · B1 Q6]</span>. Confirms <strong>H7</strong> of the research,
+    which until this interview had no artifact.</td></tr>
+<tr><td class="num">R2</td>
+  <td><strong>When</strong> something looks like the answer, <strong>I want</strong> to know it
+    actually shipped and survived contact with real users before I commit time to it,
+    <strong>so that</strong> I don't rebuild something that was never buildable.</td>
+  <td>P1</td>
+  <td><span class="uk">«реальні скріншоти працюючих аппок»</span> ·
+    <span class="uk">«Не концепти, а живі додатки»</span> · the failure it guards against:
+    <span class="uk">«гарне, але пусте всередині»</span>
+    <span class="src">[INT · Даня · B1 Q5, B2 Q1, B3 Q1]</span></td></tr>
+<tr><td class="num">R3</td>
+  <td><strong>When</strong> I know I have seen the solution before, <strong>I want</strong> to arrive
+    back at it without a hunt, <strong>so that</strong> the time I spent finding it the first time
+    isn't spent twice.</td>
+  <td>P1 · <strong>not P2</strong></td>
+  <td><span class="uk">«витрачаю час на повторний пошук»</span> ·
+    <span class="uk">«90% моїх збережень це мертвий груз»</span>
+    <span class="src">[INT · Даня · B2 Q9, B3 Q3, B2 Q8]</span>.
+    P2 explicitly denies this job <span class="src">[INT · Валя · B2 Q9]</span>.</td></tr>
+<tr><td class="num">R4</td>
+  <td><strong>When</strong> a client and I are using the same word for two different pictures,
+    <strong>I want</strong> to put something concrete between us early, <strong>so that</strong> we
+    walk into the mockup already agreeing on the direction.</td>
+  <td><strong>P1 and P2</strong><br><span class="src">the only shared job</span></td>
+  <td><span class="uk">«фундамент для співпорозуміння з клієнтом»</span> ·
+    <span class="uk">«референсами можна досягти спільного бачення ідеї»</span>
+    <span class="src">[INT · Даня · B1 Q2, B2 Q2] + [INT · Валя · B1 Q2]</span></td></tr>
+<tr><td class="num">R5</td>
+  <td><strong>When</strong> my lead questions a decision I have already made, <strong>I want</strong>
+    the reasoning behind it to become obvious to them in seconds, <strong>so that</strong> the
+    conversation is about the work rather than about whether I am to be trusted.</td>
+  <td>P1</td>
+  <td><span class="uk">«за 10 секунд можна було знайти приклад для аргументації своєї думки перед
+    дизайн лідом»</span> <span class="src">[INT · Даня · B2 Q5]</span> — n = 1.</td></tr>
+</tbody></table></div>
+
+<div class="callout warn">
+<p><strong>R4 is the best-evidenced job in the whole set and the brief does not contain it.</strong>
+Two of two respondents raised client alignment unprompted, in different words, in the first block.
+It is flagged, carried into the matrix, and put to the designer rather than quietly used to justify
+scope.</p>
+</div>
+
+<h3>Emotional jobs</h3>
+<div class="scroll"><table>
+<thead><tr><th style="width:44px">#</th><th>Job</th><th style="width:120px">Persona</th><th style="width:40%">Source</th></tr></thead>
+<tbody>
+<tr><td class="num">E1</td><td>To come out of a search feeling the time bought something, instead of
+  feeling robbed by it.</td><td>P1</td>
+  <td><span class="uk">«витрачаєш час на сміття»</span> · <span class="uk">«та сама кроляча нора
+  pinterest»</span> <span class="src">[INT · Даня · B3 Q1, B3 Q2]</span></td></tr>
+<tr><td class="num">E2</td><td>To feel that saving something is making the eye better, not making the
+  folder bigger.</td><td>P2</td>
+  <td><span class="uk">«щоб воно закріпилось в пам'яті… і влучно можу застосувати»</span>
+  <span class="src">[INT · Валя · B3 Q3]</span>. Against P1's "мертвий груз", the same act produces
+  opposite feelings.</td></tr>
+<tr><td class="num">E3</td><td>To stay oriented while looking, instead of surfacing an hour later
+  having lost the thread.</td><td>P2 · P1 adjacent</td>
+  <td><span class="uk">«було відчуття що зовсім не туди пішла»</span>
+  <span class="src">[INT · Валя · B4 Q4, B3 Q2]</span></td></tr>
+</tbody></table></div>
+
+<h3>Social jobs</h3>
+<div class="scroll"><table>
+<thead><tr><th style="width:44px">#</th><th>Job</th><th style="width:120px">Persona</th><th style="width:40%">Source</th></tr></thead>
+<tbody>
+<tr><td class="num">S1</td><td>To be read by the lead as a designer whose decisions have grounds,
+  not preferences.</td><td>P1</td>
+  <td>The ten-second argument is organised <em>for an audience of one specific person</em>
+  <span class="src">[INT · Даня · B2 Q5]</span>. <strong>The audience is confirmed; the wish to be
+  <em>seen</em> a certain way is a reading of his motive, not his words.</strong></td></tr>
+<tr><td class="num strike">S2</td>
+  <td class="strike">To be legible to a client as someone who understood the request.</td>
+  <td>—</td>
+  <td><strong>Withdrawn 2026-08-07 by the self-critique.</strong> Both respondents describe a
+  <em>practical mechanism</em> — a reference makes agreement possible — and neither says anything
+  about how they wish to be perceived. The social framing was invented. <strong>The functional job
+  survives untouched as R4.</strong></td></tr>
+<tr><td class="num">S3</td><td>To do the looking-and-collecting <em>with</em> peers rather than
+  alone.</td><td>P2 only</td>
+  <td><span class="uk">«ми разом збираємо ці дошки, кожен додає референси»</span>
+  <span class="src">[INT · Валя · B2 Q5]</span> — the only mention of collaboration in the entire
+  transcript, and it belongs to the persona the product is <strong>not</strong> built for.</td></tr>
+</tbody></table></div>
+
+<h3 id="hypo">Hypotheses — jobs with no data behind them</h3>
+<div class="callout gap">
+<p><strong>Every job of Persona 3 lives here.</strong> The interview never asks about publishing, so
+the supply side of this product has <strong>no evidenced job at all</strong>. This is the project's
+main risk, kept visible rather than promoted into the tables above.</p>
+</div>
+<div class="scroll"><table>
+<thead><tr><th style="width:52px">#</th><th>Job</th><th style="width:26%">What would confirm it</th><th style="width:26%">Where to look</th></tr></thead>
+<tbody>
+<tr><td class="num">HJ1</td><td><strong>When</strong> a project of mine ships, <strong>I want</strong>
+  proof of my craft that survives inspection, <strong>so that</strong> the work argues for me when I
+  am not in the room. <span class="src">(P3)</span></td>
+  <td>A designer stating, unprompted, that a shot alone under-represents their work — and that they
+  have written a breakdown for free to fix that.</td>
+  <td>Behance pages where authors hand-build structure the platform does not give them; design case
+  studies; Fonts In Use contributor pages. <strong>Partially advanced 2026-08-07 —
+  see <a href="#rerun">After re-research</a>.</strong></td></tr>
+<tr><td class="num">HJ2</td><td><strong>When</strong> I would have to build a case-study page by hand
+  anyway, <strong>I want</strong> that page to fall out of describing the work once,
+  <strong>so that</strong> I pay the cost once instead of twice. <span class="src">(P3)</span></td>
+  <td>Evidence that designers rebuild the same breakdown separately for a portfolio.</td>
+  <td>Portfolio threads; the structure of existing case studies.</td></tr>
+<tr><td class="num">HJ3</td><td><strong>When</strong> I read someone else's account of their own work,
+  <strong>I want</strong> to tell craft from flattery, <strong>so that</strong> I copy a decision
+  rather than a boast. <span class="src">(P1, reading side)</span></td>
+  <td>A designer saying they discount self-authored explanations, or that a live source link is what
+  makes them believe one.</td>
+  <td>Designer forums; comments under case studies. <strong>Searched 2026-08-07 —
+  nothing found.</strong></td></tr>
+<tr><td class="num">HJ4</td><td><strong>When</strong> I am assembling a look, <strong>I want</strong>
+  the construction values, not just the picture. <span class="src">(P2)</span></td>
+  <td>P2 naming colour, type or spacing as something she looks up. She never does — but she was never
+  asked.</td><td>A follow-up question; graphic-designer communities as a proxy.</td></tr>
+<tr><td class="num">HJ5</td><td><strong>When</strong> my entry is visibly incomplete,
+  <strong>I want</strong> that to read as work in progress rather than as low quality,
+  <strong>so that</strong> publishing early does not cost me standing.
+  <span class="src">(P3)</span></td>
+  <td>Evidence that a visible completeness state attracts rather than deters.</td>
+  <td>Discogs "Needs Vote" discussions; Wikipedia stub-tag debates.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============================ MATRIX ============================ -->
+<section id="matrix">
+<h2>Matrix — jobs × personas × features</h2>
+
+<p>Cell: importance <strong>1–3</strong> · what shows it. Unknown importance is
+<span class="q">[?]</span>, <strong>never an averaged number</strong>. Persona 3's column is almost
+entirely <span class="q">[?]</span> — <em>and that is the finding</em>: the interview never asks
+about publishing, so the supply side has no measured importance for any job.</p>
+
+<div class="scroll"><table style="min-width:1000px">
+<thead><tr>
+  <th style="width:15%">Job</th><th class="num">P1</th><th class="num">P2</th><th class="num">P3</th>
+  <th style="width:26%">Feature — what closes it</th><th style="width:30%">Competitors — already closed?</th>
+</tr></thead>
+<tbody>
+<tr><td><strong>Main</strong> — build from reasons, not by eye</td>
+  <td class="s3">3</td><td class="num"><span class="q">[?]</span></td><td class="num"><span class="q">[?]</span></td>
+  <td>The breakdown travelling with the work: values <strong>plus the author's intent</strong>,
+    intent carried through the case material itself</td>
+  <td><strong>Partly</strong> — Refero Styles auto-generates the values for 2,000+ sites;
+    <strong>nobody carries the intent</strong> (H1)</td></tr>
+<tr><td><strong>R1</strong> — enter by the name of the task</td>
+  <td class="s3">3</td><td class="num"><span class="q">[?]</span></td><td class="num"><span class="q">[?]</span></td>
+  <td>Task taxonomy as the entry, facets refining inside it</td>
+  <td><strong>Yes</strong> — Mobbin and Refero; Mobbin additionally paywalls it</td></tr>
+<tr><td><strong>R2</strong> — know it is real without opening it</td>
+  <td class="s3">3</td><td class="num"><span class="q">[?]</span></td><td class="num"><span class="q">[?]</span></td>
+  <td>Reality status on the card + a link to the live product</td>
+  <td><strong>No</strong> — Mobbin guarantees it by sourcing rather than declaring; Dribbble's
+    studied shot admits "concept" in its fourth paragraph</td></tr>
+<tr><td><strong>R3</strong> — get back to what I already found</td>
+  <td class="s3">3</td><td class="s1">1</td><td class="num"><span class="q">[?]</span></td>
+  <td>Collections whose contents stay searchable by the breakdown fields</td>
+  <td><strong>Partly, and narrower than first claimed.</strong> <em>Corrected 2026-08-07:</em> Eagle
+    already searches a saved library by colour, tag, rating, format and by image — it is
+    <strong>desktop-only</strong>, which is exactly why the primary persona rejected it. What no
+    product does is make <strong>a public pool searchable by properties its authors declared</strong>,
+    on a phone.</td></tr>
+<tr><td><strong>R4</strong> — one shared picture with the client</td>
+  <td class="s3">3</td><td class="s3">3</td><td class="num"><span class="q">[?]</span></td>
+  <td><span class="q">[?]</span> <strong>Nothing in the brief.</strong> Carried to phase 3.</td>
+  <td><strong>Partly</strong> — Savee boards, Are.na channels and Pinterest serve it incidentally,
+    none by design</td></tr>
+<tr><td><strong>R5</strong> — defend a decision fast</td>
+  <td class="s3">3</td><td class="num"><span class="q">[?]</span></td><td class="num"><span class="q">[?]</span></td>
+  <td>Same feature as Main — the intent, in quotable form</td>
+  <td><strong>No</strong> — Awwwards publishes jury <em>scores</em>, not reasons</td></tr>
+<tr><td><strong>E1</strong> — the time bought something</td>
+  <td class="s3">3</td><td class="s1">2</td><td class="num"><span class="q">[?]</span></td>
+  <td>Few relevant results instead of a feed as the main screen</td>
+  <td><strong>No</strong> — market pattern 1: the feed is the default surface</td></tr>
+<tr><td><strong>E2</strong> — the eye grows, not the folder</td>
+  <td class="s1">1</td><td class="s3">3</td><td class="num"><span class="q">[?]</span></td>
+  <td>Collections</td>
+  <td><strong>Yes</strong> — Pinterest fully satisfies her</td></tr>
+<tr><td><strong>E3</strong> — stay oriented</td>
+  <td class="s1">2</td><td class="s3">3</td><td class="num"><span class="q">[?]</span></td>
+  <td>Entering by a named task bounds the session</td>
+  <td><strong>No</strong> — the feed is engineered against it</td></tr>
+<tr><td><strong>S1</strong> — read as grounded, not opinionated</td>
+  <td class="s3">3</td><td class="num"><span class="q">[?]</span></td><td class="num"><span class="q">[?]</span></td>
+  <td>Same feature as Main — the intent</td><td><strong>No</strong></td></tr>
+<tr><td class="strike"><strong>S2</strong> — legible to the client</td>
+  <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+  <td colspan="2">Withdrawn 2026-08-07 as an unsupported social framing. <strong>The functional half
+    lives on as R4 and loses nothing.</strong></td></tr>
+<tr><td><strong>S3</strong> — collect alongside peers</td>
+  <td class="num"><span class="q">[?]</span></td><td class="s3">3</td><td class="num"><span class="q">[?]</span></td>
+  <td><strong>None</strong> — the brief contains no collaboration</td>
+  <td><strong>Yes</strong> — Are.na channels, Savee boards</td></tr>
+</tbody></table></div>
+
+<p class="src" style="margin-top:14px">No row and no column is empty. P3's column is
+<span class="q">[?]</span> throughout, explained above; the two empty FEATURE cells (R4, S3) are
+findings, not oversights.</p>
+</section>
+
+<!-- ============================ MVP CORE ============================ -->
+<section id="core">
+<h2>MVP core, cuts, and the one uncovered job</h2>
+
+<p>Signed off at the human gate on <strong>2026-08-07</strong>. Read off the matrix: importance 3 for
+the primary persona <strong>and</strong> not closed by the market.</p>
+
+<h3>The three core jobs</h3>
+<ol>
+  <li><strong>Main — build from reasons rather than by eye.</strong> P1 = 3; the market closes
+    <strong>half</strong> of it — Refero Styles already generates the values, nobody carries the
+    intent. So what enters the core is not "a breakdown" but <strong>the intent inside it</strong>,
+    bounded by the gate: a value and a job, <strong>not a mandatory field</strong>, easy / optional /
+    progressive, <strong>no compulsory "justify it" form</strong>. Form and weight:
+    <span class="q">[?]</span> for phase 3.</li>
+  <li><strong>R2 — know it is real before opening it.</strong> P1 = 3; market = <strong>no</strong>.
+    This is success criterion 2 of the brief, stated as a job.</li>
+  <li><strong>R3 — return to what I already found without a hunt.</strong> P1 = 3; market =
+    <strong>partly</strong> — collections are universal, but no product makes a public pool
+    searchable by author-declared properties on a phone.</li>
+</ol>
+
+<p><strong>Not R1</strong>, despite scoring 3: Mobbin and Refero already close it. It stays the
+<em>entry surface</em> (H7, now confirmed), but it is not what this product has to invent.
+<strong>Not R5 / S1:</strong> the same feature closes them as closes Main.
+<strong>Not E1:</strong> a consequence of Main + R1, not a separate thing to build.</p>
+
+<h3>Cut</h3>
+<div class="scroll"><table>
+<thead><tr><th style="width:22%">Feature</th><th style="width:22%">Which job it was assumed to close</th><th>Why it closes nothing</th></tr></thead>
+<tbody>
+<tr><td><strong>Likes</strong></td><td>"a quality signal"</td>
+  <td>No row in the matrix. Popularity as a signal is the one thing the market has tested and failed
+    on R2 — Dribbble. <strong>Cut deliberately, revisit in v2.</strong></td></tr>
+<tr><td><strong>Follow an author</strong></td><td>R3 — returning to what is valuable</td>
+  <td><span class="q">[?]</span> / low for P1. This is retrieval pattern 5, of which the research
+    says plainly it "fails the primary user outright". It serves E2 / S3 — P2's jobs, and P2 is the
+    persona this product is not built for. <strong>Cut deliberately, revisit in v2.</strong></td></tr>
+<tr><td><strong>Column grid as the third breakdown axis</strong></td><td>Main</td>
+  <td>H3: the most complete construction spec on the market publishes density, base unit, max width
+    and radii, and <strong>never</strong> a column grid. <strong>Cut, with a standing
+    <span class="q">[?]</span>: the third axis must be re-named — base unit / density / spacing — in
+    phase 3, and carried into the tokens in phase 6.</strong></td></tr>
+<tr><td><strong>A dedicated side-by-side comparison screen</strong></td>
+  <td>"cannot compare ten examples of one component"</td>
+  <td>Demoted at phase 1; the matrix produces no row that needs it. <strong>Cut</strong> — comparison
+    falls out of the shared fields as a side effect, which no competitor contradicts.</td></tr>
+<tr><td><strong>Tags as a retrieval mechanism</strong></td><td>R1</td>
+  <td>R1 is closed by the task taxonomy, not by tags. <strong>Cut as retrieval</strong>; tags remain
+    optional personal context inside your own collections.</td></tr>
+</tbody></table></div>
+
+<h3>The uncovered job — carried to phase 3, not cut</h3>
+<div class="callout warn">
+<p><strong>R4, one shared picture with the client, is the best-evidenced job in the whole set</strong>
+— 3 for both respondents, raised unprompted by each of them in the first block — <strong>and the
+brief does not contain it.</strong> Its FEATURE cell is empty.</p>
+<p><strong>Gate decision: neither cut nor promoted to a fourth core job.</strong> It stays
+<span class="q">[?]</span> for <strong>phase 3</strong>, where the IA answers one specific question:
+does "a collection you can show a non-designer" fall out of the collections the product already has,
+almost for free? If it does, the job is served without new scope. If it does not, the decision to
+leave it unserved becomes explicit.</p>
+</div>
+</section>
+
+<!-- ============================ CRITIQUE ============================ -->
+<section id="critique">
+<h2>Self-critique — confirmed / hypothesis / invented</h2>
+
+<p>23 statements across <code>personas.md</code> and <code>jtbd.md</code> were classified.
+<strong>Verdict: two real defects, both the same error</strong> — an argument from silence written up
+as if it were a source. Both were corrected in step 6 and the corrections are visible above.</p>
+
+<div class="scroll"><table>
+<thead><tr><th style="width:36%">Statement</th><th style="width:14%">Verdict</th><th>Source or the gap</th></tr></thead>
+<tbody>
+<tr><td>P1 enters by component name; cannot re-find saves; rejects unbuildable work; trusts shipped
+  screenshots; works structure-first</td><td><strong style="color:var(--accent)">confirmed</strong></td>
+  <td>Verbatim across [INT · Даня · B1 Q3, B1 Q5, B1 Q6, B2 Q1, B2 Q8, B2 Q9, B3 Q1, B3 Q3, B4 Q3]</td></tr>
+<tr><td>P2 has no search pain and no retrieval pain; works with a colleague on shared boards</td>
+  <td><strong style="color:var(--accent)">confirmed</strong></td>
+  <td>Asked directly three ways [INT · Валя · B2 Q5, B2 Q9, B3 Q1, B3 Q4]</td></tr>
+<tr><td>Client alignment is held by both respondents</td>
+  <td><strong style="color:var(--accent)">confirmed</strong></td>
+  <td>The strongest evidence in the file — both, unprompted, in block 1</td></tr>
+<tr><td>P1 is the primary persona</td><td><span class="unv">hypothesis</span></td>
+  <td>The match to the brief is checkable and holds. But it is a choice made over <strong>n = 2</strong>,
+    one of whom is a graphic designer. Stated as a decision, not as a finding.</td></tr>
+<tr><td>Everything about Persona 3</td><td><span class="unv">hypothesis</span>, declared</td>
+  <td>The interview never asks about publishing.</td></tr>
+<tr><td>Behance authors hand-draw credit tables → authors <em>want</em> structure</td>
+  <td><span class="unv">hypothesis</span></td>
+  <td>The observation is confirmed by screenshot; <em>the appetite</em> is an inference from it.
+    "Adjacent evidence, not evidence."</td></tr>
+<tr><td><strong>P2 scores 1 on R1 — "never names a component"</strong></td>
+  <td><strong style="color:#e07070">invented</strong></td>
+  <td><strong>Argument from silence.</strong> She was never asked what she enters by; the cell read
+    her <em>not mentioning</em> components as evidence. A <code>1</code> with a citation attached is
+    worse than a <span class="q">[?]</span> — it looks measured. <strong>Corrected to
+    <span class="q">[?]</span>.</strong></td></tr>
+<tr><td>Intent is the part a machine cannot supply (H1)</td><td><span class="unv">hypothesis</span></td>
+  <td>Two independent supports — a market inference and one clause of one sentence. <strong>For the
+    first job of the MVP core, that is thin.</strong></td></tr>
+<tr><td>R5 — defending a decision to a lead in ten seconds</td>
+  <td><strong style="color:var(--accent)">confirmed</strong> for P1 · <span class="unv">hypothesis</span> as a general job</td>
+  <td>n = 1, in an outsourcing studio.</td></tr>
+<tr><td>S1 — "wants to be read as grounded"</td><td><span class="unv">hypothesis</span></td>
+  <td>He said he wants to <em>find an argument fast</em>. That he wants to be <em>seen</em> a certain
+    way is an interpretation of his motive. Plausible, unstated.</td></tr>
+<tr><td><strong>S2 — "wants to be legible to the client"</strong></td>
+  <td><strong style="color:#e07070">invented</strong></td>
+  <td>Same error, one step further. Both respondents describe a practical mechanism; neither says
+    anything about how they wish to be perceived. <strong>Withdrawn.</strong></td></tr>
+<tr><td>"No product makes a saved item's construction searchable"</td>
+  <td><span class="unv">hypothesis</span> → corrected</td>
+  <td>Checked against the twelve products in <code>research.md</code> — but <strong>Eagle, the tool
+    the primary persona actually named and rejected, was not in it.</strong> Checked in step 6 and
+    the claim was narrowed.</td></tr>
+</tbody></table></div>
+
+<h3>The dangerous subset — drives design, stands on <span class="q">[?]</span> or on invention</h3>
+<div class="callout warn">
+<ol style="margin:0">
+  <li><strong>The supply side entirely</strong> (P3, HJ1, HJ2). If no designer will write a
+    breakdown, there is no corpus and nothing else in this file matters.</li>
+  <li><strong>Intent is what the reader actually wants.</strong> This is <strong>MVP core job 1</strong>,
+    just signed off. It rests on one clause from one respondent plus a market inference. If readers
+    only want the values, Refero Styles already wins.</li>
+  <li><strong>Is a self-authored explanation believed?</strong> Decides whether intent is read or
+    skipped — i.e. whether core job 1 pays off even if authors do write it.</li>
+  <li><strong>"P2 is not our user"</strong> — the justification for cutting likes and follow. The
+    evidence for it is solid; an invented cell was propping it up unnecessarily and has been
+    removed.</li>
+  <li><strong>Eagle was unexamined</strong> — the primary persona named a tool, said why he rejected
+    it, and it was missing from the research. <em>Closed in step 6.</em></li>
+</ol>
+</div>
+</section>
+
+<!-- ============================ RE-RESEARCH ============================ -->
+<section id="rerun">
+<h2>After re-research</h2>
+
+<p>Step 6, 2026-08-07. Three questions asked; <strong>two produced findings and one produced a null
+result</strong>, recorded as such rather than quietly filled. Two new captures:
+<code>djr-fontsinuse-submissions.png</code>, <code>eagle-search-filters.png</code>. Full evidence:
+<a href="../research/research.html">research.html</a> → <em>Re-research after personas</em>.</p>
+
+<div class="scroll"><table>
+<thead><tr><th style="width:30%">What changed</th><th style="width:16%">Where</th><th style="width:22%">Because of</th><th><span class="q">[?]</span> dropped?</th></tr></thead>
+<tbody>
+<tr><td>The reputation motive gained its first real evidence — "a lasting record… a way to bring a
+  few extra eyeballs to your work"</td><td><strong>P3 · jobs</strong></td>
+  <td>Q1 — David Jonathan Ross's submission page</td>
+  <td><strong>No.</strong> He solicits <em>a use</em>, not a breakdown, and benefits from the
+    submission. Narrowed, not closed.</td></tr>
+<tr><td>A new supply mechanic: the <em>beneficiary</em> of the metadata pays the contributor — a free
+  font issue per use, two for a font with no prior uses</td><td><strong>P3 · jobs</strong></td>
+  <td>Q1 — a mechanic that appears nowhere in the benchmark</td>
+  <td><strong>No — it opens one.</strong> Loupe has no identified equivalent beneficiary.</td></tr>
+<tr><td><strong>Fonts In Use moderates before publication</strong> — the form shows "Submit for
+  approval" and "Status: private draft (awaiting moderation)"</td>
+  <td>Not a persona change — it lands on the brief's moderation <span class="q">[?]</span> and on H5</td>
+  <td>Q1 — the same capture, read rather than assumed</td>
+  <td><strong>No — it contradicts an assumption.</strong> The one product running on hand-written
+    breakdowns does not hold quality <em>without</em> moderation; it has a moderator. Phase 3 must
+    answer this.</td></tr>
+<tr><td>Optional, progressive intent is confirmed by the shipping analogue: image + title required,
+  description explicitly optional</td><td>Corroborates the MVP gate</td><td>Q1</td>
+  <td><strong>n/a</strong> — decision and evidence agreed independently.</td></tr>
+<tr><td><strong>Eagle entered the evidence base.</strong> Desktop-only, no mobile or web; searches by
+  keyword, colour, tag, folder, rating, format and by image</td>
+  <td><strong>P1 · pains</strong> — his rejection is now verified, not taken on trust</td>
+  <td>Q3 — <a href="https://en.eagle.cool/">en.eagle.cool</a></td>
+  <td><strong>No, but it corrected a claim:</strong> R3 no longer says "nobody makes saved items
+    searchable".</td></tr>
+<tr><td><strong>Nothing found</strong> on whether a self-authored explanation is believed</td>
+  <td>P1 · trust triggers; HJ3</td>
+  <td>Q2 — two primary sources returned 403; search produced an editorial norm, not designer
+    testimony</td>
+  <td><strong>No.</strong> Explicitly a null result, not a gap quietly filled.</td></tr>
+</tbody></table></div>
+
+<p><strong>Gaps 1, 3 and 5 of "What we do not know about people" all survive this pass.</strong>
+Gap 4 was settled separately at the platform gate. <strong>Nothing was dropped without new
+data.</strong></p>
+</section>
+
+<footer>
+  Loupe · phase 2b · <code>/dsf:users</code> · generated from <code>people/personas.md</code> and
+  <code>people/jtbd.md</code><br>
+  Evidence: <code>sources/Interview Script …html</code> (2 respondents) ·
+  <code>research/research.md</code> · 29 captures in <code>research/screens/</code><br>
+  <a href="../index.html">← Project home</a> · <a href="../research/research.html">Research</a>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Interview Script </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="30e58b05-2da9-800b-8138-cae64003069a" class="page sans"><header><h1 class="page-title" dir="auto">Interview Script </h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="32758b05-2da9-8042-a9a4-f735464be243" class="" dir="auto">Валя</h1><p id="32258b05-2da9-807b-920f-e85898ffddd7" class="" dir="auto"><a href="https://drive.google.com/file/d/1a_b0fCOpwEMjqXY-_8PrYjtPco2D3rVc/view?usp=sharing">Відеозапис</a></p><p id="32358b05-2da9-8080-a831-fd976339634e" class="" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">Радості</mark><br/><mark class="highlight-red" data-notion-highlight="red">Болі</mark><br/><mark class="highlight-blue" data-notion-highlight="blue">Ідеї</mark></p><table id="49a2325b-1479-4ecd-99d0-123554875efe" class="simple-table" dir="ltr"><tbody><tr id="755bc071-05cc-4f33-8042-5a81a9c95597" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Goal:</strong></td><td id="Fj?I" class="" style="width:325px">Type goal here</td><td id="TAHg" class=""></td><td id="C[IM" class="">Уточнюючі питання</td></tr><tr id="85b536d2-7f7a-4391-acf9-9d4e7fbcc4cf" dir="ltr"><td id="BOwb" class="" style="width:178px">It&#x27;s important to start with the goal first!</td><td id="Fj?I" class="" style="width:325px">Зрозуміти, як люди зараз шукають, зберігають і використовують візуальні референси, які в них потреби, болі при роботі з такими сервісами.</td><td id="TAHg" class=""></td><td id="C[IM" class=""><strong>“Можеш трохи детальніше розповісти?”<br/><br/>“Чому саме так?”<br/><br/>“А що саме там незручно?”<br/><br/>“Що ти робиш після цього?”</strong></td></tr><tr id="8d0e1c8f-2a00-457b-a520-44f72ee6a106" dir="ltr"><td id="BOwb" class="" style="width:178px"></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""><strong>“Можеш навести приклад?”</strong></td></tr><tr id="2cc44c43-2358-44ff-9b1d-b355404aef01" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Who will be interviewed:</strong></td><td id="Fj?I" class="" style="width:325px">UI/UX дизайнери<br/>графічні дизайнери<br/>ілюстратори або контент-кріейтори, які регулярно збирають візуальні та текстові референси для роботи.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="5e62d44e-3c28-42d2-a472-0954e1c439dd" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Script</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="45954262-131b-49fe-919a-9c0645f31613" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Small-talk</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="a81293a2-757b-4d42-a1ef-7a74e36d38eb" dir="ltr"><td id="BOwb" class="" style="width:178px">Type all the important info you should tell before the start</td><td id="Fj?I" class="" style="width:325px">Привітання та подяка за приділений час.<br/>Коротко про проєкт: «Я розробляю інструмент для зручного зберігання референсів і хочу дізнатися про твій досвід в використанні схожого».<br/>Ремарка: «Тут немає правильних чи неправильних відповідей. Якщо ти не проти то я проведу запис нашої розмови щоб потім міг проаналізувати твої відповіді»</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="ccb3d995-e382-4dd1-bbd6-1348104f3be5" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Block 1 – Знайомство і контекст</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="a866aca8-bbb0-4021-a94e-13b2f6901f33" dir="ltr"><td id="BOwb" class="" style="width:178px">1. Розкажи чим займаєшся?</td><td id="Fj?I" class="" style="width:325px">Я графічна дизайнерка, навчалась на це 4 роки в КНУКімі, після цього прцюю вже як 2 роки в різних дизайн студіях або підприємствах. В цілому як графічний дизайнер на почала працювати вже на другому курсі тому сміливо можу сказати що справжнього досвіду в мене 6 років.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="b4e83114-92eb-4473-a9ab-12669bf7fdf9" dir="ltr"><td id="BOwb" class="" style="width:178px">2. Яку роль відіграють візуальні референси у твоєму робочому процесі?</td><td id="Fj?I" class="" style="width:325px">Ой дуже велику. Мій девіз “крадійка-художниця”. Ти постійно працюєш в швидкому темпі тому не маєш багато часу. <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">Завдяки референсам значно легше розробляти концепт:</mark> ти береш частину тут, частину тут, шматок цієї інфографіки, шматок  там і виходить така спільна картина де все круто. Також <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">референс дуже спрощує комунікацію з клієнтом</mark> бо як би не дивно це було часто люди приходять з запитом “візьми зроби” і нікого не хвилює що <mark class="highlight-red_background" data-notion-highlight="red_background">твоє бачення може кардинально відрізнятись від того чого б хотілось клієнту і це дуже сповільнює процес</mark>, а референсами можна досягти спільного бачення ідеї.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="afeaba82-3dec-4ccd-a11c-cd68048889b4" dir="ltr"><td id="BOwb" class="" style="width:178px">3. Як часто ти шукаєш референси?</td><td id="Fj?I" class="" style="width:325px">Та постійно, це невід’ємна частина моєї роботи.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="c9bef38d-e704-4a37-95a8-dded9d8ff3be" dir="ltr"><td id="BOwb" class="" style="width:178px">4. У яких ситуаціях тобі найбільше потрібні референси?</td><td id="Fj?I" class="" style="width:325px">Напевно, банально, в ситуаціях коли я ще не працювала над таким бо референси менше потрібні там, де ти вже маєш хорошу надивленість або в моєму випадку це напевно друковані видання, візитки. нуу <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">це те де я можу сісти за 2 години це зробити прям от від 0, від ідеї і до здачі до друку просто тому що я багато цим займалась</mark> і в мене вже є певна мапа в голові і бібліотека того як це можна якісно зробити.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="50a88536-5f5c-49c1-82bf-16b81c43f26f" dir="ltr"><td id="BOwb" class="" style="width:178px">5. Де ти зазвичай їх шукаєш? Якщо є офлайн ресурси то мені було б цікаво почути.</td><td id="Fj?I" class="" style="width:325px">я користуюсь behance, я користуюсь… насправді pinterest тому що <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">він тебе виводить на всі ці ресурси і це дуже зручно</mark>. Раніше працювала в бібліотеці і мала постійний досвід коли могла дивитись на різні типи друку, тіснення і насправді це мені доволі сильно знадобилось пізніше.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="60b925fa-0400-4c24-aca2-dd7a6b733437" dir="ltr"><td id="BOwb" class="" style="width:178px">6. Чому саме ці сайти/програми?</td><td id="Fj?I" class="" style="width:325px">В пінтересті ти банально забиваєш “портфоліо 2025”, тобі видаються якісь роботи, які є частинками, перейшовши по посиланню на той самий біхенс ти бачиш повну роботу. все, супер. Тобто замість того щоб <mark class="highlight-red_background" data-notion-highlight="red_background">на біхенсі шукати, відкривати кожен проект, дивитись що тобі потрібно і так далі</mark>, ти просто <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">забиваєш це в пінтерест і швидко знаходиш</mark>. Або ти знаходиш чиїсь особисті cайти, чого звісно в гуглі ти б ніколи не знайшов. Тобто це такий <mark class="highlight-blue_background" data-notion-highlight="blue_background">портал, там ти можеш знайти конкретні роботи dribble, чиїсь сайти-портфоліо, біханс кейси і тд.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="1d9b9fc7-ef87-4f20-8fd0-ed3ff54d81c4" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Block</strong><strong> 2 – Робочий процес</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="26d1aa1c-9586-4315-95ad-0be2bce4071a" dir="ltr"><td id="BOwb" class="" style="width:178px">1. Які інструменти або платформи для пошуку референсів ти використовуєш найчастіше?</td><td id="Fj?I" class="" style="width:325px">окрім pinterest насправді дуже мало чого і як я вже казала behance, dribble це вже якщо знайду на пінтерест щось, що веде до інших платформ, а саме пошук - організація то найбільш за все пінтерест, бо він розумієш.. ну <mark class="highlight-blue_background" data-notion-highlight="blue_background">ПОРТАЛ</mark>. <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">ти гуглиш якийсь пост інтаграм і він тебе веде на щось конкретне одразу. тобі не треба гуглити інстаграм і щось самому шукати.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="51b653fe-21fe-439f-891c-ff42fdf102b3" dir="ltr"><td id="BOwb" class="" style="width:178px">2. Цікаво було б послухати про твій останній кейс. Як відбувався процес пошуку референсів в ньому?</td><td id="Fj?I" class="" style="width:325px">ну от банально ця ракушка(розповідала раніше), для цього проекту я зберігла ось такі піни за референси. <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">круто те, що пошукавши якийсь один тобі одразу пропонує щось схоже і воно спрощує підбір референсів</mark>. таким чином воно доволі швидко в голові складається як концепт. я назбирала референсів, скористалась ai-шкою і з референсами та промптами створила дуже гарний постер.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="a46e57da-7f4c-40d3-8547-2d8c697fb6f7" dir="ltr"><td id="BOwb" class="" style="width:178px">3. Як ти зрозумів що знайшов потрібний для себе референс?</td><td id="Fj?I" class="" style="width:325px">відчуваю.. знов таки, напевно це питання про надивленість, бо буває <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">ти побачиш мінімальну текстурку і такий: ”ЦЕ ВОНО, все, я роблю ось так” і в голові воно складається.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="f6b31d7e-8e0d-4def-9f9f-cdab717be442" dir="ltr"><td id="BOwb" class="" style="width:178px">4. Що ти робиш з референсами після того як знаходиш їх?</td><td id="Fj?I" class="" style="width:325px">нуу, по перше вже зараз можна одразу з ai-шкою прогнати його під свої задачі. а якщо раніше то збирала, пробувала, дивилась</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="4b439c27-6714-43a9-8442-d9216474e204" dir="ltr"><td id="BOwb" class="" style="width:178px">5. Як ти їх організовуєш? Чому саме так?</td><td id="Fj?I" class="" style="width:325px">Прям під час роботи в мене в ілюстраторі є велика монтажна область, куди я можу скидувати це все. Також зберігаю референси створюючи дошки в пінтерест. <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">Особливо подобається коли працюю з таким зумером як я і ми разом збираємо ці дошки, кожен додає референси і все так разом. це дуже круто.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="ba62fc4e-6aae-4a8d-bd8d-7097ce7eaa76" dir="ltr"><td id="BOwb" class="" style="width:178px">6. Чи повертаєшся ти до старих збережень?</td><td id="Fj?I" class="" style="width:325px">Звісно. В мене є окрема <mark class="highlight-blue_background" data-notion-highlight="blue_background">папка </mark>яка називається “’design”, там дошки де зібрані збереження по lettering, гравюрі, пакування, палетки кольорів, ілюстрації. І знову ж таки, кожна <mark class="highlight-blue_background" data-notion-highlight="blue_background">така дошка це певний портал</mark> в потрібну мені підтему бо всюди <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">є рекомендації, які мені підходять.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="dd97c396-6bff-4888-886c-95d162c6555c" dir="ltr"><td id="BOwb" class="" style="width:178px">7. Як часто повертаєшся до старих збережень?</td><td id="Fj?I" class="" style="width:325px">В залежності від задачі, звісно, я можу повертатись, брати для себе те, що мені підходить і швидко реалізовувати це в тому, чим зараз займаюсь.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="454c5c23-6fa1-4402-b3a1-7a5c172193aa" dir="ltr"><td id="BOwb" class="" style="width:178px">8. Наскільки це зручно?</td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="4b0c0f5f-6b7d-444e-8d91-86e83bdb823b" dir="ltr"><td id="BOwb" class="" style="width:178px">9. Чи буває таке що не можеш знайти що зберігав раніше? Якщо так то що робиш в такому випадку?</td><td id="Fj?I" class="" style="width:325px">Та ні, а навіть якщо і було то я швидко перемикалась і шукала щось інше.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="1614a738-cf6f-4b3c-8cd9-ef962d52e136" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Block 3 – Болі</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="63cf4429-97f0-460f-b047-f0a4a927feb9" dir="ltr"><td id="BOwb" class="" style="width:178px">1. Що тебе найбільше дратує в процесі пошуку референсів? Чому?</td><td id="Fj?I" class="" style="width:325px">Напевно ні, можливо бувало щось на початку, тоді коли я починала займатись цим, але я вже не пам’ятаю. Зараз ні, бо я настільки звикла до цього інструменту, настільки знаю що мені знайти що цього не буває. Ну типу в пінтересті настільки <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">це круто працює, що він шукає по кольорам, дуже круто шукає наприклад якщо ти шукаєш нігти  то можна налаштувати під який колір шкіри, або якщо шукаєш колір волосся то можна обрати тип волосся який тобі потрібен.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="19874f73-e07b-486a-b5d1-bf58358a2838" dir="ltr"><td id="BOwb" class="" style="width:178px">2. Чи буває, що ти витрачаєш занадто багато часу на пошук? Через що зазвичай це трапляється?</td><td id="Fj?I" class="" style="width:325px">Знову таки, було, сто років назад, але зараз все настільки швидко, дуже високий темп що ти просто <mark class="highlight-red_background" data-notion-highlight="red_background">не можеш дозволити собі витрачати час на довгий пошук</mark>. Якщо це якийсь великий проект в який я хочу вкластись то я дійсно можу запаритись і поглибитись в підбір, але час втрачаю більше не через нестачу референсів, а через те що ну це не те що я хочу.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="7c4e9255-014d-4a1f-8d32-9d1c03c91f77" dir="ltr"><td id="BOwb" class="" style="width:178px">3. Чи є відчуття, що ти зберігаєш більше, ніж реально використовуєш?</td><td id="Fj?I" class="" style="width:325px">Ну та, звісно, це нормальний процес. Для мене це більше про такий момент, що треба зберегти щоб воно закріпилось в пам’яті, сформувалось в сукупну картину і потім при роботі я собі буває <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">щось згадую і влучно можу застосувати.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="a03e15c9-9b08-420b-bde1-0a35108461ad" dir="ltr"><td id="BOwb" class="" style="width:178px">4. Чи пробував змінити сервіс? Якщо так то чому?</td><td id="Fj?I" class="" style="width:325px">Та, пробувала, але це було так давно що я вже і не пам’ятаю що це було. Але чесно, мені вистачає пінтерест і всього функціоналу, що він надає.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="84543ce5-8183-4ac7-a961-678b0c7583d0" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Block 4 – Значення</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="4b25d62b-1c7b-4ffe-9848-3f856cf19879" dir="ltr"><td id="BOwb" class="" style="width:178px">1. Що робить референс для тебе корисним під час роботи?</td><td id="Fj?I" class="" style="width:325px">Найчастіше це <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">тоді коли референс показує як досягти щоб було і гарно, але при цьому зберігало функціональність і читабельність, легкість сприйняття.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="011cd9b1-430e-4005-a9a1-a7434c28967e" dir="ltr"><td id="BOwb" class="" style="width:178px">2. Як ти розумієш, що візуал працює?</td><td id="Fj?I" class="" style="width:325px">Я показую близьким, і я показую своїм колегам, питаю їх думку. Взагалі було б круто користуватись тестовими групами, проводити опитування, це дуже круто, сильно поліпшує результат.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="5dccb3ff-bb48-4109-b52b-3a6cc353a682" dir="ltr"><td id="BOwb" class="" style="width:178px">3. Зазвичай ти більше шукаєш стиль чи рішення проблеми?</td><td id="Fj?I" class="" style="width:325px">Дивлячись напевно від замовника. Я ж це запитую, чи хоче людина щоб це було гарно. Треба звикнутись з тим що не всі хочуть щоб це було гарно, а хочуть функціоналу, щоб воно працювало,, продавалось. Взагалі вважаю що крутий дизайн це про баланс: коли і в візуал зміг, але і функціональності досяг на хорошому рівні.</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="c8dab0fd-c86c-43b9-9097-c6317ab88e35" dir="ltr"><td id="BOwb" class="" style="width:178px">4. Чи буває таке, що після довгого пошуку ти відчуваєш що втратив власне бачення?</td><td id="Fj?I" class="" style="width:325px"><mark class="highlight-red_background" data-notion-highlight="red_background">Так, звісно, дуже часто. Знову ж таки, особливо коли навчалась я це часто відчувало, було відчуття що зовсім не туди пішла і треба починати спочатку.</mark></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="66fccee1-1154-4c56-97d4-04b2a52f97c6" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Final questions</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="3ce5d821-6999-4450-b8e9-1d262b1609b1" dir="ltr"><td id="BOwb" class="" style="width:178px">Можливо я щось не запитав або є щось чим би ти хотів поділитись?</td><td id="Fj?I" class="" style="width:325px">Та ні, вважаю ми дуже багато що обговорили і я рада такому діалогу!</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="cf4e1736-09e5-4410-8743-9a684fbf99ac" dir="ltr"><td id="BOwb" class="" style="width:178px"></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="1db82513-adeb-45c0-9e00-868cf021c3d2" dir="ltr"><td id="BOwb" class="" style="width:178px"><strong>Additional questions</strong></td><td id="Fj?I" class="" style="width:325px"></td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="527d283b-b0cc-44b0-aa8f-0c85d42a87c6" dir="ltr"><td id="BOwb" class="" style="width:178px">Abstractions</td><td id="Fj?I" class="" style="width:325px">What does _ mean to you?</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="6258b624-9212-43c5-afc7-ede754b96d59" dir="ltr"><td id="BOwb" class="" style="width:178px">Emotions</td><td id="Fj?I" class="" style="width:325px">How do you distinguish _ from _?</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="73ccaee2-ec4e-44ad-b9df-70f4dc832ca7" dir="ltr"><td id="BOwb" class="" style="width:178px">Facts</td><td id="Fj?I" class="" style="width:325px">What did you feel when _?</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr><tr id="e9c9b11b-d8f8-49e5-83ee-537a9b6228de" dir="ltr"><td id="BOwb" class="" style="width:178px">Details</td><td id="Fj?I" class="" style="width:325px">Why is it important to you that _?</td><td id="TAHg" class=""></td><td id="C[IM" class=""></td></tr></tbody></table><h1 id="32758b05-2da9-808e-a4a2-efd3229864d9" class="" dir="auto">Даня</h1><p id="32758b05-2da9-802d-a275-dc6ed13b3443" class="" dir="auto"><a href="https://drive.google.com/file/d/1VkzLHxU96Hty6-bTOQ8sbwpCQbxhojMY/view?usp=sharing">Запис</a></p><p id="32758b05-2da9-8017-a7e4-d6a67b4bdaa7" class="" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">Радості</mark><br/><mark class="highlight-red" data-notion-highlight="red">Болі</mark><br/><mark class="highlight-blue" data-notion-highlight="blue">Ідеї</mark></p><table id="32758b05-2da9-80eb-876d-ffa904872843" class="simple-table" dir="ltr"><tbody><tr id="32758b05-2da9-8082-8ba5-f3200df1b51e" dir="ltr"><td id="YxIM" class=""><strong>Goal:</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px">Type goal here</td><td id="eG{y" class=""></td><td id="PXc{" class="">Уточнюючі питання</td></tr><tr id="32758b05-2da9-8037-bac2-d9c9cd305d8d" dir="ltr"><td id="YxIM" class="">It&#x27;s important to start with the goal first!</td><td id="~\Q~" class="" style="width:200.0416717529297px">Зрозуміти, як люди зараз шукають, зберігають і використовують візуальні референси, які в них потреби, болі при роботі з такими сервісами.</td><td id="eG{y" class=""></td><td id="PXc{" class=""><strong>“Можеш трохи детальніше розповісти?”<br/><br/>“Чому саме так?”<br/><br/>“А що саме там незручно?”<br/><br/>“Що ти робиш після цього?”</strong></td></tr><tr id="32758b05-2da9-8029-bf45-ce119a961447" dir="ltr"><td id="YxIM" class=""></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""><strong>“Можеш навести приклад?”</strong></td></tr><tr id="32758b05-2da9-800c-93f8-d7003d533adb" dir="ltr"><td id="YxIM" class=""><strong>Who will be interviewed:</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px">UI/UX дизайнери<br/>графічні дизайнери<br/>ілюстратори або контент-кріейтори, які регулярно збирають візуальні та текстові референси для роботи.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80b1-962e-dd5e27c9be82" dir="ltr"><td id="YxIM" class=""><strong>Script</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8053-8608-d2bd13db4e73" dir="ltr"><td id="YxIM" class=""><strong>Small-talk</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80b4-92fd-c85bae144a60" dir="ltr"><td id="YxIM" class="">Type all the important info you should tell before the start</td><td id="~\Q~" class="" style="width:200.0416717529297px">Привітання та подяка за приділений час.<br/>Коротко про проєкт: «Я розробляю інструмент для зручного зберігання референсів і хочу дізнатися про твій досвід в використанні схожого».<br/>Ремарка: «Тут немає правильних чи неправильних відповідей. Якщо ти не проти то я проведу запис нашої розмови щоб потім міг проаналізувати твої відповіді»</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80de-822c-e9b477f11740" dir="ltr"><td id="YxIM" class=""><strong>Block 1 – Знайомство і контекст</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80e6-98e1-fd41962bb5ec" dir="ltr"><td id="YxIM" class="">1. Розкажи чим займаєшся?</td><td id="~\Q~" class="" style="width:200.0416717529297px">Я мідл UI/UX дизайнер у невеликій аутсорс-студії. Роботи доволі багато тому доводиться часто перемикатись між задачами.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-805d-a69d-e882b3db1a84" dir="ltr"><td id="YxIM" class="">2. Яку роль відіграють візуальні референси у твоєму робочому процесі?</td><td id="~\Q~" class="" style="width:200.0416717529297px">це фундамент для співпорозуміння з клієнтом. <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">економить багато часу</mark> + <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">рефи допомагають розігнати мозок, коли застряг на одному екрані</mark>.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80e2-8eb2-e8adfa6fe6d2" dir="ltr"><td id="YxIM" class="">3. Як часто ти шукаєш референси?</td><td id="~\Q~" class="" style="width:200.0416717529297px">постійно. малюю кнопку чи картку товару - йду дивитися, як це реалізовано в топових продуктах. Це безперервний процес чекінгу трендів.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80dd-8992-fb8c1e9c6570" dir="ltr"><td id="YxIM" class="">4. У яких ситуаціях тобі найбільше потрібні референси?</td><td id="~\Q~" class="" style="width:200.0416717529297px">найчастіше за все коли клієнт каже: «Зробіть мені дорого і сучасно».  Це доволі підступна фраза. тому збираю приклади і <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">завдяки цьому знаходжу з клієнтом спільне бачення</mark>. Також вони <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">рятують, коли треба спроектувати складний функціонал</mark> і ти не хочеш <mark class="highlight-red_background" data-notion-highlight="red_background">винаходити велосипед</mark>.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80d0-b697-ebf16c23d961" dir="ltr"><td id="YxIM" class="">5. Де ти зазвичай їх шукаєш? Якщо є офлайн ресурси то мені було б цікаво почути.</td><td id="~\Q~" class="" style="width:200.0416717529297px">Pinterest - для візуальних фіч та настрою. Behance коли треба глянути логіку великого кейсу. Mobbin мій фаворит, <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">там реальні скріншоти працюючих аппок,</mark> а не просто картинки для лайків.<br/>Офлайн? Хіба що фотографую цікаві вивіски або пакування в магазинах.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80cb-8f05-f5d3052c7dc6" dir="ltr"><td id="YxIM" class="">6. Чому саме ці сайти/програми?</td><td id="~\Q~" class="" style="width:200.0416717529297px">Pinterest має найкращі алгоритми - <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">лайкнув одну картинку і він засипав тебе схожими</mark>. Mobbin зручний тим, що там є патерни: <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">можна відфільтрувати суто «екран реєстрації» або «кошик». Це неймовірно зручно бо ти одразу можеш знайти для себе купу референсів на конкретний візуальний елемент.</mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80c5-83e4-d0710fd4d581" dir="ltr"><td id="YxIM" class=""><strong>Block 2 – Робочий процес</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8065-a2cb-db351c6bcdfb" dir="ltr"><td id="YxIM" class="">1. Які інструменти або платформи для пошуку референсів ти використовуєш найчастіше?</td><td id="~\Q~" class="" style="width:200.0416717529297px">Ну дивись, в мене два основних. Mobbin — це щоденне. Заходжу, фільтрую по патерну, і одразу <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">бачу як реальні продукти це вирішують</mark>. Не концепти, а живі додатки. А Behance і Pinterest більше коли треба знайти стиль, настрій проєкту. Це вже про натхнення, а не про структуру.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8092-bc18-fcfcaa88883d" dir="ltr"><td id="YxIM" class="">2. Цікаво було б послухати про твій останній кейс. Як відбувався процес пошуку референсів в ньому?</td><td id="~\Q~" class="" style="width:200.0416717529297px">останній проєкт був лендінг для SaaS-продукту. Спочатку пішов на Mobbin, шукав онбординг і хіро-секції у вебі, дивився як Notion, Linear, Figma подають свій продукт на першому екрані. Мені важливо було зрозуміти структуру, що взагалі виносять вище фолду.<br/>А потім вже на Behance шукав стиль. Клієнт хотів мінімалізм, але щоб виглядало більш стильно і як у сучасних медіа.. Зібрав мудборд прямо там, скинув клієнту на погодження. Він затвердив і я вже з розумінням напрямку йшов в макет.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8069-b1f4-e6e18748a873" dir="ltr"><td id="YxIM" class="">3. Як ти зрозумів що знайшов потрібний для себе референс?</td><td id="~\Q~" class="" style="width:200.0416717529297px">важко пояснити… в моменті відчуваєш такий <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">«дзинь» у голові і думаєш НУ ЦЕ ВОНО</mark>. Коли бачиш композицію і розумієш: оо, якщо я адаптую цю ідею під свій проект, це може вирішити проблему клієнта.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80da-9bcd-dd688934a5e2" dir="ltr"><td id="YxIM" class="">4. Що ти робиш з референсами після того як знаходиш їх?</td><td id="~\Q~" class="" style="width:200.0416717529297px">Зазвичай створюю <mark class="highlight-blue_background" data-notion-highlight="blue_background">мудборди </mark>на різні теми і зберігаю туди щоб потім можна було зручно знайти те, що тебе цікавить. Або закидаю одразу в фігму, але з часом це <mark class="highlight-red_background" data-notion-highlight="red_background">перетворюється в сміттєзвалище і перегружає файл</mark>.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80e9-8d01-cb0b0736afc3" dir="ltr"><td id="YxIM" class="">5. Як ти їх організовуєш? Чому саме так?</td><td id="~\Q~" class="" style="width:200.0416717529297px">По категоріях: кольори, типографіка, навігація, і тд. Організовую так, щоб за 10 секунд можна було знайти приклад для аргументації своєї думки перед дизайн лідом наприклад.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8098-a34e-f50c4d710cf4" dir="ltr"><td id="YxIM" class="">6. Чи повертаєшся ти до старих збережень?</td><td id="~\Q~" class="" style="width:200.0416717529297px">так, є колекція якісних робіт, які зберігав.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8071-a309-c2dabd76497e" dir="ltr"><td id="YxIM" class="">7. Як часто повертаєшся до старих збережень?</td><td id="~\Q~" class="" style="width:200.0416717529297px">раз на пару тижнів точно. коли замилюється око то <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">відкриваю збережені мудборди, це допомагає освіжити погляд.</mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-803a-bab7-d1ff393d274d" dir="ltr"><td id="YxIM" class="">8. Наскільки це зручно?</td><td id="~\Q~" class="" style="width:200.0416717529297px">нуу, так як я все <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">організовую по папкам</mark> то більш менш зручно, але не тоді <mark class="highlight-red_background" data-notion-highlight="red_background">коли в цій папці купа кейсів</mark>. Тоді вже звісно хочеться <mark class="highlight-blue_background" data-notion-highlight="blue_background">пошуком скористатись.</mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80aa-92fa-f5290f0962fb" dir="ltr"><td id="YxIM" class="">9. Чи буває таке що не можеш знайти що зберігав раніше? Якщо так то що робиш в такому випадку? </td><td id="~\Q~" class="" style="width:200.0416717529297px">Постійно! Пам&#x27;ятаю, що бачив круту анімацію меню, а де вона… чи в закладках браузера, чи в обраних тг або в Pinterest - фіг знає. <mark class="highlight-red_background" data-notion-highlight="red_background">Злюся, витрачаю час на повторний пошук і в кращому випадку знаходжу, якщо ні то шукаю вже щось інше. </mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8005-a9c7-f58a84b8b899" dir="ltr"><td id="YxIM" class=""><strong>Block 3 – Болі</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8021-8360-c4becb34850b" dir="ltr"><td id="YxIM" class="">1. Що тебе найбільше дратує в процесі пошуку референсів? Чому?</td><td id="~\Q~" class="" style="width:200.0416717529297px">славнозвісний dribbble-дизайн. Це коли картинка візуально виглядає круто, але <mark class="highlight-red_background" data-notion-highlight="red_background">її неможливо реалізувати кодом або вона неюзабельна</mark>. <mark class="highlight-red_background" data-notion-highlight="red_background">Ти витрачаєш час на сміття, яке гарне, але пусте всередині.</mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80dc-91f2-cafcd06e69c7" dir="ltr"><td id="YxIM" class="">2. Чи буває, що ти витрачаєш занадто багато часу на пошук? Через що зазвичай це трапляється?</td><td id="~\Q~" class="" style="width:200.0416717529297px">о так, та сама кроляча нора pinterest. Зайшов за іконкою, а через годину розглядаєш дизайн інтер&#x27;єрів у Скандинавії. </td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-809e-865b-c8394f36ad98" dir="ltr"><td id="YxIM" class="">3. Чи є відчуття, що ти зберігаєш більше, ніж реально використовуєш?</td><td id="~\Q~" class="" style="width:200.0416717529297px">90% моїх збережень це мертвий груз. Я їх ніколи більше не відкрию, бо вони <mark class="highlight-red_background" data-notion-highlight="red_background">загубилися в величезній купі всього того матеріалу</mark> що збирався роками.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80f2-a9b6-f6640158faa1" dir="ltr"><td id="YxIM" class="">4. Чи пробував змінити сервіс? Якщо так то чому?</td><td id="~\Q~" class="" style="width:200.0416717529297px">пробував Eagle, Savee , пробував Notion. Eagle крутий, але він <mark class="highlight-red_background" data-notion-highlight="red_background">десктопний</mark>, а я часто шукаю з телефону в дорозі. <mark class="highlight-red_background" data-notion-highlight="red_background">Notion занадто повільний для картинок</mark>. Ідеального інструменту поки не знайшов.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-804b-9c3b-e1a20a88548d" dir="ltr"><td id="YxIM" class=""><strong>Block 4 – Значення</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80ba-b65e-cb4692b50b3e" dir="ltr"><td id="YxIM" class="">1. Що робить референс для тебе корисним під час роботи?</td><td id="~\Q~" class="" style="width:200.0416717529297px"><mark class="highlight-yellow_background" data-notion-highlight="yellow_background">можливість його деконструювати</mark>. Коли я бачу не просто сайт, а розумію: ага, тут вони використали такий інтерліньяж і таку тінь, щоб створити об&#x27;єм з певною ціллю. Корисний той реф, який можна вкрасти як митець.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-809e-86ef-d7668bdb6bb6" dir="ltr"><td id="YxIM" class="">2. Як ти розумієш, що візуал працює?</td><td id="~\Q~" class="" style="width:200.0416717529297px">коли <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">він виглядає зрозуміло і логічно</mark>, і я <mark class="highlight-yellow_background" data-notion-highlight="yellow_background">можу уявити як це працює в реальному продукті.</mark></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8056-b9c0-f3ac49c01bb2" dir="ltr"><td id="YxIM" class="">3. Зазвичай ти більше шукаєш стиль чи рішення проблеми?</td><td id="~\Q~" class="" style="width:200.0416717529297px">залежить від етапу напевно. На початку проєкту - більше рішення. Мені важливо зрозуміти як інші вирішують цю ж задачу, які патерни працюють. А стиль - це вже потім, коли структура зрозуміла. Хоча буває навпаки - клієнт приходить з настроєм і референсами, і ти одразу занурюєшся в стилістику.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-800b-929f-c011ee1f4c14" dir="ltr"><td id="YxIM" class="">4. Чи буває таке, що після довгого пошуку ти відчуваєш що втратив власне бачення?</td><td id="~\Q~" class="" style="width:200.0416717529297px">звісно, <mark class="highlight-red_background" data-notion-highlight="red_background">відчуваєш просто передоз візуальної інфи. </mark>Тоді всі роботи здаються однаковими, і ти починаєш копіювати чужі помилки. У такі моменти просто треба закрити комп і піти погуляти.</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-800a-925d-e80e2d215463" dir="ltr"><td id="YxIM" class=""><strong>Final questions</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80c5-a4b3-faf6cfa251ff" dir="ltr"><td id="YxIM" class="">Можливо я щось не запитав або є щось чим би ти хотів поділитись?</td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80ae-8255-ee1835f9136d" dir="ltr"><td id="YxIM" class=""></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-80ff-a88e-c8e8ed12af4f" dir="ltr"><td id="YxIM" class=""><strong>Additional questions</strong></td><td id="~\Q~" class="" style="width:200.0416717529297px"></td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-803f-9919-e68ace971ca5" dir="ltr"><td id="YxIM" class="">Abstractions</td><td id="~\Q~" class="" style="width:200.0416717529297px">What does _ mean to you?</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-8003-9a66-faa5b9e55334" dir="ltr"><td id="YxIM" class="">Emotions</td><td id="~\Q~" class="" style="width:200.0416717529297px">How do you distinguish _ from _?</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-805e-b9d0-e383828ccfc8" dir="ltr"><td id="YxIM" class="">Facts</td><td id="~\Q~" class="" style="width:200.0416717529297px">What did you feel when _?</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr><tr id="32758b05-2da9-806d-b891-e024e7e88bcc" dir="ltr"><td id="YxIM" class="">Details</td><td id="~\Q~" class="" style="width:200.0416717529297px">Why is it important to you that _?</td><td id="eG{y" class=""></td><td id="PXc{" class=""></td></tr></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
