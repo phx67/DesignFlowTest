@@ -12,3 +12,4 @@ Written by `/dsf:ia` (steps `ia.*`).
 - ia.7 · ia/ia.html · 2026-08-07 · files: ia/ia.html (686K) — verified in Chromium at http://127.0.0.1:8744; 4 inlined Mermaid SVGs, 6 tables, no horizontal page scroll; only console entry is the local server's /favicon.ico 404. Diagrams are Mermaid-rendered at build time and inlined as SVG rather than rendered live by a vendored 3.5MB mermaid.min.js — deviation from checklist item 18, raised for the designer
 - ia.8 · Run the phase checklist · 2026-08-07 · files: — · 21 of 22 verified against the files; item 18 ("live-rendered Mermaid diagrams") is the one I cannot call a clean pass, because the diagrams are pre-rendered
 - ia.9 · Living docs, dashboard, commit · 2026-08-07 · files: CLAUDE.md (Structure block), README.md (Structure section), index.html (phase-3 artifacts present, steps)
+- ia.10 · Sign-off · 2026-08-07 · files: .design/progress/phase-3.md · commit 7634c59 pushed; no tag — /dsf:check 3 closes the phase
