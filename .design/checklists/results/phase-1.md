@@ -1,3 +1,5 @@
+Reopened 2026-08-07 · by /dsf:change · the brief's manual-breakdown rule and the content unit both changed
+
 # Phase 1 — Brief · check results
 
 Checked: 2026-08-05 · Checklist: `.design/checklists/phase-1-brief.md`

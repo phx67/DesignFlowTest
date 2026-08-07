@@ -1,3 +1,5 @@
+Reopened 2026-08-07 · by /dsf:change · research premise, personas and jobs were built on the manual-breakdown rule
+
 # Phase 2 — Discover · check results
 
 Checked: 2026-08-07 · Checklist: `.design/checklists/phase-2-discover.md`

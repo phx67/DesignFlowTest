@@ -28,12 +28,35 @@ a concept. Source: the designer's own testimony at the phase-1 gate; phase 2 tes
 other people.
 
 **Spine.** The unit of content is *work + author's breakdown*: structured fields (colour,
-typography, grid) + a free-text "why" + a reality status linking to the live product. The author
-fills it in **by hand — no auto-extraction anywhere.** Because the breakdown travels with the
-work, **property search is free** and tagging is not required; tags are optional personal context
-inside your own collections. **Progressive completeness** — publish with a minimum, the breakdown
-grows, completeness is visible on the card and is an axis of filtering and ranking, and `[?]` is a
-first-class UI state. Social layer: save to a collection, like, follow an author.
+typography, grid) + intent + a reality status linking to the live product.
+
+**The unit of work is polymorphic — one screen OR a whole case.** An author may publish a single
+screen or a full case, and both are first-class. *(Changed 2026-08-07. This closes open question
+(b) below, which had asked whether the unit was a component or a whole work and which
+`research/research.md` had recommended phase 3 resolve by picking **one**. The designer chose
+both; the research recommendation is deliberately overridden.)*
+
+**How the breakdown gets filled — changed 2026-08-07.** **The machine extracts the objective
+fields — colour, typography, grid — and the author confirms or corrects them.** The author's work
+is therefore **verification plus intent**, not transcription. *(This replaces the phase-1 rule
+"the author fills it in by hand — no auto-extraction anywhere". That rule was written before phase
+2, whose evidence contradicted it from two directions: `[RES]` **H1** — the values are table
+stakes because Refero Styles already generates them for 2,000+ sites, and intent is the only part
+a machine cannot supply; and the Refero split of 2026-08-07 — "matching the values is table
+stakes, not the contest; the contest is comprehension". The brief was behind its own research.)*
+Auto-extraction never speaks **in place of** the author: nothing is published as the author's
+claim until the author has confirmed it, and intent is never generated.
+
+Because the breakdown travels with the work, **property search is free** and tagging is not
+required; tags are optional personal context inside your own collections.
+
+**Completeness — redefined 2026-08-07 as a consequence of the above.** Objective fields are
+pre-filled, so they can no longer measure completeness. They move to a **confirmed / unconfirmed**
+state, which is a **trust signal**, not a progress bar. **Intent becomes the single progressive
+axis** — *absent → present → case* — and is what completeness filtering and ranking act on. `[?]`
+remains a first-class UI state. **Known and accepted:** this concentrates the supply risk onto
+intent — the one thing no machine can produce and no evidence yet says an author will write.
+Social layer: save to a collection, like, follow an author.
 
 **Platform.** Roles split, not scaled. **Desktop primary** (~1440px): authoring — writing the
 breakdown, upload — and heavy side-by-side comparison of facets. **Mobile**: **search, open a
@@ -50,7 +73,9 @@ Toolbox fallbacks bind. Artifacts are English, the working conversation Ukrainia
 product's own UI language is undecided — phase 5 `/dsf:voice` owns it**, so phase 4 uses grey
 placeholder text and fixes no tone.
 
-**Out of scope.** Not a private archive. Not AI or auto-extraction in place of the author. Not a
+**Out of scope.** Not a private archive. **Not AI or auto-extraction speaking *in place of* the
+author** — extraction of the objective fields is in scope as of 2026-08-07, but it is always a
+draft the author confirms, it never publishes unreviewed, and **intent is never generated**. Not a
 token collector or house-style exporter. Not an infinite feed as the main screen. Not curation —
 authors publish only their own work.
 
@@ -58,17 +83,24 @@ authors publish only their own work.
 
 1. **Reproducibility.** From the breakdown screen alone, a designer states the exact palette, type
    scale and grid values and rebuilds the component without an eyedropper. Checked per screen.
-2. **Trust without a click.** Any card in the results shows reality status and breakdown
-   completeness without being opened.
+2. **Trust without a click.** Any card in the results shows reality status, the **confirmed /
+   unconfirmed** state of the extracted fields, and how far intent has got, without being opened.
+   *(Restated 2026-08-07: "breakdown completeness" split into those two signals.)*
 3. **Upload does not deter.** The "publish + deconstruct" flow completes end to end on the
-   prototype without abandonment, and every required field has a justification.
+   prototype without abandonment, and every required field has a justification. *(2026-08-07: the
+   objective fields arrive pre-filled, so what this criterion now tests is the **confirmation**
+   step and the invitation to intent — not transcription.)*
 
 **Open questions `[?]`**
 
-- `[?]` **Supplier motivation — the main risk.** Why a designer deconstructs their own work for
-  free. *Hypothesis:* reputation — a breakdown is stronger proof of craft than a shot. There is
-  **no interview evidence**; phase 2 looks for designers writing process breakdowns for free
-  elsewhere. If it does not hold, the spine needs rebuilding.
+- `[?]` **Supplier motivation — the main risk, and narrower since 2026-08-07.** Why a designer
+  writes **intent** about their own work for free. Extraction now covers the objective fields, so
+  the risk no longer spreads across the whole breakdown — **it is concentrated entirely on
+  intent**, the one part a machine cannot produce. *Hypothesis:* reputation — a stated reason is
+  stronger proof of craft than a shot. Phase 2 found the first adjacent evidence (a practitioner
+  calling a published entry "a lasting record… a way to bring a few extra eyeballs to your work")
+  but **no designer testimony about writing a breakdown**. If it does not hold, the spine needs
+  rebuilding — and it now needs rebuilding on a narrower base than before.
 - `[?]` **The retrieval mechanism.** Candidates: filters over the breakdown, optional tags, AI
   search. Decided in phase 3.
 - `[?]` **Comparison — pain and feature, both unproven.** "Can't compare ten examples of one
@@ -83,7 +115,15 @@ authors publish only their own work.
   each carrying source URL and capture date the way `concept/references.md` does, with Unsplash
   reserved for non-reference imagery. Phase 6.
 - `[?]` **Whether breakdown quality needs moderation.** Not asked. *Hypothesis:* no at this stage
-  — completeness is the only visible quality signal. Phase 3.
+  — completeness is the only visible quality signal. Phase 3. **Sharper since 2026-08-07:** with
+  the objective fields extracted, what is left to moderate is **intent** and the correctness of the
+  author's **confirmation**. Phase 2 also found that the closest analogue, Fonts In Use, *does*
+  moderate before publication ("Submit for approval").
+- `[?]` **What "confirmed" is worth — new, 2026-08-07.** The extracted fields carry a confirmed /
+  unconfirmed state as a trust signal, but nothing yet says a reader believes a confirmation, or
+  that an author bothers to correct a wrong extraction rather than waving it through. *Hypothesis:*
+  confirmation is cheap to give and therefore weak as a signal unless a wrong value is visibly
+  costly. Phase 3 owns the state; phase 4 owns whether it is legible on the card.
 
 ---
 
@@ -199,9 +239,11 @@ phases need, plus paths. Not a retelling of the artifact.
 Loupe — a community discovery site for designers; every published work carries its author's own
 breakdown (colour, typography, grid, intent). Primary user: a designer with a specific component
 to design; the main screen is search + filters, not a feed. Authors publish **their own work
-only**. The breakdown is manual, structured, and **is** the search index — no auto-extraction, no
-mandatory tagging; tags are optional personal context. Progressive completeness, `[?]` is a real
-UI state. Desktop primary (authoring, upload, heavy facet comparison); mobile does search, read a
+only**, and the unit is **one screen or a whole case, both first-class**. The breakdown is
+structured and **is** the search index; **the machine extracts the objective fields and the author
+confirms or corrects them** (changed 2026-08-07), with no mandatory tagging — tags are optional
+personal context. **Completeness is measured on intent alone** (absent → present → case); the
+objective fields carry a **confirmed / unconfirmed** trust state instead. `[?]` is a real UI state. Desktop primary (authoring, upload, heavy facet comparison); mobile does search, read a
 breakdown and save — full facet filtering on the phone is `[?]` for phase 8. Static
 front-end on fixtures, artifacts in English, product UI language deferred to phase 5.
 Main risk carried forward: supplier motivation is a `[?]` with no evidence.
@@ -210,7 +252,10 @@ Full text: **Brief** section at the top of this file.
 ### Research
 <!-- phase 2 · chosen interaction pattern · the three MVP mechanics · benchmark dimension · top three open questions · paths to research/ -->
 **Chosen interaction pattern: faceted filtering over declared breakdown fields** — the only pattern
-in which the author's manual breakdown is what makes their work findable. Second choice, already
+in which the breakdown travelling with the work is what makes it findable. *(2026-08-07: this
+argument was originally "the author's **manual** breakdown". It survives the move to extraction
+unchanged — the fields are still declared and still carried by the work; what changed is who drafts
+them, not what retrieval acts on.)* Second choice, already
 half-confirmed: task-taxonomy browse as the entry with facets refining inside it, on the Mobbin
 model. AI free-text query is **disqualified at this size** (fixtures, few dozen items) because it
 severs "fill a field → be found".
@@ -237,8 +282,10 @@ breakdown screen must not be designed as a spec dump.** Evidence:
 **Top three open questions.** (a) **Refero Styles already ships success criterion 1** — exact colour
 roles, named type scale with ratio, spacing, radii — auto-generated for 2,000+ sites with a
 `DESIGN.md`; Loupe's defensible field is therefore *intent*, not values. **Refined by the split
-above: it ships that criterion for a machine, Loupe ships it for a person.** (b) Is the unit a
-**component or a whole work**? The brief claims both. (c) "Own work only" — the closest analogue
+above: it ships that criterion for a machine, Loupe ships it for a person.** (b) ~~Is the unit a
+component or a whole work?~~ **Closed 2026-08-07 by `/dsf:change`: both. One screen or a whole
+case, each first-class.** The research had recommended phase 3 pick one; the designer overrode
+that deliberately. (c) "Own work only" — the closest analogue
 (Fonts In Use) deliberately allows others' work; the restriction costs pool growth.
 
 Also settled here: **"grid" is probably the wrong third axis** — the market's most complete spec

@@ -10,3 +10,4 @@
 - brief.8 · Update index.html · 2026-08-05 13:16 · files: index.html
 - brief.9 · Commit · 2026-08-05 13:18 · files: .design/progress/phase-1.md
 - brief.10 · Sign-off · 2026-08-05 13:20 · files: .design/progress/phase-1.md
+- reopened · phase-1 · 2026-08-07 · reason: the brief's "author fills it in by hand — no auto-extraction anywhere" rule was replaced by machine extraction + author confirmation, and the content unit was fixed as one screen OR a whole case · see .design/decisions.md

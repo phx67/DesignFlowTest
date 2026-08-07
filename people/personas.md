@@ -162,9 +162,12 @@ omitted so the gap is impossible to miss.
   - **A mechanic nobody in the benchmark had:** on Fonts In Use the *beneficiary* of the metadata
     subsidises the contributor — DJR gives a free font issue per submitted use, two if the font had
     no prior uses. **For Loupe there is no identified equivalent beneficiary — `[?]`.**
-- **Pains:** `[?]` — **hypothesis:** writing a breakdown competes with the next paid project. The
-  benchmark says this is only solved when the structured entry is the price of something they
-  wanted anyway `[RES · BENCHMARK · Discogs, criterion 5]`.
+- **Pains:** `[?]` — **hypothesis, narrowed 2026-08-07:** writing a breakdown competes with the next
+  paid project. The benchmark says this is only solved when the structured entry is the price of
+  something they wanted anyway `[RES · BENCHMARK · Discogs, criterion 5]`. **Since the machine now
+  extracts the objective fields and the author only confirms them, the competing cost is no longer
+  the whole breakdown — it is the paragraph of intent.** That is a smaller ask, and it is also the
+  only ask left, so the whole of this persona's willingness now rides on it.
 - **Trust triggers:** `[?]` — both halves unknown. **Hypothesis:** they are convinced by seeing
   their breakdown drive traffic to their own work, and scared off by the breakdown being reused
   without attribution.

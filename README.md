@@ -25,15 +25,16 @@ Code; the rules live in `.design/memory/constitution.md`.
 <!-- phase 1 -->
 
 **What it is.** Inspiration sites show a finished result and say nothing about how it was
-built. Loupe pairs every work with a breakdown written by the person who made it: the palette,
-the type scale, the grid, and the reasoning. The breakdown is filled in by hand — there is no
-auto-extraction — and because it travels with the work, it doubles as the search index: you
-find things by their properties rather than by tags somebody remembered to write.
+built. Loupe pairs every work with a breakdown: the palette, the type scale, the grid — and the
+reasoning behind them. **The machine extracts the measurable parts; the author confirms them and
+supplies the one part no machine can, the intent.** Because the breakdown travels with the work,
+it doubles as the search index: you find things by their properties rather than by tags somebody
+remembered to write. A work can be **a single screen or a whole case** — both are first-class.
 
 **Who it is for.** A designer with a task on the desk — a specific component to design — who
 needs to see how ten other people solved it *and* how those solutions are constructed. The main
 screen is search and filters, not a feed. On the other side, authors publish their own work and
-deconstruct it themselves.
+explain it themselves.
 
 **Platform.** Desktop is primary: writing a breakdown, uploading, and comparing works side by
 side all live there. The phone searches, opens a work, reads its breakdown and saves it — because

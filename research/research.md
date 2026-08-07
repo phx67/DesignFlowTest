@@ -158,7 +158,9 @@ role + value + usage, and its typography field must carry a named scale with its
 2. **The brief forbids publishing other people's work. The closest working analogue deliberately
    allows it.** Is "own work only" a rights decision, a quality decision, or a growth ceiling being
    accepted on purpose — and what happens to the pool's size if it holds?
-3. **Is the unit a component or a whole work?** The brief's user has "a specific component to
+3. **Is the unit a component or a whole work?** **Answered 2026-08-07 — both, by the designer's
+   decision, against this section's own recommendation.** The tension below is what makes that a
+   cost rather than a free choice, so it is kept in full. The brief's user has "a specific component to
    design — empty state, pricing, onboarding form", but the breakdown fields (palette, type scale,
    grid) describe a whole product. Refero indexes components; Fonts In Use and Refero Styles index
    whole works. Loupe currently claims both.
@@ -182,6 +184,18 @@ they are not given: on the studied Behance project the credits table is drawn ou
 inside a free-text block (`research/screens/behance-project-detail.png`). So the question is not
 "can the breakdown be shown" but "why would a person write one by hand when a machine writes it
 free" — which is `[?]` 1 of the brief, the one that rebuilds the spine if it fails.
+
+> **Superseded in part on 2026-08-07 by `/dsf:change` — kept, not rewritten.** The brief now has
+> the machine extract the objective fields and the author confirm them, so the question above is no
+> longer "why write the whole breakdown by hand". **It narrows to: why would a person write the
+> *intent* for free** — the one part extraction cannot reach. Everything the benchmark measured
+> stays valid and stays scored; what changed is the size of the thing being supplied, not the
+> mechanism that has to supply it. Two consequences are recorded rather than smoothed over:
+> **(1)** mechanic 1 below (Discogs — the breakdown is the price of something the author wanted
+> anyway) now has **less to charge for**, because the expensive part is pre-filled; the price the
+> author pays is a confirmation and a paragraph, not a form. **(2)** **H4** below — incompleteness
+> must cost reach — no longer applies to the objective fields, which are complete on day one. It
+> applies **only to intent**. See `.design/decisions.md`, 2026-08-07.
 
 Confirmed at the human gate on 2026-08-06. Reference set named by the designer; five of the six are
 scored and OpenStreetMap was cut to stay inside the checklist's "4–5 reference products" — its
@@ -240,7 +254,10 @@ Notes on the scores that carry the most weight:
 1. **Make the breakdown the price of something the author wants anyway** — from Discogs, because
    its 5 on criterion 5 is the only mechanism in the set that does not depend on goodwill. Concretely
    for Loupe: filling the breakdown is what produces the author's own presentable case-study page,
-   the thing they would otherwise have built by hand for a portfolio.
+   the thing they would otherwise have built by hand for a portfolio. **Weakened 2026-08-07:** with
+   the objective fields extracted, the price collapses to a confirmation. **What remains chargeable
+   is intent** — so if the case-study page is handed over before intent is written, this mechanic
+   buys nothing. Phase 3 decides what the author still has to give to get the page.
 2. **Make `[?]` a dated, actionable marker, not an empty cell** — from Wikipedia, because its gap
    banner names what is missing, when it went missing, and where to get it. Loupe's `[?]` should
    name the field, carry a date, and put the one control that fills it inside the marker.
@@ -326,7 +343,7 @@ author or product name in advance**.
 | **Comparison** — `[?]` 3 of the brief, demoted at phase 1 | Keep it demoted. **No competitor in the set ships a dedicated side-by-side view**, including the two with the deepest structured data. Shared fields deliver comparison as a side effect, which is what the phase-1 hypothesis predicted | COMPETITORS — matrix, all twelve rows |
 | **"Own work only"** — a constraint the closest analogue rejects | Fonts In Use deliberately invites "your own work **or other typography you admire**". Loupe's restriction is a rights-and-authenticity decision that costs pool growth; it should be stated as a chosen trade-off in the IA, not assumed to be free | COMPETITORS — three real differences, item 2 |
 | **Who the construction spec is written for** — added 2026-08-07 by the Refero critique | **The market's auto-generated spec and Loupe's hand-written one have opposite consumers.** Refero Styles + MCP exists so an **agent** can build from it — "it studies before it builds… the output looks designed, not generated" — while Loupe's exists so a **person** can understand a decision and rebuild it themselves. Loupe therefore competes with Refero's **browse** half for the designer's attention, and only *overlaps* with its Styles half on the auto-extraction of values. **Consequence:** matching the values is table stakes, not the contest; the contest is comprehension. Phase 3 must not design the breakdown screen as a spec dump — that is the machine-facing form, and it is already solved better by a machine | COMPETITORS — "Why Refero is two rows"; `refero-positioning-2026-08.png` |
-| **Component or whole work?** | Unresolved and load-bearing. The brief's user names a component; the breakdown fields describe a whole product. Refero indexes components, Fonts In Use and Refero Styles index whole works. Phase 3 must pick one as the unit and let the other be a facet | COMPETITORS — three open questions, item 3 |
+| ~~**Component or whole work?**~~ **Closed 2026-08-07** | The finding stands: the brief's user names a component, the breakdown fields describe a whole product, Refero indexes components while Fonts In Use and Refero Styles index whole works. **The recommendation did not survive the gate.** This row asked phase 3 to *pick one as the unit and let the other be a facet*; on 2026-08-07 the designer chose **both** — one screen or a whole case, each first-class — and overrode the recommendation deliberately (`.design/decisions.md`). What phase 3 inherits is therefore not a choice but a **cost**: two unit shapes in one index, and the facets must mean the same thing on both | COMPETITORS — three open questions, item 3 |
 
 **Numbered hypotheses for later phases to test:**
 
@@ -336,13 +353,21 @@ author or product name in advance**.
    only *what* it was.
 2. **H2 — The breakdown pays the author back.** Completing it produces a page the author would have
    built for their portfolio anyway. *Test in phase 3:* the IA contains that page as a named object,
-   or H2 is falsified and supply has no engine.
+   or H2 is falsified and supply has no engine. **Cheaper and weaker since 2026-08-07:** extraction
+   pre-fills most of that page, so the author gets it for a confirmation — good for conversion, but
+   the Discogs mechanic worked *because* the entry was the price of admission. Phase 3 must say what
+   the author still pays, or the payback is a gift and buys no intent.
 3. **H3 — The third axis is spacing and shape, not grid.** *Test in phase 3:* the breakdown's third
    field is density / base unit / max width / radius, and the word "grid" survives only if a
    designer asks for columns by name.
-4. **H4 — Completeness must cost something.** An item with an empty field is absent from that
-   field's filtered results, so incompleteness is visible to its author as lost reach. *Test in
-   phase 4:* filtered results demonstrably exclude incomplete items, and the author's own view says so.
+4. **H4 — Completeness must cost something. Narrowed 2026-08-07 to intent alone.** Originally: an
+   item with an empty *field* is absent from that field's filtered results, so incompleteness costs
+   its author reach. With the objective fields extracted and pre-filled, **they are complete on day
+   one and can no longer carry this incentive** — they carry a *confirmed / unconfirmed* trust state
+   instead. The hypothesis now reads: **an item with no intent is ranked below one that has it, and
+   its author can see that it is.** *Test in phase 4:* results demonstrably rank intent-bearing
+   items above intent-less ones, and the author's own view says so. **This is the whole incentive
+   now — it rests on one axis where it used to rest on four.**
 5. **H5 — Quality holds without staff if the right to mark is earned.** *Test in phase 3:* the
    quality state and who may set it exist as objects in the IA.
 6. **H6 — A gap is a task.** `[?]` renders as field name + date + the control that fills it.
